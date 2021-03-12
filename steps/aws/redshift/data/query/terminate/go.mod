@@ -1,0 +1,13 @@
+module github.com/stackpulse/public-steps/public-steps/redshift/data/query/terminate
+
+go 1.16
+
+require (
+	github.com/stackpulse/public-steps/common v0.0.0
+	github.com/stackpulse/public-steps/redshift/base v0.0.0
+)
+
+replace (
+	github.com/stackpulse/public-steps/common v0.0.0 => ./../../../../../common
+	github.com/stackpulse/public-steps/redshift/base v0.0.0 => ./../../../base
+)

@@ -1,0 +1,53 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "aws-redshift-data-query-slow-queries"
+  description: "Identifying time-consuming queries that are top candidates for tuning."
+  vendor: aws
+  type: triage
+
+envs:
+  - name: CLUSTER
+    description: "The cluster identifier."
+    type: string
+    required: true
+    example: "redshift-cluster-1"
+  - name: REGION
+    description: "AWS region to use."
+    type: string
+    required: true
+    example: "us-west-2"
+  - name: DATABASE
+    description: "The name of the database."
+    type: string
+    required: true
+    example: "dev"
+  - name: TIMEOUT
+    description: "Timeout in seconds for waiting the query results. If not set, or set to 0, not explicit timeout will be set. Supports Go duration syntax (e.g. 10s, 3m)."
+    type: string
+    default: 0s
+    example: "30s"
+  - name: USER
+    description: "The database user name. Either this or the SECRET_ARN field should be set, not both."
+    type: string
+    example: "awsuser"
+  - name: SECRET_ARN
+    description: "The name or ARN of the secret that enables access to the database. Either this or the USER field should be set, not both."
+    type: string
+    example: "arn:aws:secretsmanager:us-west-2:961654671392:secret:redshift-secret-rMh4eb"
+  - name: LIMIT
+    description: "Limit the number of results to fetch."
+    type: int
+    default: 50
+    example: 100
+
+outputs:
+  - name: results
+    description: "JSON array of the diagnostic query results."
+    type: json
+    example: |
+      [{"aborted":"0","alerts":"true","avg":"0.20277","db":"dev","last_run":"2021-02-28","max":"0.70000","max_query_id":"191263","min":"0.00000","n_qry":"6","qrytext":"SELECT a.xid,a.pid,a.pidlist,a.username,a.block_sec,a.max_sec_blocking,a.num_blo","total":"1.21665"},{"aborted":"0","alerts":"true","avg":"0.01666","db":"dev","last_run":"2021-02-28","max":"0.18333","max_query_id":"192357","min":"0.00000","n_qry":"21","qrytext":"SELECT a.xid, a.pid, a.pidlist, a.username, a.block_sec, a.max_sec_blocking, a.n","total":"0.34993"},{"aborted":"0","alerts":"true","avg":"0.05833","db":"dev","last_run":"2021-02-28","max":"0.10000","max_query_id":"192028","min":"0.01666","n_qry":"4","qrytext":"select * from items;","total":"0.23332"},{"aborted":"0","alerts":"true","avg":"0.20000","db":"dev","last_run":"2021-02-28","max":"0.20000","max_query_id":"192257","min":"0.20000","n_qry":"1","qrytext":"SELECT a.xid, a.pid, a.pidlist, a.username, a.block_sec, a.max_sec_blocking, a.n","total":"0.20000"},{"aborted":"0","alerts":"true","avg":"0.01309","db":"dev","last_run":"2021-02-28","max":"0.08333","max_query_id":"193570","min":"0.00000","n_qry":"14","qrytext":"SELECT a.pid, a.xid, a.pidlist, a.username, a.block_sec, a.max_sec_blocking, a.n","total":"0.18329"},{"aborted":"0","alerts":"true","avg":"0.08333","db":"dev","last_run":"2021-02-28","max":"0.15000","max_query_id":"191211","min":"0.01666","n_qry":"2","qrytext":"SELECT * FROM items;","total":"0.16666"},{"aborted":"0","alerts":"true","avg":"0.03333","db":"dev","last_run":"2021-02-28","max":"0.15000","max_query_id":"193454","min":"0.00000","n_qry":"5","qrytext":"SELECT a.pid, a.xid, a.pidlist, a.username, a.block_sec, a.max_sec_blocking, a.n","total":"0.16666"},{"aborted":"0","alerts":"true","avg":"0.02333","db":"dev","last_run":"2021-02-24","max":"0.08333","max_query_id":"124637","min":"0.00000","n_qry":"5","qrytext":"SELECT a.xid,a.pid,a.pidlist,a.username,a.block_sec,a.max_sec_blocking,a.num_blo","total":"0.11665"},{"aborted":"0","alerts":"true","avg":"0.00530","db":"dev","last_run":"2021-02-28","max":"0.06666","max_query_id":"192195","min":"0.00000","n_qry":"22","qrytext":"select * from admin.v_get_blocking_locks;","total":"0.11664"},{"aborted":"0","alerts":"true","avg":"0.00203","db":"dev","last_run":"2021-02-28","max":"0.08333","max_query_id":"193666","min":"0.00000","n_qry":"41","qrytext":"select * from stv_sessions;","total":"0.08333"}]
+
+
+integrations:
+  - aws

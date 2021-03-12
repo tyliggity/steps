@@ -1,0 +1,38 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "aws-attach-volume"
+  imageName: "amazon/aws-cli"
+  description: "Attach AWS volume to AWS instance."
+  vendor: aws
+  type: remediation 
+
+args:
+  - name: command
+    description: "AWS specific command."
+    type: "string"
+    required: true
+    default: "ec2"
+  - name: subcommand
+    description: "AWS subcommand."
+    type: "string"
+    required: true
+    default: "attach-volume"
+  - name: --volume-id
+    description: "The ID of the volume."
+    required: true
+    type: "string"
+    default: "{{ .volumeID }}"
+  - name: --instance-id
+    description: "Instance ID to attach."
+    type: "string"
+    required: true
+    default: "{{ .instanceID }}"
+  - name: --device
+    description: "device name to use"
+    type: "string"
+    required: true
+    default: "/dev/sdf"
+
+integrations:
+  - aws

@@ -1,0 +1,65 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "aws-redshift-data-utils-get-blocking-locks"
+  description: "Identify blocking locks as well as determine what/who is blocking a query by awslabs/utils."
+  vendor: aws
+  type: triage
+
+envs:
+  - name: CLUSTER
+    description: "The cluster identifier."
+    type: string
+    required: true
+    example: "redshift-cluster-1"
+  - name: REGION
+    description: "AWS region to use."
+    type: string
+    required: true
+    example: "us-west-2"
+  - name: DATABASE
+    description: "The name of the database."
+    type: string
+    required: true
+    example: "dev"
+  - name: TIMEOUT
+    description: "Timeout in seconds for waiting the query results. If not set, or set to 0, not explicit timeout will be set. Supports Go duration syntax (e.g. 10s, 3m)."
+    type: string
+    default: 0s
+    example: "30s"
+  - name: USER
+    description: "The database user name. Either this or the SECRET_ARN field should be set, not both."
+    type: string
+    example: "awsuser"
+  - name: SECRET_ARN
+    description: "The name or ARN of the secret that enables access to the database. Either this or the USER field should be set, not both."
+    type: string
+    example: |
+      arn:aws:secretsmanager:us-west-2:961654671392:secret:redshift-secret-rMh4eb
+  - name: BLOCKING_SECONDS
+    description: "Filter only locks that are locked more than this value of seconds."
+    type: string
+    required: false
+    default: 60
+    example: 30
+  - name: ONLY_USERS
+    description: "Comma-separated list of users that are relevant to the query."
+    type: string
+    required: false
+    example: "awsuser,root"
+  - name: IGNORE_USERS
+    description: "Comma-separated list of users that are irrelevant to the query and we should ignore them."
+    type: string
+    required: false
+    example: "awsuser,root"
+
+outputs:
+  - name: results
+    description: "JSON array of query results. For more information see https://github.com/awslabs/utils/blob/master/src/AdminViews/v_get_blocking_locks.sql"
+    type: json
+    example: |
+      [{"block_sec":"59.4","max_sec_blocking":"56.4","num_blocking":"1","pid":"30432","pidlist":"30433","querytxt":"ALTER TABLE items ADD COLUMN last_update timestamptz;","username":"awsuser","xid":"722986"}]
+
+
+integrations:
+  - aws

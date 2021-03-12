@@ -1,0 +1,25 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "aws-cli-command"
+  imageName: "amazon/aws-cli"
+  description: "Generic AWS CLI command"
+  vendor: aws
+  type: advanced
+
+args:
+  - name: COMMAND
+    description: "AWS specific command."
+    type: "string"
+    required: true
+  - name: SUBCOMMAND
+    description: "AWS subcommand."
+    type: "string"
+    required: true
+  - name: OPTIONS
+    description: "More command options (each argument should be separated in a different argument array item) "
+    type: "string"
+    required: true
+
+integrations:
+  - aws

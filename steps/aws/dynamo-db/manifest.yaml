@@ -1,0 +1,32 @@
+
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "aws-dynamodb-query"
+  imageName: "amazon/aws-cli"
+  description: "Perform an arbitrary DynamoDB query."
+  vendor: aws
+  type: triage 
+
+args:
+  - name: command
+    description: "AWS specific command."
+    type: "string"
+    required: true
+    default: "dynamodb"
+  - name: subcommand
+    description: "AWS subcommand."
+    type: "string"
+    required: true
+    default: "query"
+  - name: --region
+    description: "Region to query."
+    type: "string"
+    default: "us-east-2"
+  - name: --table-name
+    description: "Region to query."
+    type: "string"
+    default: "{{ .TableName }}"
+
+integrations:
+  - aws

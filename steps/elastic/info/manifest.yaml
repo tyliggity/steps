@@ -1,0 +1,38 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "elastic-info"
+  description: "Get elastic info."
+  vendor: elastic
+  type: triage
+
+envs:
+  - name: HOST
+    description: "Elastic host."
+    type: "string"
+    required: true
+  - name: PORT
+    description: "Elastic port."
+    type: "string"
+    required: true
+  - name: USERNAME
+    description: "Elastic username."
+    type: "string"
+    required: true
+  - name: PASSWORD
+    description: "Elastic user password."
+    type: "string"
+    required: false
+  - name: CERT_CONTENT
+    description: "SSL certificate content."
+    type: "string"
+    required: false
+  - name: CERT_KEY_CONTENT
+    description: "SSL certificate key content."
+    type: "string"
+    required: false
+  - name: UNSAFE_SSL
+    description: "Whether use unsafe ssl mode."
+    type: "bool"
+    required: false
+    default: false

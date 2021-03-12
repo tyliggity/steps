@@ -1,0 +1,28 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "get-ips-for-instances"
+  description: "Get private ips for given ec2 instances."
+  vendor: aws
+  type: triage
+
+envs:
+  - name: INSTANCE_IDS
+    description: "Instance IDs to get the ips for. Max instances allowed - 1000."
+    type: "json"
+    required: true
+    example: "[\"192.168.125.110\", \"192.168.125.112\"]"
+  - name: REGION
+    description: "Instances aws region."
+    type: "string"
+    required: true
+    example: "us-west-2"
+
+outputs:
+  - name: ips
+    description: "JSON array contains the ips for the given instances"
+    type: "json"
+    example: "['192.168.77.111', '192.168.66.189']"
+
+integrations:
+  - aws

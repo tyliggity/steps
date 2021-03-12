@@ -1,0 +1,55 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "aws-redshift-data-query-terminate"
+  description: "Terminate current running sessions. An enhancement upon pg_terminate_backend."
+  vendor: aws
+  type: remediation
+
+envs:
+  - name: CLUSTER
+    description: "The cluster identifier."
+    type: string
+    required: true
+    example: "redshift-cluster-1"
+  - name: REGION
+    description: "AWS region to use."
+    type: string
+    required: true
+    example: "us-west-2"
+  - name: DATABASE
+    description: "The name of the database."
+    type: string
+    required: true
+    example: "dev"
+  - name: TIMEOUT
+    description: "Timeout in seconds for waiting the query results. If not set, or set to 0, not explicit timeout will be set. Supports Go duration syntax (e.g. 10s, 3m)."
+    type: string
+    default: 0s
+    example: "30s"
+  - name: USER
+    description: "The database user name. Either this or the SECRET_ARN field should be set, not both."
+    type: string
+    example: "awsuser"
+  - name: SECRET_ARN
+    description: "The name or ARN of the secret that enables access to the database. Either this or the USER field should be set, not both."
+    type: string
+    example: |
+      arn:aws:secretsmanager:us-west-2:961654671392:secret:redshift-secret-rMh4eb
+  - name: PIDS
+    description: "Comma-separated list of sessions PIDs to terminate."
+    type: string
+    example: "30432,30433"
+
+outputs:
+  - name: success
+    description: "JSON array of sessions PIDs that were terminated successfully."
+    type: json
+    example: '["9873","9874"]'
+  - name: failed
+    description: "JSON array of PIDs that the termination was failed for them."
+    type: json
+    example: '["3789"]'
+
+integrations:
+  - aws
