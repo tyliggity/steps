@@ -1,0 +1,29 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "coralogix_query"
+  description: "Perform an arbitrary Coralogix search query."
+  vendor: coralogix
+  type: triage
+
+envs:
+  - name: TOKEN
+    description: "Coralogix Elasticsearch API Key."
+    type: "string"
+    required: true
+  - name: QUERY
+    description: "Elasticsearch query to use."
+    type: "json"
+    required: true
+  - name: FROM
+    description: "Starting document offset (default 0). The sum of FROM and SIZE cannot be greater than 12000."
+    type: "string"
+    required: false
+  - name: SIZE
+    description: "Defines the number of hits to return (default 10). The sum of FROM and SIZE cannot be greater than 12000."
+    type: "string"
+    required: false
+  - name: SORT
+    description: "A comma-separated list of <field>:<direction ('desc' or 'asc')> pairs."
+    type: "string"
+    required: false

@@ -1,0 +1,31 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "ansible_awx_hosts_list"
+  description: "Return a list of available hosts"
+  vendor: ansible
+  type: triage
+
+envs:
+  - name: HOST
+    description: "AWX host"
+    type: "string"
+    required: true
+    example: "http://my.awx.host"
+  - name: USERNAME
+    description: "Username is used to authenticate. Must be supplied if the token is empty"
+    type: "string"
+    required: false
+  - name: PASSWORD
+    description: "Password is used to authenticate. Must be supplied if the token is empty"
+    type: "string"
+    required: false
+  - name: TOWER_OAUTH_TOKEN
+    description: "Token for authentication. Must be supplied if USERNAME and PASSWORD are empty"
+    type: "string"
+    required: false
+  - name: INSECURE
+    description: "Allow HTTPS insecure connection"
+    type: "bool"
+    required: false
+    default: false
