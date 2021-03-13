@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	"github.com/andygrunwald/go-jira"
-	"github.com/stackpulse/steps/atlassian/jira/base"
-	envconf "github.com/stackpulse/steps/common/env"
-	"github.com/stackpulse/steps/common/step"
+	"github.com/stackpulse/public-steps/atlassian/jira/base"
+	envconf "github.com/stackpulse/public-steps/common/env"
+	"github.com/stackpulse/public-steps/common/step"
 	"golang.org/x/oauth2"
 )
 

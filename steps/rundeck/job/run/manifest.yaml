@@ -1,0 +1,61 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "rundeck_job_run"
+  description: "Run a specific job."
+  vendor: rundeck
+  type: remediation
+
+envs:
+  - name: HOST
+    description: "Rundeck host name or IP."
+    type: "string"
+    required: true
+    example: "rundeck.server"
+  - name: PORT
+    description: "Rundeck port."
+    type: "string"
+    required: true
+    example: "4040"
+  - name: AUTH_TOKEN
+    description: "Token for authentication."
+    type: "string"
+    required: true
+    example: "DRUVEuCdENoPkUpDkcDcdd6PeKkPdurc"
+  - name: JOB_ID
+    description: "Job ID"
+    type: "string"
+    required: true
+    example: "3b6c19f6-41ee-475f-8fd0-8f1a26f27a9a"
+  - name: OPTIONS
+    description: "The Rundeck options required for executing the job."
+    type: "json"
+    example: '{"repository"\: "ci","release"\: "SNAPSHOT", "packages"\: ["web-SNAPSHOT.tgz"]}'
+  - name: HTTP_SCHEME
+    description: "HTTP Request scheme. can be either 'http' or 'https'."
+    type: "string"
+    default: "https"
+    example: "http"
+
+
+outputs:
+  - name: job_id
+    description: "ID of the executed job."
+    type: "string"
+    example: "846a2025-7895-4af2-a594-a0a9174339ec"
+  - name: job_name
+    description: "Name of the executed job."
+    type: "string"
+    example: "Restart-Server"
+  - name: execution_status
+    description: "Status of the execution at the time of initiation."
+    type: "string"
+    example: "running"
+  - name: execution_id
+    description: "ID of the initiated execution."
+    type: "int"
+    example: 93
+  - name: api_object
+    description: "Information about the job execution that was initiated."
+    type: "json"
+    example: '{"id"\:88,"href"\:"http\://rundeck.server\:4440/api/38/execution/88","permalink"\:"http\://rundeck.server\:4440/project/anvils/execution/show/88","status"\:"running","project"\:"anvils","executionType"\:"user","user"\:"admin","date-started"\:{"unixtime"\:1613662107910,"date"\:"2021-02-18T15\:28\:27Z"},"job"\:{"id"\:"846a2025-7895-4af2-a594-a0a9174339ec","averageDuration"\:613,"name"\:"Promote","group"\:"release","project"\:"anvils","description"\:"promote software packages to the ops repository -- shows dynamic cascading options","options"\:{"release"\:"SNAPSHOT","packages"\:"app-SNAPSHOT.tgz,db-SNAPSHOT.tgz,web-SNAPSHOT.tgz","repository"\:"ci"},"href"\:"http\://192.168.50.2\:4440/api/38/job/846a2025-7895-4af2-a594-a0a9174339ec","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/846a2025-7895-4af2-a594-a0a9174339ec"},"description"\:"<shell cmd description>", "argstring": "-packages app-SNAPSHOT.tgz,db-SNAPSHOT.tgz,web-SNAPSHOT.tgz -release SNAPSHOT -repository ci" ,"serverUUID"\:"03dcf525-051b-422a-af28-6e651683ccd2"}'

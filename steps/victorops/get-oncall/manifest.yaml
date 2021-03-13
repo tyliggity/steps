@@ -1,0 +1,17 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "victorops_get_oncall_schedule"
+  description: "Retrieve On-call Schedule from VictorOps Account."
+  vendor: victorops
+  type: notification 
+
+envs:
+  - name: VICTOROPS_API_ID
+    description: "API ID to access VictorOps API."
+    type: "string"
+    required: true
+  - name: VICTOROPS_API_KEY
+    description: "API key to access VictorOps API."
+    type: "string"
+    required: true    

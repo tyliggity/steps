@@ -1,0 +1,154 @@
+[
+    {
+        "vendor_type": "datadog",
+        "icon": "datadog.svg"
+    },
+    {
+        "vendor_type": "gcp",
+        "icon": "gcp.svg"
+    },
+    {
+        "vendor_type": "aws",
+        "icon": "aws.svg"
+    },
+    {
+        "vendor_type": "alertmanager",
+        "icon": "alertmanager.svg"
+    },
+    {
+        "vendor_type": "slack",
+        "icon": "slack.svg"
+    },
+    {
+        "vendor_type": "redis",
+        "icon": "redis.svg"
+    },
+    {
+        "vendor_type": "kubernetes",
+        "icon": "kubernetes.svg"
+    },
+    {
+        "vendor_type": "pagerduty",
+        "icon": "pagerduty.svg"
+    },
+    {
+        "vendor_type": "victorops",
+        "icon": "victorops.svg"
+    },
+    {
+        "vendor_type": "elastic",
+        "icon": "elastic.svg"
+    },
+    {
+        "vendor_type": "kafka",
+        "icon": "kafka.svg"
+    },
+    {
+        "vendor_type": "prometheus",
+        "icon": "prometheus.svg"
+    },
+    {
+        "vendor_type": "postgres",
+        "icon": "postgres.svg"
+    },
+    {
+        "vendor_type": "influxdb",
+        "icon": "influxdb.svg"
+    },
+    {
+        "vendor_type": "logz.io",
+        "icon": "logzio.svg"
+    },
+    {
+        "vendor_type": "github",
+        "icon": "github.svg"
+    },
+    {
+    	"vendor_type": "curl",
+	    "icon": "curl.svg"
+    },
+    {
+        "vendor_type": "istio",
+        "icon": "istio.svg"
+    },
+    {
+        "vendor_type": "envoy",
+        "icon": "envoy.svg"
+    },
+    {
+        "vendor_type": "coralogix",
+        "icon": "coralogix.svg"
+    },
+    {
+        "vendor_type": "teams",
+        "icon": "teams.svg"
+    },
+    {
+        "vendor_type": "rabbitmq",
+        "icon": "rabbitmq.svg"
+    },
+    {
+        "vendor_type": "jira",
+        "icon": "jira.svg"
+    },
+    {
+        "vendor_type": "azure",
+        "icon": "azure.svg"
+    },
+    {
+        "vendor_type": "data-transformer",
+        "icon": "data-transformer.svg"
+    },
+    {
+        "vendor_type": "python",
+        "icon": "python.svg"
+    },
+    {
+        "vendor_type": "scalyr",
+        "icon": "scalyr.svg"
+    },
+    {
+        "vendor_type": "ssh",
+        "icon": "ssh.svg"
+    },
+    {
+        "vendor_type": "opsgenie",
+        "icon": "opsgenie.svg"
+    },
+    {
+        "vendor_type": "zoom",
+        "icon": "zoom.svg"
+    },
+    {
+        "vendor_type": "custom",
+        "icon": ""
+    },
+    {
+        "vendor_type": "stackpulse",
+        "icon": "stackpulse.svg"
+    },
+    {
+        "vendor_type": "bigquery",
+        "icon": "bigquery.svg"
+    },
+    {
+        "vendor_type": "ansible",
+        "icon": "ansible.svg"
+    },
+    {
+        "vendor_type": "jenkins",
+        "icon": "jenkins.svg"
+    },
+    {
+        "vendor_type": "fluxcd",
+        "icon": "fluxcd.svg"
+    },
+    {
+        "vendor_type": "rundeck",
+        "icon": "rundeck.svg"
+    },
+    {
+        "vendor_type": "googlechat",
+        "icon": "googlechat.svg"
+    }
+]

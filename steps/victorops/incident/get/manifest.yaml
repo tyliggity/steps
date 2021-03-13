@@ -1,0 +1,37 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "victorops-get-incident"
+  description: "Retrieve information about a specific incident"
+  vendor: victorops
+  type: triage 
+
+envs:
+  - name: VICTOROPS_API_ID
+    description: "API ID to access VictorOps API."
+    type: "string"
+    required: true
+  - name: VICTOROPS_API_KEY
+    description: "API key to access VictorOps API."
+    type: "string"
+    required: true
+  - name: INCIDENT_NUMBER
+    description: "Incident number to retreive."
+    type: "int"
+    required: true
+
+outputs:
+  - name: current_phase
+    description: "The current phase of the incident can be resolved (RESOLVED), triggered (UNACKED) or acknowledged (ACKED)."
+    type: "string"
+    example: "RESOLVED"
+  - name: alert_count
+    description: "The number of alerts received for this incident."
+    type: "int"
+  - name: entity_id
+    description: "The unique identification of the entity being monitored that caused the incident."
+    type: "string"
+  - name: api_object
+    description: "Original api object as recevied from the API call."
+    type: "json"
+    example: '{"incidentNumber":"string","startTime":"string","currentPhase":"RESOLVED","alertCount":0,"lastAlertTime":"string","lastAlertId":"string","entityId":"string","host":"string","service":"string","pagedUsers":["string"],"pagedTeams":["string"],"pagedPolicies":[{"policy":{"name":"string","slug":"string","_selfUrl":"string"},"team":{"name":"string","slug":"string"}}],"transitions":[{"name":"string","at":"string","by":"string","message":"string","manually":true,"alertId":"string","alertUrl":"string"}],"firstAlertUuid":"string","monitorName":"string","monitorType":"UNKNOWN"}'

@@ -1,0 +1,43 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "victorops-incident-acknowledge"
+  description: "Acknowledge an incident."
+  vendor: victorops
+  type: remediation 
+
+envs:
+  - name: VICTOROPS_API_ID
+    description: "API ID to access VictorOps API."
+    type: "string"
+    required: true
+  - name: VICTOROPS_API_KEY
+    description: "API key to access VictorOps API."
+    type: "string"
+    required: true
+  - name: INCIDENT_NUMBERS
+    description: "Incident numbers to acknowledge. Can provide multiple values separated by ',' or a JSON string array."
+    type: "json"
+    required: true
+  - name: USER_NAME
+    description: "Displays the user who has acknowledged this incident."
+    type: "string"
+    required: true
+  - name: ACK_MESSAGE
+    description: "Include this as the acknowledge message"
+    type: "string"
+    required: false
+
+outputs:
+  - name: incident_numbers
+    description: "The numbers of the acknowledged incidents."
+    type: "json"
+    example: "[111,222]"
+  - name: entity_ids
+    description: "The unique identification of the entities being monitored that caused the incidents."
+    type: "json"
+    example: '["aa-bb-cc","dd-ee-ff"]'
+  - name: api_object
+    description: "Original api object as received from the API call."
+    type: "json"
+    example: '{"incidentNumber":"string","entityId":"string","cmdAccepted":true,"message":"string"}'

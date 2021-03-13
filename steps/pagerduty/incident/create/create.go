@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	pd "github.com/PagerDuty/go-pagerduty"
-	"github.com/stackpulse/steps/common/env"
-	"github.com/stackpulse/steps/common/step"
-	"github.com/stackpulse/steps/pagerduty/incident/base"
+	"github.com/stackpulse/public-steps/common/env"
+	"github.com/stackpulse/public-steps/common/step"
+	"github.com/stackpulse/public-steps/pagerduty/incident/base"
 )
 
 type pagerDutyIncidentCreate struct {

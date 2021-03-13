@@ -1,0 +1,63 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "ssh_parallel_command"
+  description: "Run command over ssh protocol in parallel for multiple hosts."
+  vendor: ssh
+  type: triage
+
+envs:
+  - name: USERNAME
+    description: "Host username to access."
+    type: "string"
+    required: true
+    example: "ubuntu"
+  - name: HOSTNAMES
+    description: "Hostnames for ssh command execution. Max hosts allowed - 1000."
+    type: "json"
+    required: true
+    example: "[\"192.168.125.110\", \"192.168.125.112\"]"
+  - name: COMMAND
+    description: "The command to run over ssh."
+    type: "string"
+    required: true
+    example: "df -h"
+  - name: PRIVATE_KEY
+    description: "SSH private key."
+    type: "string"
+    required: false
+    example: "-----BEGIN OPENSSH PRIVATE KEY-----
+              b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+              QyNTUxOQAAACDkhQbn17U4OmaFDQSNu12345a284YG/gMEdwKcmd8d9wAAAKAu1CIzLtQi
+              MwAAAAtzc2gtZWQyNTUxOQAAACDkhQbn17U4OmaFDQSNu92317a284YG/gMEdwKcmd8d9w
+              AAAEAKXi8poF5fWye1AAAA+9eHCuoMpuprAGJrICJY70zUkuSFBufXtTg6ZoUNBI273bfX
+              trbzhgb+AwR3ApyZ3x33AAAAFnlvdXJfZW1haWxAZXhAAAAAAAAAAAAAAAAAAAAA
+              -----END OPENSSH PRIVATE KEY-----"
+  - name: STRICT_HOST_KEY_CHECKING
+    description: "whether use strict host key checking."
+    type: "string"
+    required: false
+    default: no
+    example: "yes"
+  - name: LOG_LEVEL
+    description: "ssh log level verbosity."
+    type: "string"
+    required: false
+    default: error
+    example: "info"
+  - name: AWS_SECRET_KEY
+    description: "aws secret key that would store the ssh private key(in case the ssh private key is not stored as custom secret). AWS_REGION should be provided when using this parameter."
+    type: "string"
+    required: false
+    example: "my-aws-secret"
+  - name: AWS_REGION
+    description: "Region for AWS secret key. must be provided if AWS_SECRET_KEY is used."
+    type: "string"
+    required: false
+    example: "us-west-2"
+
+outputs:
+  - name: SSHResponses
+    description: "JSON array contains the ssh command results for each host"
+    type: "json"
+    example: "[{\"Hostname\":\"192.168.125.110\",\"Success\":true,\"Output\":\"ssh-command\\n\",\"Error\":\"\"},{\"Hostname\":\"192.168.125.112\",\"Success\":true,\"Output\":\"ssh-command\\n\",\"Error\":\"\"}]"

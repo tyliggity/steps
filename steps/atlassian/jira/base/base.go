@@ -8,7 +8,7 @@ import (
 	"net/http"
 
 	"github.com/andygrunwald/go-jira"
-	"github.com/stackpulse/steps/common/log"
+	"github.com/stackpulse/public-steps/common/log"
 	"golang.org/x/oauth2"
 )
 

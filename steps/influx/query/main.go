@@ -2,10 +2,10 @@ package main
 
 import (
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/steps/common/exec"
-	"github.com/stackpulse/steps/common/log"
-	"github.com/stackpulse/steps/common/step"
-	"github.com/stackpulse/steps/influx/base"
+	"github.com/stackpulse/public-steps/common/exec"
+	"github.com/stackpulse/public-steps/common/log"
+	"github.com/stackpulse/public-steps/common/step"
+	"github.com/stackpulse/public-steps/influx/base"
 )
 
 type Args struct {

@@ -1,0 +1,41 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "rundeck_list_jobs"
+  description: "List jobs in a Rundeck project."
+  vendor: rundeck
+  type: hydration
+
+envs:
+  - name: HOST
+    description: "Rundeck host name or IP."
+    type: "string"
+    required: true
+    example: "rundeck.server"
+  - name: PORT
+    description: "Rundeck port."
+    type: "string"
+    required: true
+    example: "4040"
+  - name: AUTH_TOKEN
+    description: "Token for authentication."
+    type: "string"
+    required: true
+    example: "DRUVEuCdENoPkUpDkcDcdd6PeKkPdurc"
+  - name: PROJECT
+    description: "Name of Rundeck project to list it's jobs."
+    type: "string"
+    required: true
+    example: "anvils"
+  - name: HTTP_SCHEME
+    description: "HTTP Request scheme. can be either 'http' or 'https'."
+    type: "string"
+    default: "https"
+    example: "http"
+
+
+outputs:
+  - name: jobs
+    description: "Array of jobs listed in the project. for more details about the Job object see StackPulse 'rundeck-job-metadata' step outputs."
+    type: "json"
+    example: '[{"id"\:"c6273094-01d7-4fff-8a3f-a6845921f63d","name"\:"Load-Seed-Data","group"\:"catalog","project"\:"anvils","description"\:"Load the standing catalog data -- uses plugin to execute sql script","href"\:"http\://192.168.50.2\:4440/api/38/job/c6273094-01d7-4fff-8a3f-a6845921f63d","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/c6273094-01d7-4fff-8a3f-a6845921f63d"},{"id"\:"846a2025-7895-4af2-a594-a0a9174339ec","name"\:"Promote","group"\:"release","project"\:"anvils","description"\:"promote software packages to the ops repository -- shows dynamic cascading options","href"\:"http\://192.168.50.2\:4440/api/38/job/846a2025-7895-4af2-a594-a0a9174339ec","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/846a2025-7895-4af2-a594-a0a9174339ec"},{"id"\:"26bba358-4029-4f47-aa4d-5b3d045c616c","name"\:"Restart","group"\:"ops/web","project"\:"anvils","description"\:"restart the web servers","href"\:"http\://192.168.50.2\:4440/api/38/job/26bba358-4029-4f47-aa4d-5b3d045c616c","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/26bba358-4029-4f47-aa4d-5b3d045c616c"},{"id"\:"233810b5-acea-4d8d-9d4b-0f50fa759c78","name"\:"Run-Weekly-Report","group"\:"catalog","project"\:"anvils","description"\:"Run a weekly business report -- Uses date picker UI","href"\:"http\://192.168.50.2\:4440/api/38/job/233810b5-acea-4d8d-9d4b-0f50fa759c78","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/233810b5-acea-4d8d-9d4b-0f50fa759c78"},{"id"\:"126b9b49-2926-4b0b-b19b-f2933d93cbd2","name"\:"Stack-Restart","group"\:"ops","project"\:"anvils","description"\:"Restart the whole web/app stack","href"\:"http\://192.168.50.2\:4440/api/38/job/126b9b49-2926-4b0b-b19b-f2933d93cbd2","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/126b9b49-2926-4b0b-b19b-f2933d93cbd2"},{"id"\:"f46e2d2d-1c80-4ebe-ae31-f4e5f9287e43","name"\:"restart","group"\:"ops/app","project"\:"anvils","description"\:"restart the app servers","href"\:"http\://192.168.50.2\:4440/api/38/job/f46e2d2d-1c80-4ebe-ae31-f4e5f9287e43","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/f46e2d2d-1c80-4ebe-ae31-f4e5f9287e43"},{"id"\:"4b4d8f15-635f-44ab-8a73-89e0ce09d628","name"\:"start","group"\:"ops/app","project"\:"anvils","description"\:"start the app servers -- uses node rank ordering","href"\:"http\://192.168.50.2\:4440/api/38/job/4b4d8f15-635f-44ab-8a73-89e0ce09d628","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/4b4d8f15-635f-44ab-8a73-89e0ce09d628"},{"id"\:"75a0aa1d-1e60-4f33-aa80-5d8ead0b5099","name"\:"start","group"\:"ops/web","project"\:"anvils","description"\:"start the web servers -- uses node rank ordering","href"\:"http\://192.168.50.2\:4440/api/38/job/75a0aa1d-1e60-4f33-aa80-5d8ead0b5099","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/75a0aa1d-1e60-4f33-aa80-5d8ead0b5099"},{"id"\:"ce0a5db1-241f-4b69-b9f2-78df30edfff7","name"\:"status","group"\:"ops/app","project"\:"anvils","description"\:"Check the status of anvils -- Shows step error handler, ","href"\:"http\://192.168.50.2\:4440/api/38/job/ce0a5db1-241f-4b69-b9f2-78df30edfff7","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/ce0a5db1-241f-4b69-b9f2-78df30edfff7"},{"id"\:"8d67b08d-0f08-4ae9-a941-1af30c5da477","name"\:"status","group"\:"ops/web","project"\:"anvils","description"\:"Check the status of anvils -- Shows step error handler, ","href"\:"http\://192.168.50.2\:4440/api/38/job/8d67b08d-0f08-4ae9-a941-1af30c5da477","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/8d67b08d-0f08-4ae9-a941-1af30c5da477"},{"id"\:"7cbaf8ed-63b1-4705-804f-108ec77c72cc","name"\:"stop","group"\:"ops/app","project"\:"anvils","description"\:"stop the app servers -- shows how to use a step error handler, and node rank ordering","href"\:"http\://192.168.50.2\:4440/api/38/job/7cbaf8ed-63b1-4705-804f-108ec77c72cc","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/7cbaf8ed-63b1-4705-804f-108ec77c72cc"},{"id"\:"4b2a0f5c-64df-493b-b722-75764ea78203","name"\:"stop","group"\:"ops/web","project"\:"anvils","description"\:"stop the web servers -- shows how to use a step error handler, and node rank ordering","href"\:"http\://192.168.50.2\:4440/api/38/job/4b2a0f5c-64df-493b-b722-75764ea78203","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/4b2a0f5c-64df-493b-b722-75764ea78203"}]'

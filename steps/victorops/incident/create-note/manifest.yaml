@@ -1,0 +1,38 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "victorops-incident-create-note"
+  description: "Create a note for incident."
+  vendor: victorops
+  type: remediation
+
+envs:
+  - name: VICTOROPS_API_ID
+    description: "API ID to access VictorOps API."
+    type: "string"
+    required: true
+  - name: VICTOROPS_API_KEY
+    description: "API key to access VictorOps API."
+    type: "string"
+    required: true
+  - name: INCIDENT_NUMBER
+    description: "Incident number to create the note in."
+    type: "int"
+    required: true
+  - name: NOTE_MESSAGE
+    description: "The note message to create."
+    type: "string"
+    required: true
+  - name: NOTE_NAME
+    description: "Note name."
+    type: "string"
+    required: false
+
+outputs:
+  - name: name
+    description: "The unique name of your note."
+    type: "string"
+  - name: api_object
+    description: "Original api object as recevied from the API call."
+    type: "json"
+    example: '{"name":"string","displayName":"string","json_value":{}}'

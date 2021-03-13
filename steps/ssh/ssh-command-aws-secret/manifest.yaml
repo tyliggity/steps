@@ -1,0 +1,22 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "ssh_with_aws_secret"
+  description: "Connect to remote SSH server, authenticating with a content of AWS Secret, and execute command(s)"
+  vendor: aws
+  type: remediation 
+
+envs:
+  - name: SSH_KEY_SECRET_NAME
+    description: "The name of the secret in the AWS Secrets Manager containing the SSH Certificate to be used for connection"
+    type: "string"
+  - name: SSH_CLIENT
+    description: "Address of the server to connect to, i.e. user@destination:port"
+    type: "string"    
+  - name: SSH_COMMAND
+    description: "One (or multiple, separated with a semicolon) command(s) to execute"
+    type: "string"    
+  - name: INTEGRATION_TYPE_AWS
+    description: "An AWS integration having a role to access AWS Secrets Manager (alternatively - SSH_KEY_SECRET_NAME / AWS_SECRET_ACCESS_KEY"
+    type: secret
+    required: true

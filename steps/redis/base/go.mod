@@ -1,4 +1,4 @@
-module github.com/stackpulse/steps/redis/base
+module github.com/stackpulse/public-steps/redis/base
 
 go 1.14
 

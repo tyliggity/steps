@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/stackpulse/steps/common/gcs"
+	"github.com/stackpulse/public-steps/common/gcs"
 	"os"
 )
 

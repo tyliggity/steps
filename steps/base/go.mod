@@ -1,9 +1,9 @@
-module github.com/stackpulse/steps/steps/base
+module github.com/stackpulse/public-steps/public-steps/base
 
 go 1.14
 
 require (
-	github.com/stackpulse/steps/common v0.0.0
+	github.com/stackpulse/public-steps/common v0.0.0
 )
 
-replace github.com/stackpulse/steps/common v0.0.0 => ../common
+replace github.com/stackpulse/public-steps/common v0.0.0 => ../common

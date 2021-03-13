@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/Jeffail/gabs/v2"
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/steps/common/step"
-	"github.com/stackpulse/steps/pagerduty/incident/base"
+	"github.com/stackpulse/public-steps/common/step"
+	"github.com/stackpulse/public-steps/pagerduty/incident/base"
 )
 
 type Args struct {
