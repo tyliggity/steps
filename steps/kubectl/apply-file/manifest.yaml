@@ -1,0 +1,43 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "kubectl_apply_file"
+  description: "Apply a Kubernetes object file"
+  vendor: kubernetes
+  type: remediation
+
+envs:
+  - name: KUBECONFIG_CONTENT
+    description: "kubeconfig content for authentication. base64 encoded kubeconfig file. could be provided by kubernetes integration as well."
+    type: "string"
+    required: false
+    example: '{{ secret "KUBECONFIG_CONTENT" }}'
+  - name: NAMESPACE
+    description: "Namespace to run the command in. Default value is 'default'"
+    type: "string"
+    example: "stackpulse"
+  - name: FORMAT
+    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    type: "string"
+    example: "wide"
+  - name: ALL_NAMESPACES
+    description: "If true, running command on all namespaces"
+    type: "bool"
+    example: "true"
+  - name: FIELD_SELECTOR
+    description: "Applying the given field selector to the command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details"
+    type: "string"
+    example: "status.phase=Running"
+  - name: APPLY_FILE_PATH
+    description: "The path of the Kubernetes object yaml file"
+    type: "string"
+    required: true
+    example: "./my-manifest.yaml"
+
+integrations:
+  - k8s
+
+outputs:
+  - name: basic-logs
+    description: "Raw output of kubectl command"
+    type: "string"

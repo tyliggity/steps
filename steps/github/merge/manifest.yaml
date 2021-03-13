@@ -1,0 +1,39 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "github_merge"
+  description: "Merge src branch, in given repository to destination branch."
+  vendor: github
+  type: remediation
+
+envs:
+  - name: PRIVATE_KEY
+    description: "Private key that will be used for authentication (github deploy key for example)."
+    type: "string"
+    required: true
+    example: "-----BEGIN RSA PRIVATE KEY----- MIICXAIAKBgQ..... -----END RSA PRIVATE KEY-----"
+  - name: USER_EMAIL
+    description: "User email for the merge commit."
+    type: "string"
+    required: true
+    example: "myemail@mycompany.io"
+  - name: ORGANIZATION
+    description: "Organization of the git repository."
+    type: "string"
+    required: true
+    example: "myorganization"
+  - name: REPOSITORY
+    description: "Repository name."
+    type: "string"
+    required: true
+    example: "myrepository"
+  - name: SRC_BRANCH
+    description: "Source branch."
+    type: "string"
+    required: true
+    example: "feature_branch"
+  - name: DEST_BRANCH
+    description: "Destination branch."
+    type: "string"
+    required: true
+    example: "master"

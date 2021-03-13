@@ -1,0 +1,87 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "kubectl_get_pods"
+  description: "Getting kubernetes pods"
+  vendor: kubernetes
+  type: triage
+
+envs:
+  - name: KUBECONFIG_CONTENT
+    description: "kubeconfig content for authentication. base64 encoded kubeconfig file. could be provided by kubernetes integration as well."
+    type: "string"
+    required: false
+    example: '{{ secret "KUBECONFIG_CONTENT" }}'
+  - name: NAMESPACE
+    description: "Namespace to run the command in. Default value is 'default'"
+    type: "string"
+    example: "stackpulse"
+  - name: FORMAT
+    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    type: "string"
+    example: "wide"
+  - name: ALL_NAMESPACES
+    description: "If true, running command on all namespaces"
+    type: "bool"
+    example: "true"
+  - name: FIELD_SELECTOR
+    description: "Add a field selector to the kubectl command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details"
+    type: "string"
+    example: "status.phase=Running"
+  - name: POD_NAMES
+    description: "List of pod names to use to query Kubernetes"
+    type: "string"
+    required: false
+  - name: NAME_CONTAINS
+    description: "If set, filter list by the provided partial pod name"
+    type: "string"
+    required: false
+    example: "my-p"
+  - name: NAME_EXACT
+    description: "If set, filter list by the provided exact pod name"
+    type: "string"
+    required: false
+    example: "my-pod"
+  - name: ORDER_BY
+    description: "Sort the return items by the given json path"
+    type: "string"
+    required: false
+    example: "age"
+  - name: ORDER_BY_DESC
+    description: "Sort the items in descending order"
+    type: "bool"
+    required: false
+    example: "true"
+  - name: FILTER_CONTAINS
+    description: "If set, filter only output lines with field containing the provided value. you can provide more then one key-value pair"
+    type: "json"
+    required: false
+    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+  - name: FILTER_EQUALS
+    description: "If set, filter only output lines with field value equals to the provided value. you can provide more then one key"
+    type: "json"
+    required: false
+    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+  - name: FILTER_NOT_EQUALS
+    description: "If set, filter only output lines with field value not equals the provided value. you can provide more then one key"
+    type: "json"
+    required: false
+    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+  - name: FILTER_NOT_CONTAINS
+    description: "If set, filter only output lines with field value that doesn't contain the provided value. you can provide more then one key"
+    type: "json"
+    required: false
+    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+
+integrations:
+  - k8s
+
+outputs:
+  - name: items
+    description: "All nodes, not filtered"
+    type: "json"
+    example: '[{"IP":"10.128.0.30","IPs":["10.128.0.30"],"age":"1h16m38.70076318s","containerStatuses":{"container-watcher":{"containerID":"docker://818c8715d71ff6ff35aecdda61bc61a2c3d9aa04c6b71b0563cbdf517593eaca","finishedAt":"","image":"httpd:2.4","lastState":{},"ready":true,"restartCount":0,"startedAt":"2020-12-09T12:40:09Z","state":"running"}},"containersCount":1,"containersRestarts":0,"initContainerStatuses":{},"initContainersCount":0,"initContainersRestarts":0,"initFinished":true,"name":"container-watcher-dkgs2","node":"node1","status":"Running"},{"IP":"10.128.0.29","IPs":["10.128.0.29"],"age":"1h30m45.700788336s","containerStatuses":{"container-watcher":{"containerID":"docker://57035f4f40d7ed53dc15deab59e2b0e1c97a4d948a73e85b522e45beddd4e029","finishedAt":"","image":"nginx:1.19.6","lastState":{},"ready":true,"restartCount":0,"startedAt":"2020-12-09T12:26:10Z","state":"running"}},"containersCount":1,"containersRestarts":0,"initContainerStatuses":{},"initContainersCount":0,"initContainersRestarts":0,"initFinished":true,"name":"container-watcher-m7mwv","node":"node2","status":"Running"}]'
+  - name: filtered
+    description: "If filter given, just the filtered items will be listed here"
+    type: "json"
+    example: '[{"IP":"10.128.0.30","IPs":["10.128.0.30"],"age":"1h16m38.70076318s","containerStatuses":{"container-watcher":{"containerID":"docker://818c8715d71ff6ff35aecdda61bc61a2c3d9aa04c6b71b0563cbdf517593eaca","finishedAt":"","image":"httpd:2.4","lastState":{},"ready":true,"restartCount":0,"startedAt":"2020-12-09T12:40:09Z","state":"running"}},"containersCount":1,"containersRestarts":0,"initContainerStatuses":{},"initContainersCount":0,"initContainersRestarts":0,"initFinished":true,"name":"container-watcher-dkgs2","node":"node1","status":"Running"}]'

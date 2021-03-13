@@ -1,0 +1,29 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "github_get_repositories"
+  description: "Query GitHub to retrieve repositories names."
+  vendor: github
+  type: triage
+
+envs:
+  - name: OWNER
+    description: "Owner name of the repository (https://github.com/<OWNER>/)."
+    type: "string"
+    required: true
+    example: "my-org"
+  - name: TOKEN
+    description: "Github Oauth token."
+    type: "string"
+    required: true
+  - name: TYPE
+    description: "Github repository type filter (oneof private or public)."
+    type: "string"
+    example: "private"
+
+outputs:
+  - name: repositories
+    description: "Array of strings containing repository names."
+    type: "json"
+    example: '["service-1","service-2"]'
+

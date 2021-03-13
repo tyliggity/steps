@@ -1,0 +1,36 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "jenkins_stop_build"
+  description: "Stop a running build"
+  vendor: jenkins
+  type: remediation
+
+envs:
+  - name: USERNAME
+    description: "Username for login."
+    required: true
+    type: "string"
+  - name: PASSWORD
+    required: true
+    description: "Password for login."
+    type: "string"
+  - name: HOST
+    description: "Jenkins host."
+    required: true
+    type: "string"
+    example: "http://org.jenkins.com:8080/"
+  - name: JOB_NAME
+    description: "Job name to stop build of."
+    required: true
+    type: "string"
+  - name: BUILD_ID
+    description: "The id of the build to stop."
+    required: true
+    type: "int"
+
+outputs:
+  - name: success
+    description: "Whether the build was successfully stopped."
+    type: "bool"
+    example: "true"
