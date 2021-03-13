@@ -1,0 +1,32 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "atlassian_jira_update_issue_status"
+  description: "Update the status of existing Jira issue"
+  vendor: jira
+  type: notification
+envs:
+  - name: JIRA_SITE_NAME
+    description: "The Jira Cloud site name, the prefix before \".atlassian.net\", usually your organization name."
+    type: "string"
+    required: true
+    example: "<organization>"
+  - name: ISSUE_ID
+    description: "ID of the Jira issue we would like to add comment to."
+    type: "string"
+    required: true
+    example: "ID-1234"
+  - name: NEW_ISSUE_STATUS
+    description: "The new status the issue will be changed to."
+    type: "string"
+    required: true
+    example: "Done"
+
+outputs:
+  - name: success
+    description: "If the issue status changed successfully, this output variable will be present."
+    type: "bool"
+    example: "true"
+
+integrations:
+  - jira

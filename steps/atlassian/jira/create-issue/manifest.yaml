@@ -1,0 +1,66 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "atlassian_jira_create_issue"
+  description: "Create a new Jira issue"
+  vendor: jira
+  type: notification
+envs:
+  - name: JIRA_SITE_NAME
+    description: "The Jira Cloud site name, the prefix before \".atlassian.net\", usually your organization name"
+    type: "string"
+    required: true
+    example: "<organization>"
+  - name: ISSUE_SUMMARY
+    description: "String representing an issue summary/title (will be shown on the \"card\" representing the issue in boards)."
+    type: "string"
+    required: true
+    example: "The system UI isn't working"
+  - name: JIRA_PROJECT
+    description: "Project for opening the issue. The project should be defined in the Jira environment."
+    type: "string"
+    required: true
+    example: "myproject"
+  - name: ISSUE_DESCRIPTION
+    description: "Multiline text representing the description of the issue."
+    type: "string"
+    required: true
+    example: "|\n The system UI doesn't work at all on mobile.\nThe Fix responsiveness."
+  - name: ISSUE_TYPE
+    description: "Type of the issue to create as a string - Bug, Task, Story, Epic. (default is 'Task')."
+    type: "string"
+    required: true
+    example: "Bug"
+  - name: ISSUE_CATEGORY
+    description: "Category of the Jira issue we would like to create."
+    type: "string"
+    required: true
+    example: "tech-debt"
+  - name: REPORTER_EMAIL
+    description: "Email address of the user that is reporting the issue."
+    type: "string"
+    required: true
+    example: "myemail@mycompany.io"
+  - name: ASSIGNEE_EMAIL
+    description: "Email address of the user that will be assigned to the issue."
+    type: "string"
+    required: true
+    example: "myemail@mycompany.io"
+    example: "frontend-developer@stackpulse.io"
+
+integrations:
+  - jira
+
+outputs:
+  - name: id
+    description: "Id for the new issue."
+    type: "string"
+    example: '10001'
+  - name: key
+    description: "Key for the new issue."
+    type: "string"
+    example: 'MYP-2'
+  - name: api_object
+    description: "JSON object contains the created issue information."
+    type: "json"
+    example: '{"id":"10001","self":"https://api.atlassian.com/ex/jira/c649675b-58d7-432c-90ec-aed92160348c/rest/api/2/issue/10001","key":"MYP-2"}'

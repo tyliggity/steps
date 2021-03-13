@@ -1,0 +1,23 @@
+
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "pagerduty_acknowledge_incident"
+  description: "Acknowledge a PagerDuty incident."
+  vendor: pagerduty
+  type: notification
+
+envs:
+  - name: PAGERDUTY_USER_EMAIL
+    description: "The email address of a valid user associated with the account making the request."
+    type: string
+    required: true
+    example: "user@example.com"
+  - name: INCIDENT_ID
+    description: "The id of the incident to update."
+    type: string
+    required: true
+    example: "PT4KHLK"
+
+integrations:
+  - pagerduty_token

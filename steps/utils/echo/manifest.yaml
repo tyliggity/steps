@@ -1,0 +1,13 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "echo"
+  description: "This step prints the given message to stdout."
+  vendor: custom 
+  type: custom 
+
+envs:
+  - name: MESSAGE 
+    description: "The message to print. If not provided will command line arguments"
+    type: "string"
+    required: true

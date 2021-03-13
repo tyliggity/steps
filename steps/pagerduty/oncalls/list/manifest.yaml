@@ -1,0 +1,41 @@
+
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "pagerduty_oncalls_list"
+  description: "List the on-call entries during a given time range."
+  vendor: pagerduty
+  type: hydration
+
+envs:
+  - name: EARLIEST
+    description: "This will filter on-calls such that only the earliest on-call for each combination of escalation policy, escalation level, and user is returned."
+    type: bool
+    default: false
+    example: "true"
+  - name: ESCALATION_POLICIES_IDS
+    description: "Filters the results, showing only on-calls for the specified escalation policy IDs, separated by comma."
+    type: string
+    example: "PT20YPA"
+  - name: ESCALATION_POLICIES_NAMES
+    description: "Filters the results, showing only on-calls for the specified escalation policy Names, separated by comma."
+    type: string
+    example: "POLICY1"
+  - name: SINCE
+    description: "The start of the time range over which you want to search, in date-time format."
+    type: string
+    default: 2015-03-06T15:28:51-05:00
+    example: "2016-03-06T15:28:51-05:00"
+  - name: UNTIL
+    description: "The end of the time range over which you want to search, in date-time format."
+    type: string
+    default: 2015-03-07T15:28:51-05:00
+    example: "2017-03-06T15:28:51-05:00"
+  - name: TIME_ZONE
+    description: "Time zone in which dates in the result will be rendered."
+    type: string
+    default: UTC
+    example: "ITC"
+
+integrations:
+  - pagerduty_token

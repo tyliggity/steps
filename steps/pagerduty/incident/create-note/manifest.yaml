@@ -1,0 +1,28 @@
+
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "pagerduty_incident_create_note"
+  description: "Create new note for given incident."
+  vendor: pagerduty
+  type: notification
+
+envs:
+  - name: PAGERDUTY_USER_EMAIL
+    description: "The email address of a valid user associated with the account making the request."
+    type: string
+    required: true
+    example: "user@example.com"
+  - name: INCIDENT_ID
+    description: "The id of the incident to update."
+    type: string
+    required: true
+    example: "PT4KHLK"
+  - name: CONTENT
+    description: "The note content to create."
+    type: string
+    required: true
+    example: "lorem ipsum dolor sit amet"
+
+integrations:
+  - pagerduty_token

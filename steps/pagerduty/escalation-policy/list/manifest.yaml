@@ -1,0 +1,17 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "pagerduty_escalation_policy_list"
+  description: "List PagerDuty escalation policies."
+  vendor: pagerduty
+  type: hydration
+
+outputs:
+  - name: policies
+    description: "json array contains the policies list"
+    type: "json"
+    example: |
+      [{"id":"PGWUQVF","type":"escalation_policy","summary":"Default","self":"https://api.pagerduty.com/escalation_policies/PGWUQVF","html_url":"https://myaccount.pagerduty.com/escalation_policies/PGWUQVF","name":"Default","escalation_rules":[{"id":"PSP1NNE","escalation_delay_in_minutes":30,"targets":[{"id":"P0HDNP7","type":"user_reference","summary":"John Doe","self":"https://api.pagerduty.com/users/P0HDNP7","html_url":"https://myaccount.pagerduty.com/users/P0HDNP7"}]}],"services":[{"id":"PJ4F1OF","type":"service_reference","summary":"backend","self":"https://api.pagerduty.com/services/PJ4F1OF","html_url":"https://myaccount.pagerduty.com/service-directory/PJ4F1OF"}],"teams":[]},{"id":"PZKYQ07","type":"escalation_policy","summary":"mypolicy","self":"https://api.pagerduty.com/escalation_policies/PZKYQ07","html_url":"https://myaccount.pagerduty.com/escalation_policies/PZKYQ07","name":"mypolicy","escalation_rules":[{"id":"PUDKQ17","escalation_delay_in_minutes":30,"targets":[{"id":"P0HDNP7","type":"user_reference","summary":"John Doe","self":"https://api.pagerduty.com/users/P0HDNP7","html_url":"https://myaccount.pagerduty.com/users/P0HDNP7"}]}],"num_loops":2,"teams":[],"description":"my policy description"}]
+
+integrations:
+  - pagerduty_token

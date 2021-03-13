@@ -1,0 +1,13 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "python_inline_script"
+  description: "This step will execute an inline Python Script"
+  vendor: python
+  type: custom 
+
+envs:
+  - name: INLINE_SCRIPT 
+    description: "Multiline string containing a Python script"
+    type: "string"
+

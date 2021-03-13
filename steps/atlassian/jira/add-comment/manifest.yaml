@@ -1,0 +1,45 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "atlassian_jira_add_comment"
+  description: "Add a comment on a Jira issue"
+  vendor: jira
+  type: notification
+
+envs:
+  - name: JIRA_SITE_NAME
+    description: "The Jira Cloud site name, the prefix before \".atlassian.net\", usually your organization name."
+    type: "string"
+    required: true
+    example: "<organization>"
+  - name: ISSUE_ID
+    description: "ID of the Jira issue we would like to add comment to."
+    type: "string"
+    required: true
+    example: "ID-1234"
+  - name: COMMENT
+    description: "Multiline comment text."
+    type: "string"
+    required: true
+    example: "|\n My comment.\nThe comment can be written in multiple lines."
+
+integrations:
+  - jira
+
+outputs:
+  - name: id
+    description: "New comment id."
+    type: "string"
+    example: '16042'
+  - name: name
+    description: "New comment name."
+    type: "string"
+    example: 'john'
+  - name: author
+    description: "New comment author."
+    type: "string"
+    example: 'srur'
+  - name: api_object
+    description: "JSON object contains new comment information."
+    type: "json"
+    example: '{"id":"10001","self":"https://api.atlassian.com/ex/jira/c649675b-58d7-432c-90ec-aed92160348c/rest/api/2/issue/10001","key":"MYP-2"}'

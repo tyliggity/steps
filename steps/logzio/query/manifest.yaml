@@ -1,0 +1,33 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "logzio_query"
+  description: "Perform an arbitrary Logz.io search query."
+  vendor: logz.io
+  type: triage
+
+envs:
+  - name: TOKEN
+    description: "Logz.io api token."
+    type: "string"
+    required: true
+  - name: ENDPOINT
+    description: "Logz.io api endpoint (default https://api.logz.io)."
+    type: "string"
+    required: false
+  - name: QUERY
+    description: "Elasticsearch query to use."
+    type: "string"
+    required: true
+  - name: DAYS_OFF
+    description: "slide the result time range by 2 days, For example, if set to 5, search returns results from 5 days ago and 4 days ago, UTC."
+    type: "string"
+    required: false
+  - name: FROM
+    description: "Of the results found, the first result to return."
+    type: "string"
+    required: false
+  - name: SIZE
+    description: "Number of results to return (default 10)."
+    type: "string"
+    required: false

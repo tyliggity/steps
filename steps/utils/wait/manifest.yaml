@@ -1,0 +1,13 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "wait"
+  description: "This step sleeps for a provided time."
+  vendor: custom 
+  type: custom 
+
+envs:
+  - name: SECONDS
+    description: "Time in seconds to wait. (Default to 10 seconds)"
+    type: "string"
+    required: true
