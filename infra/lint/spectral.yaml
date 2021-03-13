@@ -1,0 +1,48 @@
+rules:
+  step-must-have-description:
+    description: Step metadata must have a description.
+    given: "$.metadata"
+    severity: error
+    then:
+      field: description
+      function: truthy
+
+  description-should-end-with-dots:
+    description: description fields should end with dots.
+    type: style
+    severity: error
+    given: "$..description"
+    then:
+      function: pattern
+      functionOptions:
+        match: ".+\\.$"
+
+  step-env-name-must-be-uppercase-snake-case:
+    description: Step environment varialbe name must be uppercase snake case.
+    type: style
+    severity: error
+    given: "$.envs[*].name"
+    then:
+      function: casing
+      functionOptions:
+        type: macro
+
+  step-output-name-must-be-snake-case:
+    description: Step output varialbe name must be snake case.
+    type: style
+    severity: error
+    given: "$.outputs[*].name"
+    then:
+      function: casing
+      functionOptions:
+        type: snake
+
+  step-name-must-be-snake-case:
+    description: Step name must be snake case.
+    type: style
+    severity: error
+    given: "$.metadata.name"
+    then:
+      function: casing
+      functionOptions:
+        type: snake

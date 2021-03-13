@@ -25,47 +25,47 @@ envs:
     required: true
     type: "string"
   - name: DB
-    description: "PosgreSQL Database Name."
+    description: "PostgreSQL Database Name."
     required: true
     type: "string"
   - name: FIELD_SEPERATOR
-    description: "Field separator for psql command (`-F` in psql docs). Relevant for output parsing, override only if output contains the default separator\: ';;-;;'"
+    description: "Field separator for psql command (`-F` in psql docs). Relevant for output parsing, override only if output contains the default separator\\: ';;-;;'."
     type: "string"
     required: false
   - name: RECORD_SEPERATOR
-    description: "Record separator for psql command (`-R` in psql docs). Relevant for output parsing, override only if output contains the default separator\: ';;=;;'"
+    description: "Record separator for psql command (`-R` in psql docs). Relevant for output parsing, override only if output contains the default separator\\: ';;=;;'."
     type: "string"
     required: false
   - name: USE_SSH
-    description: "If true, using SSH to access the postgres server"
+    description: "If true, using SSH to access the postgres server."
     type: "bool"
     required: false
   - name: SSH_HOST
-    description: "Required in SSH mode. The SSH host to connect to"
+    description: "Required in SSH mode. The SSH host to connect to."
     type: "string"
     required: false
   - name: SSH_KEY
-    description: "Required in SSH mode. The SSH key using to connect to the SSH host"
+    description: "Required in SSH mode. The SSH key using to connect to the SSH host."
     type: "string"
     required: false
   - name: SSH_USER
-    description: "Required in SSH mode. The SSH user to connect with"
+    description: "Required in SSH mode. The SSH user to connect with."
     type: "string"
     required: false
   - name: SSH_PORT
-    description: "The SSH port to connect to (default\: 22). Ignored when not in SSH mode."
+    description: "The SSH port to connect to (default\\: 22). Ignored when not in SSH mode."
     type: "string"
     required: false
   - name: SSH_REMOTE_POSTGRES_SERVER
-    description: "The postgres remote host to connect from the SSH host (default\: 127.0.0.1). Ignored when not in SSH mode."
+    description: "The postgres remote host to connect from the SSH host (default\\: 127.0.0.1). Ignored when not in SSH mode."
     type: "string"
     required: false
   - name: SSH_REMOTE_POSTGRES_PORT
-    description: "The postgres remote port to connect from the SSH host (default\: 5432). Ignored when not in SSH mode."
+    description: "The postgres remote port to connect from the SSH host (default\\: 5432). Ignored when not in SSH mode."
     type: "string"
     required: false
   - name: SSH_WAIT_FOR_TUNNEL_TIMEOUT
-    description: "Timeout waiting for the tunnel to start listening (default\: 30s). Ignored when not in SSH mode."
+    description: "Timeout waiting for the tunnel to start listening (default\\: 30s). Ignored when not in SSH mode."
     type: "string"
     required: false
     example: "30s"
@@ -74,68 +74,68 @@ envs:
     type: "string"
     required: false
   - name: USE_DOCKER_EXEC
-    description: "If true, using running PSQL over docker exec command (can be combined with USE_SSH)"
+    description: "If true, using running PSQL over docker exec command (can be combined with USE_SSH)."
     type: "bool"
     required: false
   - name: DOCKER_CONTAINER_NAME
-    description: "Required in DOCKER_EXEC mode. The container name which the psql will run inside"
+    description: "Required in DOCKER_EXEC mode. The container name which the psql will run inside."
     type: "string"
     required: false
   - name: DOCKER_USE_SUDO
-    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode"
+    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode."
     type: "bool"
     required: false
   - name: DOCKER_USE_SUDO
-    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode"
+    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode."
     type: "bool"
     required: false
   - name: DOCKER_CONTAINER_POSTGRES_SERVER
-    description: "The postgres server host inside the docker container (default\: 127.0.0.1). Ignored when not in DOCKER_EXEC mode"
+    description: "The postgres server host inside the docker container (default\\: 127.0.0.1). Ignored when not in DOCKER_EXEC mode."
     type: "string"
     required: false
   - name: APPLICATION_NAME_LIKE
     type: "string"
-    description: "Filter the data according to 'application_name' column using LIKE (postgres like syntax is supported). Can provide multiple values separated by ',' or by JSON array (OR is applied between multiple values)"
+    description: "Filter the data according to 'application_name' column using LIKE (postgres like syntax is supported). Can provide multiple values separated by ',' or by JSON array (OR is applied between multiple values)."
     required: false
     example: "%value%,value2%"
   - name: APPLICATION_NAME_EQUAL
     type: "string"
-    description: "Filter the data according to 'application_name' column using equal (=). Can provide multiple values separated by ',' or by JSON array (OR is applied between multiple values)"
+    description: "Filter the data according to 'application_name' column using equal (=). Can provide multiple values separated by ',' or by JSON array (OR is applied between multiple values)."
     required: false
     example: "value,value2"
   - name: EXCLUDE_APPLICATION_NAME_LIKE
     type: "string"
-    description: "Filter the data according to 'application_name' column using NOT LIKE (postgres like syntax is supported). Can provide multiple values separated by ',' or by JSON array  (AND is applied between multiple values)"
+    description: "Filter the data according to 'application_name' column using NOT LIKE (postgres like syntax is supported). Can provide multiple values separated by ',' or by JSON array  (AND is applied between multiple values)."
     required: false
     example: "%value%,value2%"
   - name: EXCLUDE_APPLICATION_NAME_EQUAL
     type: "string"
-    description: "Filter the data according to 'application_name' column using not equal (!=). Can provide multiple values separated by ',' (AND is applied between multiple values)"
+    description: "Filter the data according to 'application_name' column using not equal (!=). Can provide multiple values separated by ',' (AND is applied between multiple values)."
     required: false
     example: "value,value2"
   - name: PIDS_EQUAL
     type: "string"
-    description: "Including only long queries with this PIDs. Can provide multiple values separated by ',' or by JSON array (OR is applied between multiple values)"
+    description: "Including only long queries with this PIDs. Can provide multiple values separated by ',' or by JSON array (OR is applied between multiple values)."
     required: false
     example: "123,456"
   - name: EXCLUDE_PIDS
     type: "string"
-    description: "Exclude those PIDs. Can provide multiple values separated by ',' or by JSON array  (AND is applied between multiple values)"
+    description: "Exclude those PIDs. Can provide multiple values separated by ',' or by JSON array  (AND is applied between multiple values)."
     required: false
     example: "value,value2"
   - name: QUERY_LIKE
     type: "string"
-    description: "Filter the data according to 'query' column using LIKE (postgres like syntax is supported). Can provide multiple values separated by ',' or by JSON array (OR is applied between multiple values)"
+    description: "Filter the data according to 'query' column using LIKE (postgres like syntax is supported). Can provide multiple values separated by ',' or by JSON array (OR is applied between multiple values)."
     required: false
     example: "%value%,value2%"
   - name: EXCLUDE_QUERY_LIKE
     type: "string"
-    description: "Filter the data according to 'query' column using NOT LIKE (postgres like syntax is supported). Can provide multiple values separated by ',' or by JSON array  (AND is applied between multiple values)"
+    description: "Filter the data according to 'query' column using NOT LIKE (postgres like syntax is supported). Can provide multiple values separated by ',' or by JSON array  (AND is applied between multiple values)."
     required: false
     example: "%value%,value2%"
   - name: LONG_DURATION_SECONDS
     type: "string"
-    description: "Return queries that take longer then this period in SECONDS. Default is 30 seconds"
+    description: "Return queries that take longer then this period in SECONDS. Default is 30 seconds."
     required: false
     example: "80"
 

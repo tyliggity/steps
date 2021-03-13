@@ -42,5 +42,3 @@ outputs:
     description: "Json output contains the operation details."
     type: "json"
     example: '{"User":"test-playbook","Operation":"lock","Namespace":"default","Name":"auth-service"}'
-'
-

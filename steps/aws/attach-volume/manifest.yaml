@@ -29,7 +29,7 @@ args:
     required: true
     default: "{{ .instanceID }}"
   - name: --device
-    description: "device name to use"
+    description: "device name to use."
     type: "string"
     required: true
     default: "/dev/sdf"

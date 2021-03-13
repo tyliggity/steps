@@ -20,7 +20,7 @@ envs:
 
 outputs:
   - name: ips
-    description: "JSON array contains the ips for the given instances"
+    description: "JSON array contains the ips for the given instances."
     type: "json"
     example: "['192.168.77.111', '192.168.66.189']"
 

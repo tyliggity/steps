@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "aws_redshift_data_query_cancel"
-  description: "Cancel current running queries. An enhancement upon pg_cancel_backend (See https://docs.aws.amazon.com/redshift/latest/dg/PG_CANCEL_BACKEND.html)"
+  description: "Cancel current running queries. An enhancement upon pg_cancel_backend (See https://docs.aws.amazon.com/redshift/latest/dg/PG_CANCEL_BACKEND.html)."
   vendor: aws
   type: remediation
 
@@ -37,7 +37,7 @@ envs:
     example: |
       arn:aws:secretsmanager:us-west-2:961654671392:secret:redshift-secret-rMh4eb
   - name: PIDS
-    description: "Comma-separated list of PIDs to cancel"
+    description: "Comma-separated list of PIDs to cancel."
     type: string
     example: "30432,30433"
 

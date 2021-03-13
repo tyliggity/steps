@@ -2,13 +2,13 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "atlassian_jira_assign_issue"
-  description: "Assign a user to a Jira issue"
+  description: "Assign a user to a Jira issue."
   vendor: jira
   type: notification
 
 envs:
   - name: JIRA_SITE_NAME
-    description: "The Jira Cloud site name, the prefix before \".atlassian.net\", usually your organization name"
+    description: "The Jira Cloud site name, the prefix before \".atlassian.net\", usually your organization name."
     type: "string"
     required: true
     example: "<organization>"

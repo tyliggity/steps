@@ -8,10 +8,10 @@ metadata:
   type: triage
 envs:
   - name: PROJECT
-    description: "Google Cloud Project-ID"
+    description: "Google Cloud Project-ID."
     type: "string"
     required: true
   - name: QUERY
-    description: "BigQuery SQL query"
+    description: "BigQuery SQL query."
     type: "string"
     required: true

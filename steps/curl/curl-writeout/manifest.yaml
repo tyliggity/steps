@@ -3,33 +3,33 @@ kind: Step
 metadata:
   name: "curl_writeout"
   imageName: "curlimages/curl"
-  description: "Get analytics metadata of HTTP(S) request with cURL"
+  description: "Get analytics metadata of HTTP(S) request with cURL."
   vendor: curl
   type: hydration
 
 args:
   - name: command
-    description: "cURL Command"
+    description: "cURL Command."
     type: "string"
     required: true
     default: "--write-out"
   - name: format
-    description: "Writeout Format"
+    description: "Writeout Format."
     type: "string"
     required: true
     default: "'%{json}'"
   - name: url
-    description: "URL to make a request to"
+    description: "URL to make a request to."
     type: "string"
     required: true
     default: "https://api-server/v1/some_api_endpoint"
   - name: output-redirect
-    description: "Output redirection argument to cURL"
+    description: "Output redirection argument to cURL."
     type: "string"
     required: true
     default: "-o"
   - name: dev-null
-    description: "Output redirection argument"
+    description: "Output redirection argument."
     type: "string"
     required: true
     default: "/dev/null"

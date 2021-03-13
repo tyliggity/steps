@@ -44,7 +44,7 @@ args:
     type: "string"
     required: false
   - name: query
-    description: "A Coralogix query to un on archived logs"
+    description: "A Coralogix query to un on archived logs."
     type: "string"
     required: false
 

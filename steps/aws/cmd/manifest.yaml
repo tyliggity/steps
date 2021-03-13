@@ -3,7 +3,7 @@ kind: Step
 metadata:
   name: "aws_cli_command"
   imageName: "amazon/aws-cli"
-  description: "Generic AWS CLI command"
+  description: "Generic AWS CLI command."
   vendor: aws
   type: advanced
 
@@ -17,7 +17,7 @@ args:
     type: "string"
     required: true
   - name: OPTIONS
-    description: "More command options (each argument should be separated in a different argument array item) "
+    description: "More command options (each argument should be separated in a different argument array item)."
     type: "string"
     required: true
 

@@ -1,8 +1,8 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "postgress_query"
-  description: "Running raw SQL query on PosgreSQL Database."
+  name: "postgres_query"
+  description: "Running raw SQL query on PostgreSQL Database."
   vendor: postgres 
   type: triage
 
@@ -29,47 +29,47 @@ envs:
     required: true
     type: "string"
   - name: DB
-    description: "PosgreSQL Database Name."
+    description: "PostgreSQL Database Name."
     required: true
     type: "string"
   - name: FIELD_SEPERATOR
-    description: "Field separator for psql command (`-F` in psql docs). Relevant for output parsing, override only if output contains the default separator\: ';;-;;'"
+    description: "Field separator for psql command (`-F` in psql docs). Relevant for output parsing, override only if output contains the default separator\\: ';;-;;'."
     type: "string"
     required: false
   - name: RECORD_SEPERATOR
-    description: "Record separator for psql command (`-R` in psql docs). Relevant for output parsing, override only if output contains the default separator\: ';;=;;'"
+    description: "Record separator for psql command (`-R` in psql docs). Relevant for output parsing, override only if output contains the default separator\\: ';;=;;'."
     type: "string"
     required: false
   - name: USE_SSH
-    description: "If true, using SSH to access the postgres server"
+    description: "If true, using SSH to access the postgres server."
     type: "bool"
     required: false
   - name: SSH_HOST
-    description: "Required in SSH mode. The SSH host to connect to"
+    description: "Required in SSH mode. The SSH host to connect to."
     type: "string"
     required: false
   - name: SSH_KEY
-    description: "Required in SSH mode. The SSH key using to connect to the SSH host"
+    description: "Required in SSH mode. The SSH key using to connect to the SSH host."
     type: "string"
     required: false
   - name: SSH_USER
-    description: "Required in SSH mode. The SSH user to connect with"
+    description: "Required in SSH mode. The SSH user to connect with."
     type: "string"
     required: false
   - name: SSH_PORT
-    description: "The SSH port to connect to (default\: 22). Ignored when not in SSH mode."
+    description: "The SSH port to connect to (default\\: 22). Ignored when not in SSH mode."
     type: "string"
     required: false
   - name: SSH_REMOTE_POSTGRES_SERVER
-    description: "The postgres remote host to connect from the SSH host (default\: 127.0.0.1). Ignored when not in SSH mode."
+    description: "The postgres remote host to connect from the SSH host (default\\: 127.0.0.1). Ignored when not in SSH mode."
     type: "string"
     required: false
   - name: SSH_REMOTE_POSTGRES_PORT
-    description: "The postgres remote port to connect from the SSH host (default\: 5432). Ignored when not in SSH mode."
+    description: "The postgres remote port to connect from the SSH host (default\\: 5432). Ignored when not in SSH mode."
     type: "string"
     required: false
   - name: SSH_WAIT_FOR_TUNNEL_TIMEOUT
-    description: "Timeout waiting for the tunnel to start listening (default\: 30s). Ignored when not in SSH mode."
+    description: "Timeout waiting for the tunnel to start listening (default\\: 30s). Ignored when not in SSH mode."
     type: "string"
     required: false
     example: "30s"
@@ -78,28 +78,28 @@ envs:
     type: "string"
     required: false
   - name: USE_DOCKER_EXEC
-    description: "If true, using running PSQL over docker exec command (can be combined with USE_SSH)"
+    description: "If true, using running PSQL over docker exec command (can be combined with USE_SSH)."
     type: "bool"
     required: false
   - name: DOCKER_CONTAINER_NAME
-    description: "Required in DOCKER_EXEC mode. The container name which the psql will run inside"
+    description: "Required in DOCKER_EXEC mode. The container name which the psql will run inside."
     type: "string"
     required: false
   - name: DOCKER_USE_SUDO
-    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode"
+    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode."
     type: "bool"
     required: false
   - name: DOCKER_USE_SUDO
-    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode"
+    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode."
     type: "bool"
     required: false
   - name: DOCKER_CONTAINER_POSTGRES_SERVER
-    description: "The postgres server host inside the docker container (default\: 127.0.0.1). Ignored when not in DOCKER_EXEC mode"
+    description: "The postgres server host inside the docker container (default\\: 127.0.0.1). Ignored when not in DOCKER_EXEC mode."
     type: "string"
     required: false
 
 outputs:
   - name: data
-    description: "Array of query returned lines with <column>:<value> json object for each row item"
+    description: "Array of query returned lines with <column>:<value> json object for each row item."
     type: "json"
     example: '[{"col":"val", "col2":"val2"}]'

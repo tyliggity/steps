@@ -2,20 +2,20 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "curl_request"
-  description: "Make an HTTP(S) request with cURL"
+  description: "Make an HTTP(S) request with cURL."
   vendor: curl
   type: remediation
 
 envs:
   - name: FORMAT
-    description: 'cURL response format. Can be json \\ raw (the output will be added to the context as is under "output" key) \\ print (will just print the output without any addition to the context)'
+    description: 'cURL response format. Can be json \\ raw (the output will be added to the context as is under "output" key) \\ print (will just print the output without any addition to the context).'
     type: "string"
     default: "json"
     required: true
 
 args:
   - name: url
-    description: "URL to make a request to"
+    description: "URL to make a request to."
     type: "string"
     required: true
     default: "https://api-server/v1/some_api_endpoint"
