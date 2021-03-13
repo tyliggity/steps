@@ -2,39 +2,39 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "rabbitmq_connections"
-  description: "Get information about RabbitMQ connections"
+  description: "Get information about RabbitMQ connections."
   vendor: rabbitmq
   type: triage
 
 envs:
   - name: USERNAME
-    description: "Username"
+    description: "Username."
     type: "string"
     required: true
   - name: PASSWORD
-    description: "Password"
+    description: "Password."
     type: "string"
     required: true
   - name: HOST
-    description: "RabbitMQ host"
+    description: "RabbitMQ host."
     type: "string"
     required: true
   - name: PORT
-    description: "Host port (15672 is the common port)"
+    description: "Host port (15672 is the common port)."
     type: "string"
     required: true
     default: "15672"
   - name: SCHEMA
-    description: "Host schema (http/https)"
+    description: "Host schema (http/https)."
     type: "string"
     example: "https"
   - name: VERIFY
-    description: "Should verify HTTPS or not"
+    description: "Should verify HTTPS or not."
     type: "bool"
     default: "true"
 
 outputs:
   - name: output
-    description: "RabbitMQ connections array"
+    description: "RabbitMQ connections array."
     type: "json"
     example: '[{"auth_mechanism":"PLAIN","channel_max":2047,"channels":1,"client_properties":{"capabilities":{"authentication_failure_close":true,"basic.nack":true,"connection.blocked":true,"consumer_cancel_notify":true,"publisher_confirms":true},"information":"See http://pika.rtfd.org","platform":"Python 3.9.1","product":"Pika Python Client Library","version":"1.1.0"},"connected_at":1610974763835,"frame_max":131072,"garbage_collection":{"fullsweep_after":65535,"max_heap_size":0,"min_bin_vheap_size":46422,"min_heap_size":233,"minor_gcs":15},"host":"127.0.0.1","name":"127.0.0.1:54594 -> 127.0.0.1:5672","node":"rabbit@mu-rabbit-rabbitmq-0.mu-rabbit-rabbitmq-headless.rabbit.svc.cluster.local","peer_cert_issuer":null,"peer_cert_subject":null,"peer_cert_validity":null,"peer_host":"127.0.0.1","peer_port":54594,"port":5672,"protocol":"AMQP 0-9-1","recv_cnt":8,"recv_oct":463,"recv_oct_details":{"rate":0},"reductions":21493,"reductions_details":{"rate":181.6},"send_cnt":8,"send_oct":705,"send_oct_details":{"rate":0},"send_pend":0,"ssl":false,"ssl_cipher":null,"ssl_hash":null,"ssl_key_exchange":null,"ssl_protocol":null,"state":"running","timeout":60,"type":"network","user":"user","user_who_performed_action":"user","vhost":"/"}]'

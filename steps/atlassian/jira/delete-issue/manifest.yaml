@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "atlassian_jira_delete_issue"
-  description: "Delete existing Jira issue"
+  description: "Delete existing Jira issue."
   vendor: jira
   type: notification
 

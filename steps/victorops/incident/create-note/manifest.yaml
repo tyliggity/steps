@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "victorops-incident-create-note"
+  name: "victorops_incident_create_note"
   description: "Create a note for incident."
   vendor: victorops
   type: remediation
@@ -33,6 +33,6 @@ outputs:
     description: "The unique name of your note."
     type: "string"
   - name: api_object
-    description: "Original api object as recevied from the API call."
+    description: "Original api object as received from the API call."
     type: "json"
     example: '{"name":"string","displayName":"string","json_value":{}}'

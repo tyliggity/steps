@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "jenkins_stop_build"
-  description: "Stop a running build"
+  description: "Stop a running build."
   vendor: jenkins
   type: remediation
 

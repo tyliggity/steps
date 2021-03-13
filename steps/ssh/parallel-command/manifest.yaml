@@ -58,6 +58,6 @@ envs:
 
 outputs:
   - name: SSHResponses
-    description: "JSON array contains the ssh command results for each host"
+    description: "JSON array contains the ssh command results for each host."
     type: "json"
     example: "[{\"Hostname\":\"192.168.125.110\",\"Success\":true,\"Output\":\"ssh-command\\n\",\"Error\":\"\"},{\"Hostname\":\"192.168.125.112\",\"Success\":true,\"Output\":\"ssh-command\\n\",\"Error\":\"\"}]"

@@ -2,18 +2,18 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kafka_list_topics"
-  description: "List all Kafka topics"
+  description: "List all Kafka topics."
   vendor: kafka
   type: hydration
 
 envs:
   - name: ZOOKEPER_HOST
     required: true
-    description: "Zookeeper host"
+    description: "Zookeeper host."
     type: string
     example: "<host>:<port>"
 
 outputs:
-  - name: basic-logs
-    description: "Raw output for the command"
+  - name: logs
+    description: "Raw output for the command."
     type: "string"

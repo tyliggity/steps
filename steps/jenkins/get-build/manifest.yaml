@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "jenkins_get_build"
-  description: "Return build details"
+  description: "Return build details."
   vendor: jenkins
   type: remediation
 
@@ -43,11 +43,11 @@ outputs:
     type: "string"
     example: "#19"
   - name: timestamp
-    description: "The time the build was created in datetime format"
+    description: "The time the build was created in datetime format."
     type: "string"
     example: "2021-02-21T23:34:22Z"
   - name: api_object
-    description: "The entire build_response object from the Jenkins api"
+    description: "The entire build_response object from the Jenkins api."
     type: "json"
     example: |
       {"api_object":{"Actions":[{"parameters":[{"Name":"DECK_ID","Value":"9ccae8sl8s2c"}],"causes":null,"buildsByBranchName":null,"lastBuiltRevision":{"SHA1":"","branch":null},"remoteUrls":null,"scmName":"","mercurialNodeName":"","mercurialRevisionNumber":"","subdir":null,"TotalCount":0,"UrlName":""},{"parameters":null,"causes":[{"_class":"hudson.model.Cause$UserIdCause","shortDescription":"Started by user admin","userId":"admin","userName":"admin"}],"buildsByBranchName":null,"lastBuiltRevision":{"SHA1":"","branch":null},"remoteUrls":null,"scmName":"","mercurialNodeName":"","mercurialRevisionNumber":"","subdir":null,"TotalCount":0,"UrlName":""}],"artifacts":[],"building":false,"builtOn":"","changeSet":{"items":[],"kind":"","revision":null},"changeSets":null,"culprits":[],"description":null,"duration":11492,"estimatedDuration":11306,"executor":null,"displayName":"#19","fullDisplayName":"Draw a Card #19","id":"19","keepLog":false,"number":19,"queueId":92,"result":"SUCCESS","timestamp":1613950462939,"url":"http://localhost:8080/job/Draw%20a%20Card/19/","mavenArtifacts":null,"mavenVersionUsed":"","FingerPrint":null,"runs":null}}

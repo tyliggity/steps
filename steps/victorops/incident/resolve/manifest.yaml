@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "victorops-incident-resolve"
+  name: "victorops_incident_resolve"
   description: "Resolve an incident."
   vendor: victorops
   type: remediation 
@@ -24,7 +24,7 @@ envs:
     type: "string"
     required: true
   - name: RESOLVE_MESSAGE
-    description: "Include this as the resolve message"
+    description: "Include this as the resolve message."
     type: "string"
     required: false
 

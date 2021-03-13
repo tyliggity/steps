@@ -8,6 +8,6 @@ metadata:
 
 envs:
   - name: SECONDS
-    description: "Time in seconds to wait. (Default to 10 seconds)"
+    description: "Time in seconds to wait. (Default to 10 seconds)."
     type: "string"
     required: true

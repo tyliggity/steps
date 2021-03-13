@@ -2,22 +2,22 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kafka_describe_topics"
-  description: "Describe a Kafka topic(s)"
+  description: "Describe a Kafka topic(s)."
   vendor: kafka
   type: triage
 
 envs:
   - name: ZOOKEPER_HOST
     required: true
-    description: "Zookeeper host"
+    description: "Zookeeper host."
     type: string
     example: "<host>:<port>"
   - name: TOPIC_NAME
     type: string
-    description: "Topic name to describe, if not given, describing all the topics"
+    description: "Topic name to describe, if not given, describing all the topics."
     example: "my-topic"
 
 outputs:
-  - name: basic-logs
-    description: "Raw output for the command"
+  - name: logs
+    description: "Raw output for the command."
     type: "string"

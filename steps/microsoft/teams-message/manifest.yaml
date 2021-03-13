@@ -2,32 +2,32 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "teams_send_message"
-  description: "Send a message to Microsoft Teams"
+  description: "Send a message to Microsoft Teams."
   vendor: teams
   type: notification 
 
 envs:
   - name: TEAMS_TITLE
-    description: "Title of the message displayed in the Microsoft Teams Channel"
+    description: "Title of the message displayed in the Microsoft Teams Channel."
     type: "string"
     required: true
   - name: TEAMS_WEBHOOK
-    description: "Connector Webhook used for posting the message"
+    description: "Connector Webhook used for posting the message."
     type: "string"
     required: true    
   - name: TEAMS_CONTENT
-    description: "Body of the snippet. Expected input is in the HTML format"
+    description: "Body of the snippet. Expected input is in the HTML format."
     type: "string"
     required: true     
   - name: TEAMS_URL_TITLE
-    description: "Text for an actionable button to be displayed at the bottom of the message that will open a specified URL in the local browser"
+    description: "Text for an actionable button to be displayed at the bottom of the message that will open a specified URL in the local browser."
     type: "string"
     required: false  
   - name: TEAMS_URL
-    description: "(Required if TEAMS_URL_TITLE was provided) - The URL to be opened in the browser when the button is clicked"
+    description: "(Required if TEAMS_URL_TITLE was provided) - The URL to be opened in the browser when the button is clicked."
     type: "string"
     required: false     
   - name: TEAMS_TABLE_DATA
-    description: "JSON containing a set of Key/Value pairs to be displayed at the bottom of the message"
+    description: "JSON containing a set of Key/Value pairs to be displayed at the bottom of the message."
     type: "string"
     required: false  

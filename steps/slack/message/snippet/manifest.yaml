@@ -28,11 +28,11 @@ envs:
     type: string
     example: "Check out this snippet!"
   - name: FILE_TYPE
-    description: "Type of the snippet file to allow foe syntax highlighting, one of https://api.slack.com/types/file#file_types. Default 'text'"
+    description: "Type of the snippet file to allow foe syntax highlighting, one of https://api.slack.com/types/file#file_types. Default 'text'."
     type: string
     example: "php"
   - name: INITIAL_COMMENT
-    description: "The message text introducing the file in specified channels"
+    description: "The message text introducing the file in specified channels."
     type: string
     example: "Check out this file!"
 

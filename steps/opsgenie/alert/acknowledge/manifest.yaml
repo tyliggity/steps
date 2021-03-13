@@ -8,7 +8,7 @@ metadata:
 
 envs:
   - name: USE_EU_API
-    description: "set to true to use 'api.eu.opsgenie.com' instead of default 'api.opsgenie.com'"
+    description: "set to true to use 'api.eu.opsgenie.com' instead of default 'api.opsgenie.com'."
     type: "string"
     required: false
   - name: ALERT_ID

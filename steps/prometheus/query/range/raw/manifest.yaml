@@ -39,6 +39,6 @@ envs:
     type: "bool"
     example: "\"true\",\"false\""
 outputs:
-  - name: basic-logs 
+  - name: logs
     description: "Raw output of Prometheus query."
     type: "json"

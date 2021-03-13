@@ -21,7 +21,6 @@ envs:
     type: "string"
     default: "PHONE_CALL"
     example: "PHONE_CALL"
-    example: "SMS"
 
 outputs:
   - name: acknowledged

@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kubectl_top"
-  description: "Listing kubernetes top usage of pods \\ nodes"
+  description: "Listing kubernetes top usage of pods \\ nodes."
   vendor: kubernetes
   type: triage
 
@@ -13,37 +13,37 @@ envs:
     required: false
     example: '{{ secret "KUBECONFIG_CONTENT" }}'
   - name: NAMESPACE
-    description: "Namespace to run the command in. (Default is 'default')"
+    description: "Namespace to run the command in. (Default is 'default')."
     type: "string"
     example: "monitoring"
     default: "default"
   - name: FORMAT
-    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options."
     type: "string"
     default: "json"
     example: "wide"
   - name: ALL_NAMESPACES
-    description: "If true, running command on all namespaces"
+    description: "If true, running command on all namespaces."
     type: "bool"
     example: "true"
   - name: FIELD_SELECTOR
-    description: "Applying the given field selector to the command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details"
+    description: "Applying the given field selector to the command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details."
     type: "string"
     example: "status.phase=Running"
   - name: DEBUG
-    description: "Print debug outputs"
+    description: "Print debug outputs."
     type: "bool"
     example: "true"
   - name: SORT_BY
-    description: "Could be either cpu\\memory, the results will be sorted according to the given value. (Default is no sorting)"
+    description: "Could be either cpu\\memory, the results will be sorted according to the given value. (Default is no sorting)."
     type: "string"
     example: "memory"
   - name: RESOURCE_NAME
-    description: "Resource name to get it's usage statistics. (Default is all resources)"
+    description: "Resource name to get it's usage statistics. (Default is all resources)."
     type: "string"
     example: "alert-service"
   - name: RESOURCE_TYPE
-    description: "Get usage statistics for this type of resource. Could be either 'pods' or 'nodes'"
+    description: "Get usage statistics for this type of resource. Could be either 'pods' or 'nodes'."
     required: true
     type: "string"
     example: "nodes"
@@ -53,6 +53,6 @@ integrations:
 
 outputs:
   - name: items
-    description: "All resources in the top, sorted in descending order"
+    description: "All resources in the top, sorted in descending order."
     type: "json"
     example: '[{"cpuCores":"316m","cpuUsage":"33%","memoryBytes":"1200Mi","memoryUsage":"42%","name":"node1"},{"cpuCores":"191m","cpuUsage":"20%","memoryBytes":"886Mi","memoryUsage":"31%","name":"node2"}]'

@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kubectl_version"
-  description: "Print kubectl client and server version"
+  description: "Print kubectl client and server version."
   vendor: kubernetes
   type: hydration
 
@@ -13,16 +13,16 @@ envs:
     required: false
     example: '{{ secret "KUBECONFIG_CONTENT" }}'
   - name: FORMAT
-    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options."
     type: "string"
     example: "wide"
   - name: SHORT
-    description: "Print short version description. (Default is true)"
+    description: "Print short version description. (Default is true)."
     type: "bool"
     required: false
     example: "false"
   - name: CLIENT_ONLY
-    description: "Client version only (no server required). (Default is false)"
+    description: "Client version only (no server required). (Default is false)."
     type: "bool"
     required: false
     example: "true"
@@ -31,10 +31,10 @@ integrations:
 
 outputs:
   - name: clientVersion
-    description: "Kubectl client version"
+    description: "Kubectl client version."
     type: "json"
     example: '{"buildDate":"2020-07-15T16:58:53Z","compiler":"gc","gitCommit":"dff82dc0de47299ab66c83c626e08b245ab19037","gitTreeState":"clean","gitVersion":"v1.18.6","goVersion":"go1.13.9","major":"1","minor":"18","platform":"linux/amd64"}'
   - name: serverVersion
-    description: "Kubernetes server version"
+    description: "Kubernetes server version."
     type: "json"
     example: '{"buildDate":"2020-10-28T09:23:22Z","compiler":"gc","gitCommit":"7ed5ddc0e67cb68296994f0b754cec45450d6a64","gitTreeState":"clean","gitVersion":"v1.16.15.4300","goVersion":"go1.13.15b4","major":"1","minor":"16+","platform":"linux/amd64"}'

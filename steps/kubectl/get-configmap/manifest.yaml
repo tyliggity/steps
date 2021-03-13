@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kubectl_get_configmap"
-  description: "Get a Kubernetes configmap"
+  description: "Get a Kubernetes configmap."
   vendor: kubernetes
   type: hydration
 
@@ -13,69 +13,69 @@ envs:
     required: false
     example: '{{ secret "KUBECONFIG_CONTENT" }}'
   - name: NAMESPACE
-    description: "Namespace to run the command in. Default value is 'default'"
+    description: "Namespace to run the command in. Default value is 'default'."
     type: "string"
     required: false
     example: "stackpulse"
   - name: FORMAT
-    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options."
     type: "string"
     required: false
     example: "wide"
   - name: ALL_NAMESPACES
-    description: "If true, run command on all namespaces"
+    description: "If true, run command on all namespaces."
     type: "bool"
     required: false
     example: "true"
   - name: KEY
-    description: "Configmap name to retrieve"
+    description: "Configmap name to retrieve."
     type: "string"
     required: true
     example: "my-configmap"
   - name: ORDER_BY
-    description: "Sort the return items by the given json path"
+    description: "Sort the return items by the given json path."
     type: "string"
     required: false
     example: "age"
   - name: ORDER_BY_DESC
-    description: "Sort the items in descending order"
+    description: "Sort the items in descending order."
     type: "bool"
     required: false
     example: "true"
   - name: FIELD_SELECTOR
-    description: "Add a field selector to the kubectl command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details"
+    description: "Add a field selector to the kubectl command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details."
     type: "string"
     required: false
     example: "status.phase=Running"
   - name: FILTER_CONTAINS
-    description: "If set, filter only output lines with field containing the provided value. you can provide more then one key-value pair"
+    description: "If set, filter only output lines with field containing the provided value. you can provide more then one key-value pair."
     type: "json"
     required: false
-    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+    example: "{'ip'\\:'1.2.3.4', 'name'\\:'foo'}"
   - name: FILTER_EQUALS
-    description: "If set, filter only output lines with field value equals to the provided value. you can provide more then one key"
+    description: "If set, filter only output lines with field value equals to the provided value. you can provide more then one key."
     type: "json"
     required: false
-    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+    example: "{'ip'\\:'1.2.3.4', 'name'\\:'foo'}"
   - name: FILTER_NOT_EQUALS
-    description: "If set, filter only output lines with field value not equals the provided value. you can provide more then one key"
+    description: "If set, filter only output lines with field value not equals the provided value. you can provide more then one key."
     type: "json"
     required: false
-    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+    example: "{'ip'\\:'1.2.3.4', 'name'\\:'foo'}"
   - name: FILTER_NOT_CONTAINS
-    description: "If set, filter only output lines with field value that doesn't contain the provided value. you can provide more then one key"
+    description: "If set, filter only output lines with field value that doesn't contain the provided value. you can provide more then one key."
     type: "json"
     required: false
-    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+    example: "{'ip'\\:'1.2.3.4', 'name'\\:'foo'}"
 integrations:
   - k8s
 
 outputs:
   - name: items
-    description: "All configmap items, not filtered"
+    description: "All configmap items, not filtered."
     type: "json"
     example: '[{"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{"control-plane.alpha.kubernetes.io/leader":"{\"leaseDurationSeconds\":15,\"acquireTime\":\"2020-12-09T12:25:44Z\",\"renewTime\":\"2020-12-09T13:57:20Z\",\"leaderTransitions\":0}"},"creationTimestamp":"2020-12-09T12:25:44Z","name":"cluster-kubestore","namespace":"kube-system","resourceVersion":"26290","selfLink":"/api/v1/namespaces/kube-system/configmaps/cluster-kubestore","uid":"1a2b3eff-7ddd-4f29-d123-377d115382b2"}},{"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{"control-plane.alpha.kubernetes.io/leader":"{\"leaseDurationSeconds\":15,\"acquireTime\":\"2020-12-09T12:25:44Z\",\"renewTime\":\"2020-12-09T13:57:20Z\",\"leaderTransitions\":0}"},"creationTimestamp":"2020-12-09T12:25:44Z","name":"kubedns","namespace":"kube-system","resourceVersion":"26290","selfLink":"/api/v1/namespaces/kube-system/configmaps/kubedns","uid":"4728c120-b696-4337-a6c3-cf51c34c6472"}}]'
   - name: filtered
-    description: "If filter given, just the filtered items will be listed here"
+    description: "If filter given, just the filtered items will be listed here."
     type: "json"
     example: '[{"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{"control-plane.alpha.kubernetes.io/leader":"{\"leaseDurationSeconds\":15,\"acquireTime\":\"2020-12-09T12:25:44Z\",\"renewTime\":\"2020-12-09T13:57:20Z\",\"leaderTransitions\":0}"},"creationTimestamp":"2020-12-09T12:25:44Z","name":"cluster-kubestore","namespace":"kube-system","resourceVersion":"26290","selfLink":"/api/v1/namespaces/kube-system/configmaps/cluster-kubestore","uid":"1a2b3eff-7ddd-4f29-d123-377d115382b2"}}]'

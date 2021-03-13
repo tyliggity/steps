@@ -8,61 +8,61 @@ metadata:
 
 envs:
   - name: HOST
-    description: "AWX host"
+    description: "AWX host."
     type: "string"
     required: true
     example: "http://my.awx.host"
   - name: USERNAME
-    description: "Username is used to authenticate. Must be supplied if the token is empty"
+    description: "Username is used to authenticate. Must be supplied if the token is empty."
     type: "string"
     required: false
   - name: PASSWORD
-    description: "Password is used to authenticate. Must be supplied if the token is empty"
+    description: "Password is used to authenticate. Must be supplied if the token is empty."
     type: "string"
     required: false
   - name: TOWER_OAUTH_TOKEN
-    description: "Token for authentication. Must be supplied if USERNAME and PASSWORD are empty"
+    description: "Token for authentication. Must be supplied if USERNAME and PASSWORD are empty."
     type: "string"
     required: false
   - name: INSECURE
-    description: "Allow HTTPS insecure connection"
+    description: "Allow HTTPS insecure connection."
     type: "bool"
     required: false
     default: false
   - name: JOB
-    description: "Job template ID or name to run"
+    description: "Job template ID or name to run."
     type: "string"
     required: true
   - name: WAIT
-    description: "Should wait for job completion"
+    description: "Should wait for job completion."
     type: "bool"
     required: false
     default: false
   - name: INVENTORY
-    description: "the ID of the associated inventory"
+    description: "the ID of the associated inventory."
     type: "string"
     required: false
   - name: MONITOR
-    description: "If true, prints stdout of the launched job until it finishes"
+    description: "If true, prints stdout of the launched job until it finishes."
     type: "bool"
     required: false
     default: false
   - name: SCM_BRANCH
-    description: "Run on specific SCM brunch"
+    description: "Run on specific SCM brunch."
     type: "string"
     required: false
   - name: JOB_CHECK
-    description: "Run in check mode"
+    description: "Run in check mode."
     type: "bool"
     required: false
     default: false
   - name: VERBOSITY
-    description: "Verbosity of the launched job"
+    description: "Verbosity of the launched job."
     type: "int"
     required: false
     default: 0
   - name: EXTRA_VARS
-    description: "JSON or yaml for extra vars for the job"
+    description: "JSON or yaml for extra vars for the job."
     type: "json"
     required: false
     example: '{"var":"value"}'

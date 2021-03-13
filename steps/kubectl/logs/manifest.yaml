@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kubectl_logs"
-  description: "Get pod logs"
+  description: "Get pod logs."
   vendor: kubernetes
   type: triage
 
@@ -13,65 +13,65 @@ envs:
     required: false
     example: '{{ secret "KUBECONFIG_CONTENT" }}'
   - name: NAMESPACE
-    description: "Namespace to run the command in. Default value is 'default'"
+    description: "Namespace to run the command in. Default value is 'default'."
     type: "string"
     example: "stackpulse"
   - name: FORMAT
-    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options."
     type: "string"
     example: "wide"
   - name: ALL_NAMESPACES
-    description: "If true, running command on all namespaces"
+    description: "If true, running command on all namespaces."
     type: "bool"
     example: "true"
   - name: FIELD_SELECTOR
-    description: "Add a field selector to the kubectl command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details"
+    description: "Add a field selector to the kubectl command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details."
     type: "string"
     example: "status.phase=Running"
   - name: DEBUG
-    description: "Print debug outputs"
+    description: "Print debug outputs."
     type: "bool"
     example: "true"
   - name: RESOURCE_NAME
-    description: "Get logs for this resource name"
+    description: "Get logs for this resource name."
     type: "string"
     example: "obj1"
   - name: ALL_CONTAINERS
-    description: "Get logs of all containers in the pod. Default false"
+    description: "Get logs of all containers in the pod. Default false."
     type: "bool"
     example: "true"
   - name: POD_NAME
-    description: "Get logs for this pod name"
+    description: "Get logs for this pod name."
     type: "string"
     required: true
     example: "my-pod"
   - name: CONTAINER
-    description: "Get logs for specific container name in the pod"
+    description: "Get logs for specific container name in the pod."
     type: "string"
     example: "my-container"
   - name: LIMIT_BYTES
-    description: "Maximum bytes of logs to return. Default 31K"
+    description: "Maximum bytes of logs to return. Default 31K."
     type: "int"
     default: "31744"
     example: "1024"
   - name: PREVIOUS
-    description: "If true, print the logs for the previous instance of the container in a pod if it exists. Default false"
+    description: "If true, print the logs for the previous instance of the container in a pod if it exists. Default false."
     type: "bool"
     example: "true"
   - name: SINCE
-    description: "Only return logs newer than a relative duration like 5s, 2m, or 3h. Default to all logs. Only one of SINCE_TIME or SINCE may be used"
+    description: "Only return logs newer than a relative duration like 5s, 2m, or 3h. Default to all logs. Only one of SINCE_TIME or SINCE may be used."
     type: "string"
     example: "1h"
   - name: SINCE_TIME
-    description: "Only return logs after a specific date (RFC3339). Defaults to all logs. Only one of SINCE_TIME or SINCE may be used"
+    description: "Only return logs after a specific date (RFC3339). Defaults to all logs. Only one of SINCE_TIME or SINCE may be used."
     type: "string"
     example: "2006-01-02T15:04:05Z07:00"
   - name: TAIL
-    description: "Number of lines to display. (Default is unlimited)"
+    description: "Number of lines to display. (Default is unlimited)."
     type: "int"
     example: "10"
   - name: TIMESTAMPS
-    description: "Include timestamps on each line in the log output. (Default is false)"
+    description: "Include timestamps on each line in the log output. (Default is false)."
     type: "bool"
     example: "true"
 integrations:

@@ -2,13 +2,13 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "redis_keys"
-  description: "Perform Redis keys call, (https://redis.io/commands/keys)"
+  description: "Perform Redis keys call, (https://redis.io/commands/keys)."
   vendor: redis
   type: hydration
 
 envs:
   - name: REDIS_IP 
-    description: "Destination redis IP address (required)"
+    description: "Destination redis IP address (required)."
     type: "string"
     required: true
     example: "127.0.0.1"
@@ -18,15 +18,15 @@ envs:
     required: false
     example: 'myuser'
   - name: REDIS_PASSWORD
-    description: "Destination redis password (optional)"
+    description: "Destination redis password (optional)."
     type: "string"
     example: '{{ secret "REDIS_PASSWORD" }}'
   - name: REDIS_URL 
-    description: "Redis url (required if there is no redis IP address specified)"
+    description: "Redis url (required if there is no redis IP address specified)."
     type: "string"
     example: "redis://<username>:<password>@<host>:<port>/<database>"
   - name: PATTERN
-    description: "Key pattern"
+    description: "Key pattern."
     type: "string"
     required: true
     example: "*key*"

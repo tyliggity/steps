@@ -55,20 +55,20 @@ outputs:
     description: "String of raw execution command arguments."
     type: "string"
     example: "-packages app-SNAPSHOT.tgz,db-SNAPSHOT.tgz,web-SNAPSHOT.tgz"
-   - name: href
-    description: "Execution HREF url"
+  - name: href
+    description: "Execution HREF url."
     type: "string"
-    example: "http\://rundeck.server\:4440/api/38/execution/93"
+    example: "http://rundeck.server:4440/api/38/execution/93"
   - name: permalink
-    description: "Permanent link to Execution"
+    description: "Permanent link to Execution."
     type: "string"
-    example: "http\://rundeck.server\:4440/project/anvils/execution/show/93"
+    example: "http://rundeck.server:4440/project/anvils/execution/show/93"
   - name: project
-    description: "Execution project"
+    description: "Execution project."
     type: "string"
     example: "anvils"
   - name: execution_type
-    description: "Can be one of \: scheduled (schedule trigger), user (user trigger), user-scheduled (user scheduled trigger)."
+    description: "Can be one of\\: scheduled (schedule trigger), user (user trigger), user-scheduled (user scheduled trigger)."
     type: "string"
     example: "user"
   - name: user
@@ -78,11 +78,11 @@ outputs:
   - name: date_started
     description: "An object that contains the start time of the execution, in both unix time and UTC."
     type: "json"
-    example: '{"unixtime"\:1613834976713,"date"\:"2021-02-20T15\:29\:36Z"}'
+    example: '{"unixtime":1613834976713,"date":"2021-02-20T15:29:36Z"}'
   - name: date_ended
     description: "An object that contains the end time of the execution, in both unix time and UTC."
     type: "json"
-    example: '{"unixtime"\:1613834976713,"date"\:"2021-02-20T15\:29\:36Z"}'
+    example: '{"unixtime":1613834976713,"date":"2021-02-20T15:29:36Z"}'
   - name: successful_nodes
     description: "If the execution was is finished, a list of node names that succeeded."
     type: "json"

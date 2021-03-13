@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kubectl_get_nodes"
-  description: "Get a Kubernetes node details"
+  description: "Get a Kubernetes node details."
   vendor: kubernetes
   type: hydration
 
@@ -13,45 +13,45 @@ envs:
     required: false
     example: '{{ secret "KUBECONFIG_CONTENT" }}'
   - name: FORMAT
-    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options."
     type: "string"
     example: "wide"
   - name: FIELD_SELECTOR
-    description: "Add a field selector to the kubectl command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details"
+    description: "Add a field selector to the kubectl command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details."
     type: "string"
     example: "status.phase=Running"
   - name: READY
-    description: "If true, list only nodes with a READY status"
+    description: "If true, list only nodes with a READY status."
     type: "bool"
     required: false
     example: "true"
   - name: ORDER_BY
-    description: "Sort the return items by the given json path"
+    description: "Sort the return items by the given json path."
     type: "string"
     required: false
     example: "age"
   - name: ORDER_BY_DESC
-    description: "Sort the items in descending order"
+    description: "Sort the items in descending order."
     type: "bool"
     required: false
     example: "true"
   - name: FILTER_CONTAINS
-    description: "If set, filter only output lines with field containing the provided value. you can provide more then one key-value pair"
+    description: "If set, filter only output lines with field containing the provided value. you can provide more then one key-value pair."
     type: "json"
     required: false
-    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+    example: "{'ip'\\:'1.2.3.4', 'name'\\:'foo'}"
   - name: FILTER_EQUALS
-    description: "If set, filter only output lines with field value equals to the provided value. you can provide more then one key"
+    description: "If set, filter only output lines with field value equals to the provided value. you can provide more then one key."
     type: "json"
     required: false
-    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+    example: "{'ip'\\:'1.2.3.4', 'name'\\:'foo'}"
   - name: FILTER_NOT_EQUALS
-    description: "If set, filter only output lines with field value not equals the provided value. you can provide more then one key"
+    description: "If set, filter only output lines with field value not equals the provided value. you can provide more then one key."
     type: "json"
     required: false
-    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+    example: "{'ip'\\:'1.2.3.4', 'name'\\:'foo'}"
   - name: FILTER_NOT_CONTAINS
-    description: "If set, filter only output lines with field value that doesn't contain the provided value. you can provide more then one key"
+    description: "If set, filter only output lines with field value that doesn't contain the provided value. you can provide more then one key."
     type: "json"
     required: false
 
@@ -60,10 +60,10 @@ integrations:
 
 outputs:
   - name: items
-    description: "All nodes, not filtered"
+    description: "All nodes, not filtered."
     type: "json"
     example: '[{"age":"1h16m32.731804324s","architecture":"amd64","containerRuntime":"docker://19.3.1","externalIP":"12.413.12.103","internalIP":"10.128.0.30","kernelVersion":"4.19.112+","labels":["beta.kubernetes.io/os","beta.kubernetes.io/arch","failure-domain.beta.kubernetes.io/region","kubernetes.io/os","failure-domain.beta.kubernetes.io/zone","kubernetes.io/arch","kubernetes.io/hostname","beta.kubernetes.io/instance-type"],"name":"node1","os_image":"Container-Optimized OS","ready":"True","roles":[],"version":"v1.16.15"},{"age":"1h30m44.731836342s","architecture":"amd64","containerRuntime":"docker://19.3.1","externalIP":"12.413.12.213","internalIP":"10.128.0.29","kernelVersion":"4.19.112+","labels":["failure-domain.beta.kubernetes.io/region","beta.kubernetes.io/os","beta.kubernetes.io/arch","failure-domain.beta.kubernetes.io/zone","kubernetes.io/arch","kubernetes.io/hostname","kubernetes.io/os","beta.kubernetes.io/instance-type"],"name":"node2","os_image":"Container-Optimized OS","ready":"True","roles":[],"version":"v1.16.15"}]'
   - name: filtered
-    description: "If filter given, just the filtered items will be listed here"
+    description: "If filter given, just the filtered items will be listed here."
     type: "json"
     example: '[{"age":"1h16m32.731804324s","architecture":"amd64","containerRuntime":"docker://19.3.1","externalIP":"12.413.12.103","internalIP":"10.128.0.30","kernelVersion":"4.19.112+","labels":["beta.kubernetes.io/os","beta.kubernetes.io/arch","failure-domain.beta.kubernetes.io/region","kubernetes.io/os","failure-domain.beta.kubernetes.io/zone","kubernetes.io/arch","kubernetes.io/hostname","beta.kubernetes.io/instance-type"],"name":"node1","os_image":"Container-Optimized OS","ready":"True","roles":[],"version":"v1.16.15"}]'

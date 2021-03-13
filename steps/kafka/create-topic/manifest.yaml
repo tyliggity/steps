@@ -2,31 +2,31 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kafka_create_topic"
-  description: "Create a Kafka topic"
+  description: "Create a Kafka topic."
   vendor: kafka
   type: remediation
 
 envs:
   - name: ZOOKEPER_HOST
     required: true
-    description: "Zookeeper host"
+    description: "Zookeeper host."
     type: string
     example: "<host>:<port>"
   - name: TOPIC_NAME
     required: true
     type: string
-    description: "Topic name to create"
+    description: "Topic name to create."
     example: "my-topic"
   - name: PARTITIONS
     type: int
-    description: "Topic partitions, defaults to 1"
+    description: "Topic partitions, defaults to 1."
     example: 1
   - name: REPLICATION_FACTOR
     type: int
-    description: "Topic replication factor, default to 1"
+    description: "Topic replication factor, default to 1."
     example: 1
 
 outputs:
-  - name: basic-logs
-    description: "Raw output for the command"
+  - name: logs
+    description: "Raw output for the command."
     type: "string"

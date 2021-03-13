@@ -2,12 +2,12 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "atlassian_jira_create_issue"
-  description: "Create a new Jira issue"
+  description: "Create a new Jira issue."
   vendor: jira
   type: notification
 envs:
   - name: JIRA_SITE_NAME
-    description: "The Jira Cloud site name, the prefix before \".atlassian.net\", usually your organization name"
+    description: "The Jira Cloud site name, the prefix before \".atlassian.net\", usually your organization name."
     type: "string"
     required: true
     example: "<organization>"
@@ -46,7 +46,6 @@ envs:
     type: "string"
     required: true
     example: "myemail@mycompany.io"
-    example: "frontend-developer@stackpulse.io"
 
 integrations:
   - jira

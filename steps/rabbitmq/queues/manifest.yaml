@@ -2,45 +2,45 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "rabbitmq_queues"
-  description: "Get information about RabbitMQ queues"
+  description: "Get information about RabbitMQ queues."
   vendor: rabbitmq
   type: triage
 
 envs:
   - name: USERNAME
-    description: "Username"
+    description: "Username."
     type: "string"
     required: true
   - name: PASSWORD
-    description: "Password"
+    description: "Password."
     type: "string"
     required: true
   - name: HOST
-    description: "RabbitMQ host"
+    description: "RabbitMQ host."
     type: "string"
     required: true
   - name: PORT
-    description: "Host port (15672 is the common port)"
+    description: "Host port (15672 is the common port)."
     type: "string"
     required: true
     default: "15672"
   - name: SCHEMA
-    description: "Host schema (http/https)"
+    description: "Host schema (http/https)."
     type: "string"
     example: "https"
   - name: VERIFY
-    description: "Should verify HTTPS or not"
+    description: "Should verify HTTPS or not."
     type: "bool"
     default: "true"
   - name: VHOST
-    description: "If given, getting info just for queues inside this vhost"
+    description: "If given, getting info just for queues inside this vhost."
     type: "string"
   - name: QUEUE_NAME
-    description: "`VHOST` must be set alongside this parameter. If given, getting info just for this queue"
+    description: "`VHOST` must be set alongside this parameter. If given, getting info just for this queue."
     type: "string"
 
 outputs:
   - name: output
-    description: "RabbitMQ queues array"
+    description: "RabbitMQ queues array."
     type: "json"
     example: '[{"arguments":{},"auto_delete":false,"backing_queue_status":{"avg_ack_egress_rate":0,"avg_ack_ingress_rate":0,"avg_egress_rate":0,"avg_ingress_rate":0,"delta":["delta","undefined",0,0,"undefined"],"len":0,"mode":"default","next_seq_id":0,"q1":0,"q2":0,"q3":0,"q4":0,"target_ram_count":"infinity"},"consumer_utilisation":null,"consumers":1,"durable":false,"effective_policy_definition":{},"exclusive":false,"exclusive_consumer_tag":null,"garbage_collection":{"fullsweep_after":65535,"max_heap_size":0,"min_bin_vheap_size":46422,"min_heap_size":233,"minor_gcs":10},"head_message_timestamp":null,"idle_since":"2021-01-18 13:01:08","memory":14256,"message_bytes":0,"message_bytes_paged_out":0,"message_bytes_persistent":0,"message_bytes_ram":0,"message_bytes_ready":0,"message_bytes_unacknowledged":0,"messages":0,"messages_details":{"rate":0},"messages_paged_out":0,"messages_persistent":0,"messages_ram":0,"messages_ready":0,"messages_ready_details":{"rate":0},"messages_ready_ram":0,"messages_unacknowledged":0,"messages_unacknowledged_details":{"rate":0},"messages_unacknowledged_ram":0,"name":"hello","node":"rabbit@mu-rabbit-rabbitmq-0.mu-rabbit-rabbitmq-headless.rabbit.svc.cluster.local","operator_policy":null,"policy":null,"recoverable_slaves":null,"reductions":17782,"reductions_details":{"rate":249.4},"single_active_consumer_tag":null,"state":"running","type":"classic","vhost":"/"}]'

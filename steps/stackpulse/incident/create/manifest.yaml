@@ -18,7 +18,7 @@ envs:
     required: true
     example: "comamnder@company.com"
   - name: REPORTER
-    description: "The identity of the person creating the incident in StackPulse. For playbook purposes it may be a dummy email e.g. monitoring@company.com"
+    description: "The identity of the person creating the incident in StackPulse. For playbook purposes it may be a dummy email e.g. monitoring@company.com."
     type: string
     required: true
     example: "reporter@company.com"

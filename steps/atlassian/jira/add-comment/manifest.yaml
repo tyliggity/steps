@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "atlassian_jira_add_comment"
-  description: "Add a comment on a Jira issue"
+  description: "Add a comment on a Jira issue."
   vendor: jira
   type: notification
 

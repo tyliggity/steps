@@ -23,7 +23,7 @@ envs:
     required: true
     example: "DRUVEuCdENoPkUpDkcDcdd6PeKkPdurc"
   - name: JOB_ID
-    description: "Job ID"
+    description: "Job ID."
     type: "string"
     required: true
     example: "3b6c19f6-41ee-475f-8fd0-8f1a26f27a9a"
@@ -36,33 +36,33 @@ envs:
 
 outputs:
   - name: id
-    description: "Job ID"
+    description: "Job ID."
     type: "string"
     example: "846a2025-7895-4af2-a594-a0a9174339ec"
   - name: name
-    description: "Job Name"
+    description: "Job Name."
     type: "string"
     example: "Restart-Server"
   - name: group
-    description: "Job group"
+    description: "Job group."
     type: "string"
     example: "GroupName"
   - name: project
-    description: "Job project"
+    description: "Job project."
     type: "string"
     example: "anvil"
   - name: description
-    description: "Job description"
+    description: "Job description."
     type: "string"
     example: "restart server job description"
-   - name: href
-    description: "Job HREF url"
+  - name: href
+    description: "Job HREF url."
     type: "string"
-    example: "http\://rundeck.server\:4440/api/38/execution/88"
+    example: "http://rundeck.server:4440/api/38/execution/88"
   - name: permalink
-    description: "Permanent link to job"
+    description: "Permanent link to job."
     type: "string"
-    example: "http\://rundeck.server\:4440/project/anvils/execution/show/88"
+    example: "http://rundeck.server:4440/project/anvils/execution/show/88"
   - name: average_duration
     description: "Average duration of the job's executions, in milliseconds."
     type: "int"
@@ -72,7 +72,7 @@ outputs:
     type: "boolean"
     example: false
   - name: schedule_enabled
-    description: "Whether schedualing is enabled for this job."
+    description: "Whether scheduling is enabled for this job."
     type: "boolean"
     example: false
   - name: enabled

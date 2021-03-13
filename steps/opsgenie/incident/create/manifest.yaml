@@ -2,13 +2,13 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "opsgenie_create_incident"
-  description: "Create a new OpsGenie incident for a service"
+  description: "Create a new OpsGenie incident for a service."
   vendor: opsgenie
   type: notification
 
 envs:
   - name: USE_EU_API
-    description: "set to true to use 'api.eu.opsgenie.com' instead of default 'api.opsgenie.com'"
+    description: "set to true to use 'api.eu.opsgenie.com' instead of default 'api.opsgenie.com'."
     type: "string"
     required: false
   - name: SERVICE_NAME

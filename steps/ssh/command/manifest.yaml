@@ -58,7 +58,7 @@ envs:
 
 outputs:
   - name: output
-    description: "Raw output for the given ssh command"
+    description: "Raw output for the given ssh command."
     type: "string"
     example: "{\"output\": \"
         PID    PPID CMD                         %MEM %CPU

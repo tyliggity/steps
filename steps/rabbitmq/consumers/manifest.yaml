@@ -2,38 +2,38 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "rabbitmq_consumers"
-  description: "Get information about RabbitMQ consumers"
+  description: "Get information about RabbitMQ consumers."
   vendor: rabbitmq
   type: hydration
 
 envs:
   - name: USERNAME
-    description: "Username"
+    description: "Username."
     type: "string"
     required: true
   - name: PASSWORD
-    description: "Password"
+    description: "Password."
     type: "string"
     required: true
   - name: HOST
-    description: "RabbitMQ host"
+    description: "RabbitMQ host."
     type: "string"
     required: true
   - name: PORT
-    description: "Host port (15672 is the common port)"
+    description: "Host port (15672 is the common port)."
     type: "string"
     required: true
     default: "15672"
   - name: SCHEMA
-    description: "Host schema (http/https)"
+    description: "Host schema (http/https)."
     type: "string"
     example: "https"
   - name: VERIFY
-    description: "Should verify HTTPS or not"
+    description: "Should verify HTTPS or not."
     type: "bool"
     default: "true"
 outputs:
   - name: output
-    description: "RabbitMQ consumers array"
+    description: "RabbitMQ consumers array."
     type: "json"
     example: '[{"ack_required":false,"active":true,"activity_status":"up","arguments":{},"channel_details":{"connection_name":"127.0.0.1:54594 -> 127.0.0.1:5672","name":"127.0.0.1:54594 -> 127.0.0.1:5672 (1)","node":"rabbit@mu-rabbit-rabbitmq-0.mu-rabbit-rabbitmq-headless.rabbit.svc.cluster.local","number":1,"peer_host":"127.0.0.1","peer_port":54594,"user":"user"},"consumer_tag":"ctag1.82e459a6c02f45c781916d86259417f9","exclusive":false,"prefetch_count":0,"queue":{"name":"task_queue_1","vhost":"/"}}]'

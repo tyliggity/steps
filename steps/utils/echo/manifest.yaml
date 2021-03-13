@@ -8,6 +8,6 @@ metadata:
 
 envs:
   - name: MESSAGE 
-    description: "The message to print. If not provided will command line arguments"
+    description: "The message to print. If not provided will command line arguments."
     type: "string"
     required: true

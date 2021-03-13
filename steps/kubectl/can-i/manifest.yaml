@@ -22,7 +22,7 @@ envs:
     type: "string"
     example: "my-namespace"
   - name: FORMAT
-    description: "Output format. default to 'json'. for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    description: "Output format. default to 'json'. for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options."
     type: "string"
     example: "wide"
   - name: ALL_NAMESPACES
@@ -39,6 +39,6 @@ integrations:
 
 outputs:
   - name: cani
-    description: "Whether the command can be executed or not"
+    description: "Whether the command can be executed or not."
     type: "bool"
     example: "true"

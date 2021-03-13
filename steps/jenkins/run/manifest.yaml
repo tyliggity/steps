@@ -2,35 +2,35 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "jenkins_run"
-  description: "Run build in jenkins"
+  description: "Run build in jenkins."
   vendor: jenkins
   type: remediation
 
 envs:
   - name: USERNAME
-    description: "Username for login"
+    description: "Username for login."
     required: true
     type: "string"
   - name: PASSWORD
     required: true
-    description: "Password for login"
+    description: "Password for login."
     type: "string"
   - name: HOST
-    description: "Jenkins host"
+    description: "Jenkins host."
     required: true
     type: "string"
     example: "http://org.jenkins.com:8080/"
   - name: JOB_NAME
-    description: "Job name to run"
+    description: "Job name to run."
     required: true
     type: "string"
   - name: PARAMS
-    description: "Build params JSON"
+    description: "Build params JSON."
     required: false
     type: "json"
     example: "{\"param1\":\"val1\", \"param2\":\"val2\"}"
   - name: WAIT_FOR_BUILD
-    description: "Should wait for Jenkins build to finish (default:false)"
+    description: "Should wait for Jenkins build to finish (default:false)."
     required: false
     type: "bool"
 

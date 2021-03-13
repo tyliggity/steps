@@ -2,31 +2,31 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kafka_describe_consumer_group"
-  description: "Describe a consumer group"
+  description: "Describe a consumer group."
   vendor: kafka
   type: triage
 
 envs:
   - name: BOOTSTRAP_HOST
     required: true
-    description: "Bootstrap host"
+    description: "Bootstrap host."
     type: string
     example: "<host>:<port>"
   - name: GROUP_NAME
     required: true
     type: string
-    description: "Group name to describe"
+    description: "Group name to describe."
     example: "kafka-sandbox"
   - name: MEMBERS
     type: bool
-    description: "Describe members of this group, default to false. Can't be provided alongside STATE"
+    description: "Describe members of this group, default to false. Can't be provided alongside STATE."
     example: "false"
   - name: STATE
     type: bool
-    description: "Describe the group state, default to false. Can't be provided alongside MEMBERS"
+    description: "Describe the group state, default to false. Can't be provided alongside MEMBERS."
     example: "true"
 
 outputs:
-  - name: basic-logs
-    description: "Raw output for the command"
+  - name: logs
+    description: "Raw output for the command."
     type: "string"

@@ -2,17 +2,17 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "opsgenie_get_oncall"
-  description: "Get current oncall"
+  description: "Get current oncall."
   vendor: opsgenie
   type: hydration
 
 envs:
   - name: USE_EU_API
-    description: "set to true to use 'api.eu.opsgenie.com' instead of default 'api.opsgenie.com'"
+    description: "set to true to use 'api.eu.opsgenie.com' instead of default 'api.opsgenie.com'."
     type: "string"
     required: false
   - name: SCHEDULE_NAME
-    description: "Name of the OpsGenie schedule to get current on-call from"
+    description: "Name of the OpsGenie schedule to get current on-call from."
     type: "string"
     required: true
 

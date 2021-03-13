@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "jenkins_last_build"
-  description: "Return last completed, successful, failed and stable builds"
+  description: "Return last completed, successful, failed and stable builds."
   vendor: jenkins
   type: remediation
 

@@ -2,38 +2,38 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "rabbitmq_overview"
-  description: "Get overview information about RabbitMQ cluster"
+  description: "Get overview information about RabbitMQ cluster."
   vendor: rabbitmq
   type: hydration
 
 envs:
   - name: USERNAME
-    description: "Username"
+    description: "Username."
     type: "string"
     required: true
   - name: PASSWORD
-    description: "Password"
+    description: "Password."
     type: "string"
     required: true
   - name: HOST
-    description: "RabbitMQ host"
+    description: "RabbitMQ host."
     type: "string"
     required: true
   - name: PORT
-    description: "Host port (15672 is the common port)"
+    description: "Host port (15672 is the common port)."
     type: "string"
     required: true
     default: "15672"
   - name: SCHEMA
-    description: "Host schema (http/https)"
+    description: "Host schema (http/https)."
     type: "string"
     example: "https"
   - name: VERIFY
-    description: "Should verify HTTPS or not"
+    description: "Should verify HTTPS or not."
     type: "bool"
     default: "true"
 outputs:
   - name: output
-    description: "Overview output from RabbitMQ"
+    description: "Overview output from RabbitMQ."
     type: "json"
     example: '{"management_version":"3.8.2","rates_mode":"basic","sample_retention_policies":{"global":[600,3600,28800,86400],"basic":[600,3600],"detailed":[600]},"exchange_types":[{"name":"direct","description":"AMQP direct exchange, as per the AMQP specification","enabled":true},{"name":"fanout","description":"AMQP fanout exchange, as per the AMQP specification","enabled":true},{"name":"headers","description":"AMQP headers exchange, as per the AMQP specification","enabled":true},{"name":"topic","description":"AMQP topic exchange, as per the AMQP specification","enabled":true}],"rabbitmq_version":"3.8.2","cluster_name":"rabbit@mu-rabbit-rabbitmq-0.mu-rabbit-rabbitmq-headless.rabbit.svc.cluster.local","erlang_version":"22.2","erlang_full_version":"Erlang/OTP 22 [erts-10.6] [source] [64-bit] [smp:2:1] [ds:2:1:10] [async-threads:64] [hipe]","disable_stats":false,"enable_queue_totals":false,"message_stats":{"disk_reads":200,"disk_reads_details":{"rate":0.0},"disk_writes":0,"disk_writes_details":{"rate":0.0}},"churn_rates":{"channel_closed":0,"channel_closed_details":{"rate":0.0},"channel_created":1,"channel_created_details":{"rate":0.0},"connection_closed":0,"connection_closed_details":{"rate":0.0},"connection_created":1,"connection_created_details":{"rate":0.0},"queue_created":1,"queue_created_details":{"rate":0.0},"queue_declared":1,"queue_declared_details":{"rate":0.0},"queue_deleted":0,"queue_deleted_details":{"rate":0.0}},"queue_totals":{"messages":201,"messages_details":{"rate":0.0},"messages_ready":201,"messages_ready_details":{"rate":0.0},"messages_unacknowledged":0,"messages_unacknowledged_details":{"rate":0.0}},"object_totals":{"channels":1,"connections":1,"consumers":1,"exchanges":7,"queues":22},"statistics_db_event_queue":0,"node":"rabbit@mu-rabbit-rabbitmq-0.mu-rabbit-rabbitmq-headless.rabbit.svc.cluster.local","listeners":[{"node":"rabbit@mu-rabbit-rabbitmq-0.mu-rabbit-rabbitmq-headless.rabbit.svc.cluster.local","protocol":"amqp","ip_address":"::","port":5672,"socket_opts":{"backlog":128,"nodelay":true,"linger":[true,0],"exit_on_close":false}},{"node":"rabbit@mu-rabbit-rabbitmq-0.mu-rabbit-rabbitmq-headless.rabbit.svc.cluster.local","protocol":"clustering","ip_address":"::","port":25672,"socket_opts":[]},{"node":"rabbit@mu-rabbit-rabbitmq-0.mu-rabbit-rabbitmq-headless.rabbit.svc.cluster.local","protocol":"http","ip_address":"::","port":15672,"socket_opts":{"cowboy_opts":{"sendfile":false},"port":15672}}],"contexts":[{"ssl_opts":[],"node":"rabbit@mu-rabbit-rabbitmq-0.mu-rabbit-rabbitmq-headless.rabbit.svc.cluster.local","description":"RabbitMQ Management","path":"/","cowboy_opts":"[{sendfile,false}]","port":"15672"}]}'

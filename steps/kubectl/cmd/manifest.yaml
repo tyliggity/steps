@@ -2,7 +2,7 @@ apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
   name: "kubectl_cmd"
-  description: "Run generic kubectl command"
+  description: "Run generic kubectl command."
   vendor: kubernetes
   type: advanced
 
@@ -35,6 +35,6 @@ integrations:
 
 outputs:
   - name: output
-    description: "Raw output of kubectl command"
+    description: "Raw output of kubectl command."
     type: "string"
     example: 'NAME                                         READY   STATUS    RESTARTS   AGE\n8324d0cb-55fd-4c0b-a11a-ad3dfa5e802e-p68xs   1/1     Running   0          2s'

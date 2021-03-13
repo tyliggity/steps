@@ -23,7 +23,7 @@ envs:
     required: true
     example: "DRUVEuCdENoPkUpDkcDcdd6PeKkPdurc"
   - name: JOB_ID
-    description: "Job ID"
+    description: "Job ID."
     type: "string"
     required: true
     example: "3b6c19f6-41ee-475f-8fd0-8f1a26f27a9a"
