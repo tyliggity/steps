@@ -13,6 +13,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/redshiftdata"
+	"github.com/aws/aws-sdk-go-v2/service/redshiftdata/types"
 	"github.com/olekukonko/tablewriter"
 	"github.com/stackpulse/public-steps/common/log"
 )
@@ -22,16 +23,18 @@ var ErrTimeout = fmt.Errorf("timeout")
 // QueryRunError represents the query execution failure
 type QueryRunError struct {
 	Reason string
+	Status string
 }
 
 func (e *QueryRunError) Error() string {
-	return fmt.Sprintf("query run failed due to '%s'", e.Reason)
+	return fmt.Sprintf("query run failed due to '%s' status: %s", e.Reason, e.Status)
 }
 
 // Using output struct here is a bit problematic because the output should return
 // as JSON array of unknown fields (according to the given query)
 const (
-	resultsOutputName = "results"
+	resultsOutputName     = "results"
+	delayBeforeFirstFetch = 5 * time.Second
 )
 
 type Args struct {
@@ -107,18 +110,21 @@ func (r *RedshiftAWSRunner) FetchResult(ctx context.Context, id string) (*Redshi
 			return ErrTimeout
 		}
 		if err == nil {
-			return err
+			return nil
 		}
 
 		// catch failed executions to abort redundant retries
 		out, descErr := r.service.DescribeStatement(ctx, &redshiftdata.DescribeStatementInput{Id: aws.String(id)})
 		if descErr == nil {
-			var reason string
-			if out.Error != nil {
-				reason = *out.Error
-			}
-			return &QueryRunError{
-				Reason: reason,
+			if out.Status == types.StatusStringAborted || out.Status == types.StatusStringFailed {
+				var reason string
+				if out.Error != nil {
+					reason = *out.Error
+				}
+				return &QueryRunError{
+					Reason: reason,
+					Status: string(out.Status),
+				}
 			}
 		}
 
@@ -136,7 +142,7 @@ func (r *RedshiftAWSRunner) FetchResult(ctx context.Context, id string) (*Redshi
 
 			return true
 		}),
-		retry.DelayType(retry.FixedDelay),
+		retry.DelayType(retry.BackOffDelay),
 		retry.Delay(delay),
 		retry.Attempts(attempts),
 		retry.OnRetry(func(n uint, err error) {
@@ -205,7 +211,7 @@ func (r *RedshiftAWSRunner) RunQuery(sql string) (*RedshiftQueryResults, error) 
 	log.Debug("Execute id: %s", id)
 
 	// most of the times, immediate request to the get result would fail so we give it a bit of slack before first try
-	time.Sleep(3 * time.Second)
+	time.Sleep(delayBeforeFirstFetch)
 
 	results, err := r.FetchResult(ctx, id)
 	if err != nil {

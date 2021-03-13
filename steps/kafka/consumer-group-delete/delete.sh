@@ -1,0 +1,1 @@
+/usr/bin/kafka-consumer-groups --bootstrap-server ${BOOTSTRAP_HOST} --group ${GROUP_NAME} --delete

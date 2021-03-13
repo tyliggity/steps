@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "istio-proxy-status"
+  name: "istio_proxy_status"
   description: "Run a proxy-status command on your Istio cluster."
   vendor: istio
   type: triage

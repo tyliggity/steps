@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "get-ips-for-instances"
+  name: "get_ips_for_instances"
   description: "Get private ips for given ec2 instances."
   vendor: aws
   type: triage

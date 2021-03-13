@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "aws-redshift-data-query-raw"
+  name: "aws_redshift_data_query_raw"
   description: "Running a raw SQL query on a Redshift database."
   vendor: aws
   type: triage

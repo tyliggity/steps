@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "aws-detach-instances"
+  name: "aws_detach_instances"
   imageName: "amazon/aws-cli"
   description: "Detach a volume from an instance."
   vendor: aws

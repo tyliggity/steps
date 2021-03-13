@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "elastic-nodes-stats"
+  name: "elastic_nodes_stats"
   description: "Get elastic nodes stats."
   vendor: elastic
   type: triage

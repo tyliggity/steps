@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "elastic-cluster-pending-tasks"
+  name: "elastic_cluster_pending_tasks"
   description: "Get elastic pending tasks."
   vendor: elastic
   type: triage

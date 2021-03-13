@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "elastic-cluster-stats"
+  name: "elastic_cluster_stats"
   description: "Get elastic cluster stats."
   vendor: elastic
   type: triage

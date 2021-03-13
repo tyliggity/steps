@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "elastic-info"
+  name: "elastic_info"
   description: "Get elastic info."
   vendor: elastic
   type: triage

@@ -1,0 +1,18 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "kafka_list_consumer_groups"
+  description: "List all available consumer groups"
+  vendor: kafka
+  type: hydration
+
+envs:
+  - name: BOOTSTRAP_HOST
+    required: true
+    description: "Bootstrap host"
+    type: string
+    example: "<host>:<port>"
+outputs:
+  - name: basic-logs
+    description: "Raw output for the command"
+    type: "string"

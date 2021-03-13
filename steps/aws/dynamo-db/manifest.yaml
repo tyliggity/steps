@@ -1,8 +1,7 @@
-
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "aws-dynamodb-query"
+  name: "aws_dynamodb_query"
   imageName: "amazon/aws-cli"
   description: "Perform an arbitrary DynamoDB query."
   vendor: aws
