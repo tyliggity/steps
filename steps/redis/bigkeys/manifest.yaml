@@ -1,0 +1,47 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "redis_big_keys"
+  description: "Get Redis big-keys"
+  vendor: redis
+  type: triage
+
+envs:
+  - name: REDIS_IP 
+    description: "Destination redis IP address (required)"
+    type: "string"
+    required: true
+    example: "127.0.0.1"
+  - name: REDIS_PASSWORD
+    description: "Destination redis password (optional)"
+    type: "string"
+    example: '{{ secret "REDIS_PASSWORD" }}'
+  - name: REDIS_URL 
+    description: "Redis url (required if there is no redis IP address specified)"
+    type: "string"
+    example: "redis://<username>:<password>@<host>:<port>/<database>"
+
+outputs:
+  - name: output
+    description: "Human readable, formatted report that includes statistics and explanations."
+    type: "string"
+    example: |-
+          # Scanning the entire keyspace to find biggest keys as well as
+          # average sizes per key type.  You can use -i 0.1 to sleep 0.1 sec
+          # per 100 SCAN commands (not usually needed).
+
+          [00.00%] Biggest string found so far 'big_key' with 30 bytes
+
+          -------- summary -------
+
+          Sampled 2 keys in the keyspace!
+          Total key length in bytes is 15 (avg len 7.50)
+
+          Biggest string found 'big_key' has 30 bytes
+
+          0 lists with 0 items (00.00% of keys, avg size 0.00)
+          0 hashs with 0 fields (00.00% of keys, avg size 0.00)
+          2 strings with 50 bytes (100.00% of keys, avg size 25.00)
+          0 streams with 0 entries (00.00% of keys, avg size 0.00)
+          0 sets with 0 members (00.00% of keys, avg size 0.00)
+          0 zsets with 0 members (00.00% of keys, avg size 0.00)

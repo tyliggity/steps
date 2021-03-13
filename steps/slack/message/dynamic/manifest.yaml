@@ -1,0 +1,50 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "slack_send_dynamic_message"
+  description: "Send a simple text message, or snippet, to a Slack channel or user."
+  vendor: slack
+  type: notification
+
+envs:
+  - name: MESSAGE_TEXT
+    description: "The body of the message to send, limited to 3000 characters. If you wish to send larger content, send a snippet."
+    type: string
+    required: true
+    example: "lorem ipsum dolor sit amet"
+  - name: SP_REDIRECT_URL
+    description: "URL of the environment you use for execution redirection."
+    type: string
+    default: "{{ .metadata.executionUrl }}"
+    example: "{{ .metadata.executionUrl }}"
+    required: true
+  - name: RECIPIENTS
+    description: "Channel name (with # prefix) or user emails to send the message to."
+    type: string
+    required: true
+    example: "user1@example.com"
+  - name: IMAGE_LINK
+    description: "If given, linking an image to the message with this URL. If the value is '-', treating previous step output as image bytes. IMAGE_TEXT must be provided when using this env"
+    type: string
+    example: "https://website.com/img/my-img.png"
+  - name: IMAGE_TEXT
+    description: "Image text to attach to the image file. Ignored if IMAGE_LINK is empty."
+    type: string
+    example: "Check out this image!"
+  - name: IMAGE_TYPE
+    description: "Image type of the image file. Ignored if IMAGE_LINK is empty."
+    type: string
+    example: "jpg"
+
+outputs:
+  - name: message_recipient
+    description: "The ID of the channel or user recipients of the message."
+    type: string
+    example: "C1H9RESGL"
+  - name: message_ts
+    description: "The slack ts id of the message, read more here https://api.slack.com/messaging/retrieving#individual_messages."
+    type: string
+    example: "1610384739.003300"
+
+integrations:
+  - slack

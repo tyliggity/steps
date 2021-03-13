@@ -1,0 +1,25 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "stackpulse_add_comment"
+  description: "Add a new comment to a StackPulse incident."
+  vendor: stackpulse
+  type: notification
+
+envs:
+  - name: INCIDENT_ID
+    description: "Incident id to add the comment."
+    type: string
+    example: "INC-00013"
+    required: true
+  - name: COMMENT
+    description: "The comment to add."
+    type: string
+    example: "This is a comment created by StackPulse."
+    required: true
+
+outputs:
+  - name: incident_id
+    description: "The incident id which the comment activity was added to."
+    type: "string"
+    example: "INC-00226"

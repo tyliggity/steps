@@ -1,0 +1,69 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "slack_send_interactive_message"
+  description: "Send a Slack message with an interactive button or selector which you can use its input later in the playbook."
+  vendor: slack
+  type: notification
+
+envs:
+  - name: SP_REDIRECT_URL
+    description: "URL of the environment you use for execution redirection."
+    type: string
+    default: "{{ .metadata.executionUrl }}"
+    example: "{{ .metadata.executionUrl }}"
+    required: true
+  - name: HEADER_MESSAGE
+    description: "A line displayed as the message header."
+    type: string
+    required: false
+    example: "Check out this message!"
+  - name: RECIPIENTS
+    description: "Channel name (with # prefix) or user emails to send the message to."
+    type: string
+    required: true
+    example: "user1@example.com"
+  - name: IMAGE_URL
+    description: "If given, linking an image to the message with this URL."
+    type: string
+    required: false
+    example: "https://website.com/img/my-img.png"
+  - name: IMAGE_TEXT
+    description: "Image text to attach to the image file. Ignored if IMAGE_URL is empty."
+    type: string
+    required: false
+    example: "Check out this image!"
+  - name: QUESTION
+    description: "A text representing the question this interactive message asks the user."
+    type: string
+    required: true
+    example: "Are you sure?"
+  - name: TIMEOUT
+    description: "The time to wait for the user response (In Golang Duration format), if the timeout expires the default response will be used. default is 10 minutes."
+    type: string
+    required: false
+    example: "2m"
+  - name: RESPONSES
+    description: "A list of possible options the user can select and will be returned in the step output as raw string."
+    type: string
+    required: false
+    example: "Yes,No"
+  - name: DEFAULT_RESPONSE
+    description: "The response to use in case of timeout expiration when waiting for the slack user's input (must be one of RESPONSES)."
+    type: string
+    required: true
+    example: "No"
+  - name: SELECTOR_TYPE
+    description: "The slack interactive selection element type to use when sending this message, possible options are 'MULTI_SELECT', 'BUTTONS_SELECT' or 'SINGLE_SELECT'."
+    type: string
+    required: true
+    example: "BUTTONS_SELECT"
+
+outputs:
+  - name: selected_responses
+    description: "The user's chosen responses out of RESPONSES, or in case of timeout, the DEFAULT_RESPONSE."
+    type: json
+    example: '["octopus"]'
+
+integrations:
+  - slack

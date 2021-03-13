@@ -1,0 +1,44 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "prometheus_range_query"
+  description: "Running raw range query on Prometheus."
+  vendor: prometheus 
+  type: hydration 
+
+envs:
+  - name: URL
+    required: true
+    description: "Prometheus Endpoint URL."
+    type: "string"
+    example: "https://prometheus.<organization>/"
+  - name: QUERY
+    description: "Query to execute."
+    required: true
+    type: "string"
+    example: 'http_request_total{statuscode="200", method="get"}'
+  - name: START
+    description: "Start timestamp in RFC3339 format."
+    required: true
+    type: "string"
+    example: "2020-12-07T10:44:53+00:00"
+  - name: END
+    description: "End timestamp in RFC3339 format. Must supply this or 'SINCE' env."
+    type: "string"
+    example: "2020-12-07T10:44:53+00:00"
+  - name: SINCE
+    description: "Since when should we get the result (using START as base) in duration format. Must supply this or 'END' env."
+    type: "string"
+    example: "\"3d\", \"1h30m\", \"15m30s\""
+  - name: STEP
+    description: "Step duration in duration format."
+    type: "string"
+    example: "\"3d\", \"1h30m\", \"15m30s\""
+  - name: DEBUG
+    description: "Print debug outputs."
+    type: "bool"
+    example: "\"true\",\"false\""
+outputs:
+  - name: basic-logs 
+    description: "Raw output of Prometheus query."
+    type: "json"

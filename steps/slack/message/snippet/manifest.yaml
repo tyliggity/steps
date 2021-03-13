@@ -1,0 +1,50 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "slack_send_snippet"
+  description: "Send a snippet, a file, to a Slack channel or user."
+  vendor: slack
+  type: notification
+
+envs:
+  - name: CONTENT
+    description: "The body of the snippet to send."
+    type: string
+    required: true
+    example: "lorem ipsum dolor sit amet,"
+  - name: RECIPIENTS
+    description: "Channel name (with # prefix) or user emails to send the message to."
+    type: string
+    required: true
+    example: "user1@example.com"
+  - name: SP_REDIRECT_URL
+    description: "URL of the environment you use for execution redirection."
+    type: string
+    default: "{{ .metadata.executionUrl }}"
+    example: "{{ .metadata.executionUrl }}"
+    required: true
+  - name: TITLE
+    description: "The snippet's title or name."
+    type: string
+    example: "Check out this snippet!"
+  - name: FILE_TYPE
+    description: "Type of the snippet file to allow foe syntax highlighting, one of https://api.slack.com/types/file#file_types. Default 'text'"
+    type: string
+    example: "php"
+  - name: INITIAL_COMMENT
+    description: "The message text introducing the file in specified channels"
+    type: string
+    example: "Check out this file!"
+
+outputs:
+  - name: message_recipient
+    description: "The ID of the channel or user recipients of the message."
+    type: string
+    example: "C1H9RESGL"
+  - name: message_ts
+    description: "The slack ts id of the message, read more here https://api.slack.com/messaging/retrieving#individual_messages."
+    type: string
+    example: "1610384739.003300"
+
+integrations:
+  - slack

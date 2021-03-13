@@ -1,0 +1,25 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "opsgenie_resolve_incident"
+  description: "Change incident status to resolved."
+  vendor: opsgenie
+  type: notification
+
+envs:
+  - name: USE_EU_API
+    description: "set to true to use 'api.eu.opsgenie.com' instead of default 'api.opsgenie.com'"
+    type: "string"
+    required: false
+  - name: INCIDENT_ID
+    description: "The id of the incident to update."
+    type: string
+    required: true
+    example: "18804a84-4708-4447-b343-f7fd18e8ff44"
+  - name: NOTE
+    description: "The note to create."
+    type: string
+    example: "This incident resolved by StackPulse"
+
+integrations:
+  - opsgenie
