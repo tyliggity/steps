@@ -1,0 +1,46 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "redis_client_list"
+  description: "Get a list of connected Redis clients."
+  vendor: redis
+  type: triage
+
+envs:
+  - name: REDIS_IP 
+    description: "Destination redis IP address (required)."
+    type: "string"
+    required: true
+    example: "127.0.0.1"
+  - name: REDIS_USERNAME
+    description: "The username to use for authentication with redis."
+    type: "string"
+    required: false
+    example: 'myuser'
+  - name: REDIS_PASSWORD
+    description: "Destination redis password (optional)."
+    type: "string"
+    example: '{{ secret "REDIS_PASSWORD" }}'
+  - name: REDIS_URL 
+    description: "Redis url (required if there is no redis IP address specified)."
+    type: "string"
+    example: "redis://<username>:<password>@<host>:<port>/<database>"
+  - name: LIMIT 
+    description: "Maximum amount of clients to be listed. default\: no limit."
+    type: "int"
+    example: 20
+  - name: ORDER_BY
+    description: "Column name to order by. can be one of - addr,age,argv-mem,cmd,db,events,fd,flags,id,idle,multi,name,obl,oll,omem,psub,qbuf-free,sub,tot-mem,user."
+    type: "string"
+    example: "age"
+  - name: ORDER_DESC
+    description: "Wheter sorting is in descending order, if ORDER_BY is specified."
+    type: "bool"
+    default: "false"
+    example: "true"
+
+outputs:
+  - name: output
+    description: "Array of a Redis instance current clients and detailes about them."
+    type: "json"
+    example: '[{"addr":"127.0.0.1:51708","age":"0","argv-mem":"10","cmd":"client","db":"0","events":"r","fd":"8","flags":"N","id":"110","idle":"0","multi":"-1","name":"","obl":"0","oll":"0","omem":"0","psub":"0","qbuf":"26","qbuf-free":"32742","sub":"0","tot-mem":"54298","user":"default"}]'

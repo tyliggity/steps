@@ -1,0 +1,24 @@
+
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "slack_archive_channel"
+  description: "Archive slack channel."
+  vendor: slack
+  type: notification
+
+envs:
+  - name: CHANNEL_NAME
+    description: "The name of the channel that will be archived."
+    type: string
+    required: true
+    example: "my-channel"
+
+outputs:
+  - name: channel_id
+    description: "Slack channel ID that has been archived."
+    type: "string"
+    example: "C01N40B73UL"
+
+integrations:
+  - slack

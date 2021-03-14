@@ -1,0 +1,67 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "stackpulse_update_incident"
+  description: "Update existing incident."
+  vendor: stackpulse
+  type: notification
+
+envs:
+  - name: INCIDENT_ID
+    description: "The incident id to update."
+    type: string
+    required: true
+    example: "INC-00013"
+  - name: NAME
+    description: "Incident name to change (Leave empty or do not mention in step if change isn't required)."
+    type: string
+    example: "MySQL server isn't responsive"
+  - name: COMMANDER
+    description: "Incident commander to change (Leave empty or do not mention in step if change isn't required)."
+    type: string
+    example: "comamnder@company.com"
+  - name: REPORTER
+    description: "Incident reporter to change (Leave empty or do not mention in step if change isn't required)."
+    type: string
+    required: true
+    example: "reporter@company.com"
+  - name: DESCRIPTION
+    description: "Incident description to change (Leave empty or do not mention in step if change isn't required)."
+    type: string
+    example: "We detected that the MySQL server stopped responding to requests"
+  - name: STATUS
+    description: "Incident status to change (Leave empty or do not mention in step if does not require to change), must be one of ['open', 'identified', 'resolved', 'closed']."
+    type: string
+    default: "open"
+    example: "identified"
+  - name: SEVERITY
+    description: "Incident severity to change (Leave empty or do not mention in step if does not require to change) must be one of ['normal', 'high', 'critical']."
+    type: string
+    default: "normal"
+    example: "high"
+  - name: ORIGIN
+    description: "Incident origin to change (Leave empty or do not mention in step if change isn't required)."
+    type: string
+    default: "internal"
+    example: "customer"
+  - name: SLACK_WAR_ROOM_NAME
+    description: "New Slack War Room name (Specify without '#'. Leave empty or do not mention in step if change isn't required)."
+    type: string
+    required: false
+  - name: SLACK_WAR_ROOM_CHANNEL_ID
+    description: "New Slack War Room Channel ID (Leave empty or do not mention in step if change isn't required)."
+    type: string
+    required: false
+  - name: SLACK_WAR_ROOM_TEAM_ID
+    description: "New Slack War Room TEAM ID (Leave empty or do not mention in step if change isn't required)."
+    type: string
+    required: false
+
+outputs:
+  - name: incident_id
+    description: "The updated incident id."
+    type: "string"
+    example: "INC-00226"
+
+integrations:
+  - slack

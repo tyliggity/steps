@@ -1,0 +1,66 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "stackpulse_create_incident"
+  description: "Create new StackPulse incident."
+  vendor: stackpulse
+  type: notification
+
+envs:
+  - name: NAME
+    description: "One liner title for the incident."
+    type: string
+    required: true
+    example: "MySQL server isn't responsive"
+  - name: COMMANDER
+    description: "The identity of the incident commander, should be a StackPulse user."
+    type: string
+    required: true
+    example: "comamnder@company.com"
+  - name: REPORTER
+    description: "The identity of the person creating the incident in StackPulse. For playbook purposes it may be a dummy email e.g. monitoring@company.com"
+    type: string
+    required: true
+    example: "reporter@company.com"
+  - name: DESCRIPTION
+    description: "Free text to describe the incident or its whereabouts."
+    type: string
+    example: "We detected that the MySQL server stopped responding to requests"
+  - name: STATUS
+    description: "Incident status, must be one of ['open', 'identified', 'resolved', 'closed']. Normally when creating an incident the initial status should be 'open'."
+    type: string
+    required: false
+    default: "open"
+    example: "identified"
+  - name: SEVERITY
+    description: "New incident severity, must be one of ['normal', 'high', 'critical']."
+    type: string
+    required: false
+    default: "normal"
+    example: "high"
+  - name: ORIGIN
+    description: "New incident origin, options - internal, monitoring, customer."
+    type: string
+    required: false
+    default: "internal"
+    example: "customer"
+  - name: SLACK_WAR_ROOM_NAME
+    description: "New Slack War Room name (specify without '#')."
+    type: string
+    example: "inc-0005-war-room"
+  - name: SLACK_WAR_ROOM_CHANNEL_ID
+    description: "A valid Slack channel id."
+    type: string
+  - name: SLACK_WAR_ROOM_TEAM_ID
+    description: "New Slack War Room team id."
+    type: string
+
+outputs:
+  - name: incident_id
+    description: "The created incident id."
+    type: "string"
+    example: "INC-00247"
+
+
+integrations:
+  - slack

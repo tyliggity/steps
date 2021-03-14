@@ -1,0 +1,40 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "opsgenie_create_alert"
+  description: "Create a new OpsGenie alert"
+  vendor: opsgenie
+  type: notification
+
+envs:
+  - name: USE_EU_API
+    description: "set to true to use 'api.eu.opsgenie.com' instead of default 'api.opsgenie.com'"
+    type: "string"
+    required: false
+  - name: MESSAGE
+    description: "Alert title in OpsGenie."
+    type: "string"
+    required: true
+  - name: DESCRIPTION
+    description: "Alert description in OpsGenie."
+    type: "string"
+    required: true
+  - name: PRIORITY
+    description: "Alert priority, should be one of the following values 'P1', 'P2', 'P3', 'P4' and 'P5' or empty. (default is 'P3')."
+    type: "string"
+    required: false
+  - name: DETAILS
+    description: "A key value map of extra details attached to the alert (for example 'key1=value1,key2=value2')."
+    type: "string"
+    required: false
+  - name: RESPONDER_TYPE
+    description: "The type of the entity required to respond for this alert. should be one of 'user', 'team', 'escalation', 'schedule'. when specified, this step's variable `RESPONDER_NAME` must also be specified as part of the step."
+    type: "string"
+    required: false
+  - name: RESPONDER_NAME
+    description: "The name of the entity specified in the `RESPONDER_TYPE` variable."
+    type: "string"
+    required: false
+
+integrations:
+  - opsgenie

@@ -1,0 +1,32 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "prometheus_query"
+  description: "Execute a query on Prometheus."
+  vendor: prometheus 
+  type: hydration 
+
+envs:
+  - name: URL
+    required: true
+    description: "Prometheus Endpoint URL."
+    type: "string"
+    example: "https://prometheus.<organization>/"
+  - name: QUERY
+    description: "Query to execute."
+    required: true
+    type: "string"
+    example: 'http_request_total{statuscode="200", method="get"}'
+  - name: TIME
+    description: "Evaluation timestamp in RFC3339 format."
+    type: "string"
+    example: "2020-12-07T10:44:53+00:00"
+  - name: DEBUG
+    description: "Print debug outputs."
+    type: "bool"
+    example: "\"true\",\"false\""
+
+outputs:
+  - name: basic-logs 
+    description: "Raw output of Prometheus query."
+    type: "json"

@@ -1,0 +1,52 @@
+
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "slack_create_channel"
+  description: "Create a new channel, set its topic and purpose, and invite users into it."
+  vendor: slack
+  type: notification
+
+envs:
+  - name: CHANNEL_NAME
+    description: "The name of the channel to create (unique per workspace, by default slack requires the name to contain only lower case characters without spaces, the step will automatically fix invalid inputs)."
+    type: string
+    required: true
+    example: "critical-events"
+  - name: USERS
+    description: "A comma separated list of user emails to invite to the new channel."
+    type: string
+    example: "luna@stackpulse.io,asher@stackpulse.io,avery@stackpulse.io"
+  - name: TOPIC
+    description: "The topic to be set for the new created channel."
+    type: string
+    example: "Channel for reporting critical events"
+  - name: PURPOSE
+    description: "The topic to be set for the new created channel."
+    type: string
+    example: "Critical events only!"
+
+outputs:
+  - name: channel_id
+    description: "Created Slack channel ID."
+    type: "string"
+    example: "C01NDBC5744"
+  - name: channel_name
+    description: "Created Slack channel name."
+    type: "string"
+    example: "my-new-channel"
+  - name: channel_purpose
+    description: "Created Slack channel purpose."
+    type: "string"
+    example: "This is a dedicated slack channel for investigating the recent bug"
+  - name: channel_topic
+    description: "Created Slack channel topic."
+    type: "string"
+    example: "Investigating channel"
+  - name: creation_timestamp
+    description: "Channel creation timestamp."
+    type: "string"
+    example: "1613405599000000000"
+
+integrations:
+  - slack

@@ -1,0 +1,37 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "redis_slowlog"
+  description: "Get the last Redis slowlog entries"
+  vendor: redis
+  type: triage
+
+envs:
+  - name: REDIS_IP 
+    description: "Destination redis IP address (required)"
+    type: "string"
+    required: true
+    example: "127.0.0.1"
+  - name: REDIS_USERNAME
+    description: "The username to use for authentication with redis."
+    type: "string"
+    required: false
+    example: 'myuser'
+  - name: REDIS_PASSWORD
+    description: "Destination redis password (optional)"
+    type: "string"
+    example: '{{ secret "REDIS_PASSWORD" }}'
+  - name: REDIS_URL 
+    description: "Redis url (required if there is no redis IP address specified)"
+    type: "string"
+    example: "redis://<username>:<password>@<host>:<port>/<database>"
+  - name: LAST_ENTRIES 
+    description: "Amount of slowlog entries"
+    type: "string"
+    example: "10"
+
+outputs:
+  - name: output
+    description: "Array of the last slowlog entries in a Redis instance and details about them."
+    type: "json"
+    example: '[{"ID":209,"Time":"2021-01-03T18:45:05+02:00","Duration":32061000,"Args":["SET","key282","value282"],"ClientAddr":"127.0.0.1:59504","ClientName":""},{"ID":208,"Time":"2021-01-03T18:45:05+02:00","Duration":11587000,"Args":["SET","key118","value118"],"ClientAddr":"127.0.0.1:59497","ClientName":""}]'

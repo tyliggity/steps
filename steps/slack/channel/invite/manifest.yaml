@@ -1,0 +1,28 @@
+
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "slack_invite_channel"
+  description: "Invite users into a slack channel."
+  vendor: slack
+  type: notification
+
+envs:
+  - name: CHANNEL_NAME
+    description: "The name of the channel into users will be invited."
+    type: string
+    required: true
+    example: "my-channel"
+  - name: USERS
+    description: "A comma separated list of user emails to invite to the channel."
+    type: string
+    example: "user1@example.com,user2@example.com"
+
+outputs:
+  - name: channel_id
+    description: "Slack channel ID that we invite the users to."
+    type: "string"
+    example: "C01MQCC97F1"
+
+integrations:
+  - slack
