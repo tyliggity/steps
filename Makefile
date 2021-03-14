@@ -109,9 +109,9 @@ validate-vendors:
 publish-vendors:
 	gsutil -m cp -r vendors $(VENDORS_PATH)
 
-.PHONY: lint-all-steps
-lint-all-steps:
-	docker run --rm -it -v $(pwd):/tmp stoplight/spectral --ignore-unknown-format --ruleset=./tmp/infra/lint/spectral.yaml lint /tmp/steps/atlassian/jira/assign-issue/manifest.yaml
+.PHONY: lint-step-manifests
+lint-step-manifests:
+	docker run --rm -it -v $(shell pwd):/tmp stoplight/spectral --ignore-unknown-format --ruleset=./tmp/infra/lint/spectral.yaml lint '/tmp/steps/**/manifest.yaml' -vv
 
 .PHONY: clean
 clean:
