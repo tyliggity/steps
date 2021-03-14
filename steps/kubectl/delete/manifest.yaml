@@ -1,0 +1,74 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "kubectl_delete"
+  description: "Delete a Kubernetes object"
+  vendor: kubernetes
+  type: remediation
+
+envs:
+  - name: KUBECONFIG_CONTENT
+    description: "kubeconfig content for authentication. base64 encoded kubeconfig file. could be provided by kubernetes integration as well."
+    type: "string"
+    required: false
+    example: '{{ secret "KUBECONFIG_CONTENT" }}'
+  - name: NAMESPACE
+    description: "Namespace to run the command in. Default value is 'default'"
+    type: "string"
+    example: "stackpulse"
+  - name: FORMAT
+    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    type: "string"
+    example: "wide"
+  - name: ALL_NAMESPACES
+    description: "If true, running command on all namespaces"
+    type: "bool"
+    example: "true"
+  - name: FIELD_SELECTOR
+    description: "Applying the given field selector to the command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details"
+    type: "string"
+    example: "status.phase=Running"
+  - name: DEBUG
+    description: "Print debug outputs"
+    type: "bool"
+    example: "true"
+  - name: RESOURCE_TYPE
+    description: "Type of the resource to delete (pod, deployment, service, all, etc..)"
+    required: true
+    type: "string"
+    example: "pod"
+  - name: DELETE_ALL
+    description: "If true, deleting all the resources of the specified resource type in the specified namespace. Must specify this or RESOURCE_NAME"
+    type: "bool"
+    example: "true"
+  - name: RESOURCES_NAMES
+    description: "Resource name to delete. Could be either single name or json array [\"obj1\", \"obj2\"..]. Must specify this or DELETE_ALL"
+    type: "string"
+    required: true
+    example: "obj1"
+  - name: GRACE_PERIOD
+    description: "Grace period in seconds for the delete command. Default -1"
+    type: "int"
+    example: "2"
+  - name: IGNORE_NOT_FOUND
+    description: "If true, the command won't fail if the resource has not found. Default false"
+    type: "bool"
+    example: "false"
+  - name: CASCADE
+    description: "If true, cascade the deletion of the resources managed by this resource. Default true"
+    type: "bool"
+    example: "true"
+  - name: TIMEOUT
+    description: "Amount of seconds to wait before giving up on a delete, zero means determine a timeout from the size of the object. Default 0"
+    type: "int"
+    example: "2"
+
+integrations:
+  - k8s
+
+outputs:
+  - name: success
+    description: "Whether the resource deleted"
+    type: "bool"
+    example: "true"
+

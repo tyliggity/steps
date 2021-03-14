@@ -1,0 +1,49 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "jenkins_run"
+  description: "Run build in jenkins"
+  vendor: jenkins
+  type: remediation
+
+envs:
+  - name: USERNAME
+    description: "Username for login"
+    required: true
+    type: "string"
+  - name: PASSWORD
+    required: true
+    description: "Password for login"
+    type: "string"
+  - name: HOST
+    description: "Jenkins host"
+    required: true
+    type: "string"
+    example: "http://org.jenkins.com:8080/"
+  - name: JOB_NAME
+    description: "Job name to run"
+    required: true
+    type: "string"
+  - name: PARAMS
+    description: "Build params JSON"
+    required: false
+    type: "json"
+    example: "{\"param1\":\"val1\", \"param2\":\"val2\"}"
+  - name: WAIT_FOR_BUILD
+    description: "Should wait for Jenkins build to finish (default:false)"
+    required: false
+    type: "bool"
+
+outputs:
+  - name: build_queue_id
+    description: "The build queue ID of the running build from Jenkins."
+    type: "int"
+  - name: build_id
+    description: "The build ID of the new build."
+    type: "string"
+  - name: build_output
+    description: "The build console output. Will be omitted if SHOULD_WAIT wasn't specified."
+    type: "string"
+  - name: succeeded
+    description: "Whether the build succeeded or not. Will be omitted if SHOULD_WAIT wasn't specified."
+    type: "bool"

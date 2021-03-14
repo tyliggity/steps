@@ -1,0 +1,40 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "kubectl_cmd"
+  description: "Run generic kubectl command"
+  vendor: kubernetes
+  type: advanced
+
+envs:
+  - name: KUBECONFIG_CONTENT
+    description: "kubeconfig content for authentication. base64 encoded kubeconfig file. could be provided by kubernetes integration as well."
+    type: "string"
+    required: false
+    example: '{{ secret "KUBECONFIG_CONTENT" }}'
+args:
+  - name: COMMAND
+    description: "kubectl specific command."
+    type: "string"
+    required: true
+    example: "get"
+  - name: SUBCOMMAND
+    description: "kubectl subcommand."
+    type: "string"
+    required: true
+    example: "pods"
+  - name: OPTIONS
+    description: "More command options."
+    type: "string"
+    required: true
+    example: "my-pod"
+
+
+integrations:
+  - k8s
+
+outputs:
+  - name: output
+    description: "Raw output of kubectl command"
+    type: "string"
+    example: 'NAME                                         READY   STATUS    RESTARTS   AGE\n8324d0cb-55fd-4c0b-a11a-ad3dfa5e802e-p68xs   1/1     Running   0          2s'

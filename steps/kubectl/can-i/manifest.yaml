@@ -1,0 +1,44 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "kubectl_can_i"
+  description: "Check whether you authorized to run certain command."
+  vendor: kubernetes
+  type: triage
+
+envs:
+  - name: KUBECONFIG_CONTENT
+    description: "kubeconfig content for authentication. base64 encoded kubeconfig file. could be provided by kubernetes integration as well."
+    type: "string"
+    required: false
+    example: '{{ secret "KUBECONFIG_CONTENT" }}'
+  - name: RESOURCE
+    description: "Resource or command to check if you authorized to do."
+    type: "string"
+    required: true
+    example: "get pods"
+  - name: NAMESPACE
+    description: "Namespace to run the command in. Default value is 'default'."
+    type: "string"
+    example: "my-namespace"
+  - name: FORMAT
+    description: "Output format. default to 'json'. for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    type: "string"
+    example: "wide"
+  - name: ALL_NAMESPACES
+    description: "If true, running command on all namespaces."
+    type: "bool"
+    example: "true"
+  - name: DEBUG
+    description: "Print debug outputs."
+    type: "bool"
+    example: "true"
+
+integrations:
+  - k8s
+
+outputs:
+  - name: cani
+    description: "Whether the command can be executed or not"
+    type: "bool"
+    example: "true"

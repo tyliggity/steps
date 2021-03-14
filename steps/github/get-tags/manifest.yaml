@@ -1,0 +1,34 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "github_get_tags"
+  description: "Query GitHub to retrieve tag references for a given repository."
+  vendor: github
+  type: triage
+envs:
+  - name: OWNER
+    description: "Owner name of the repository (https://github.com/<OWNER>/)."
+    type: "string"
+    example: "my-org"
+    required: true
+  - name: TOKEN
+    description: "Github Oauth token."
+    type: "string"
+    required: true
+  - name: REPOSITORY
+    description: "Github repository name."
+    type: "string"
+    required: true
+    example: "new-service" 
+  - name: NUM_OF_LAST_TAGS
+    description: "Number of tags."
+    type: "string"
+    required: true
+    example: "new-service" 
+  
+outputs:
+  - name: tags
+    description: "n last tags and their associated commit message."
+    type: "json"
+    example: |
+      [{"Name":"21.02.0","Message":"CHANGELOG:\ne751dc6 remove redundant code (#52)\n\n 53fe46f fixed bugs in new flow (#51)\n"},{"Name":"21.01.7","Message":"CHANGELOG:\n53fe46f fixed bugs in new flow (#51)\n\n 57ea5ce saas license agreement added to eula (#50)\n"}]

@@ -1,0 +1,81 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "kubectl_get_events"
+  description: "Get a Kubernetes resource event"
+  vendor: kubernetes
+  type: triage
+
+envs:
+  - name: KUBECONFIG_CONTENT
+    description: "kubeconfig content for authentication. base64 encoded kubeconfig file. could be provided by kubernetes integration as well."
+    type: "string"
+    required: false
+    example: '{{ secret "KUBECONFIG_CONTENT" }}'
+  - name: NAMESPACE
+    description: "Namespace to run the command in. Default value is 'default'"
+    type: "string"
+    example: "stackpulse"
+  - name: FORMAT
+    description: "Output format. default to 'json' for other formats see https://kubernetes.io/docs/reference/kubectl/overview/#output-options"
+    type: "string"
+    example: "wide"
+  - name: ALL_NAMESPACES
+    description: "If true, running command on all namespaces"
+    type: "bool"
+    example: "true"
+  - name: FIELD_SELECTOR
+    description: "Add a field selector to the kubectl command. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors for details"
+    type: "string"
+    example: "status.phase=Running"
+  - name: OBJECT_NAME
+    description: "Using field selector to get events only for this object name"
+    type: "string"
+    required: true
+    example: "my-object"
+  - name: OBJECT_TYPE
+    description: "Using field selector to get events only for this object type"
+    type: "string"
+    example: "service"
+  - name: ORDER_BY
+    description: "Sort the return items by the given json path"
+    type: "string"
+    required: false
+    example: "age"
+  - name: ORDER_BY_DESC
+    description: "Sort the items in descending order"
+    type: "bool"
+    required: false
+    example: "true"
+  - name: FILTER_CONTAINS
+    description: "If set, filter only output lines with field containing the provided value. you can provide more then one key-value pair"
+    type: "json"
+    required: false
+    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+  - name: FILTER_EQUALS
+    description: "If set, filter only output lines with field value equals to the provided value. you can provide more then one key"
+    type: "json"
+    required: false
+    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+  - name: FILTER_NOT_EQUALS
+    description: "If set, filter only output lines with field value not equals the provided value. you can provide more then one key"
+    type: "json"
+    required: false
+    example: "{'ip'\:'1.2.3.4', 'name'\:'foo'}"
+  - name: FILTER_NOT_CONTAINS
+    description: "If set, filter only output lines with field value that doesn't contain the provided value. you can provide more then one key"
+    type: "json"
+    required: false
+
+integrations:
+  - k8s
+
+outputs:
+  - name: items
+    description: "All event items, not filtered"
+    type: "json"
+    example: '[{"lastTimestamp":"2020-12-09T12:39:58Z","message":"Starting kubelet.","objectName":"node1","objectNamespace":"","objectType":"Node","reason":"Starting","type":"Normal"},{"lastTimestamp":"2020-12-09T12:39:58Z","message":"Node node1 status is now: NodeHasSufficientMemory","objectName":"node1","objectNamespace":"","objectType":"Node","reason":"NodeHasSufficientMemory","type":"Normal"}]'
+  - name: filtered
+    description: "If filter given, just the filtered items will be listed here"
+    type: "json"
+    example: '[{"lastTimestamp":"2020-12-09T12:39:58Z","message":"Starting kubelet.","objectName":"node1","objectNamespace":"","objectType":"Node","reason":"Starting","type":"Normal"}]'
