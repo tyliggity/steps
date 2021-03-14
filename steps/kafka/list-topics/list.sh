@@ -1,0 +1,1 @@
+/usr/bin/kafka-topics --zookeeper ${ZOOKEPER_HOST} --list

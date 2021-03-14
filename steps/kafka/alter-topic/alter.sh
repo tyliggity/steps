@@ -1,0 +1,1 @@
+/usr/bin/kafka-configs --zookeeper ${ZOOKEPER_HOST} --entity-type topics --entity-name ${TOPIC_NAME} --alter --add-config "${CONFIG_NAME}=${CONFIG_VAL}"

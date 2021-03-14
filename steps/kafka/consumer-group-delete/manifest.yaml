@@ -1,0 +1,24 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "kafka_delete_consumer_group"
+  description: "Delete a consumer group"
+  vendor: kafka
+  type: remediation
+
+envs:
+  - name: BOOTSTRAP_HOST
+    required: true
+    description: "Bootstrap host"
+    type: string
+    example: "<host>:<port>"
+  - name: GROUP_NAME
+    required: true
+    type: string
+    description: "Group name to delete"
+    example: "kafka-sandbox"
+
+outputs:
+  - name: basic-logs
+    description: "Raw output for the command"
+    type: "string"

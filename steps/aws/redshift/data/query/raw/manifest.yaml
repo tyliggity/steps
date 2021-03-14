@@ -1,0 +1,54 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "aws_redshift_data_query_raw"
+  description: "Running a raw SQL query on a Redshift database."
+  vendor: aws
+  type: triage
+
+envs:
+  - name: CLUSTER
+    description: "The cluster identifier."
+    type: string
+    required: true
+    example: "redshift-cluster-1"
+  - name: REGION
+    description: "AWS region to use."
+    type: string
+    required: true
+    example: "us-west-2"
+  - name: DATABASE
+    description: "The name of the database."
+    type: string
+    required: true
+    example: "dev"
+  - name: TIMEOUT
+    description: "Timeout in seconds for waiting the query results. If not set, or set to 0, not explicit timeout will be set. Supports Go duration syntax (e.g. 10s, 3m)."
+    type: string
+    default: 0s
+    example: "30s"
+  - name: USER
+    description: "The database user name. Either this or the SECRET_ARN field should be set, not both."
+    type: string
+    example: "awsuser"
+  - name: SECRET_ARN
+    description: "The name or ARN of the secret that enables access to the database. Either this or the USER field should be set, not both."
+    type: string
+    example: |
+      arn:aws:secretsmanager:us-west-2:961654671392:secret:redshift-secret-rMh4eb
+  - name: QUERY
+    description: "SQL query to be executed on the cluster."
+    type: string
+    required: true
+    example: "select * from stv_sessions;"
+
+outputs:
+  - name: results
+    description: "JSON array of the query results."
+    type: json
+    example: |
+      [{"db_name":"dev","process":"25121","starttime":"2021-02-28 07:09:05.0","user_name":"awsuser"},{"db_name":"dev","process":"25123","starttime":"2021-02-28 07:09:07.0","user_name":"awsuser"},{"db_name":"dev","process":"25124","starttime":"2021-02-28 07:09:09.0","user_name":"awsuser"},{"db_name":"dev","process":"25151","starttime":"2021-02-28 07:09:14.0","user_name":"awsuser"},{"db_name":"dev","process":"25664","starttime":"2021-02-28 07:13:57.0","user_name":"awsuser"},{"db_name":"dev","process":"30432","starttime":"2021-02-28 10:11:03.0","user_name":"awsuser"},{"db_name":"dev","process":"30433","starttime":"2021-02-28 10:11:06.0","user_name":"awsuser"},{"db_name":"dev","process":"618","starttime":"2021-02-28 10:34:01.0","user_name":"IAM:awsuser"}]
+
+
+integrations:
+  - aws

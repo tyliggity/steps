@@ -1,0 +1,27 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "aws_describe_instances"
+  imageName: "amazon/aws-cli"
+  description: "Describe AWS instances."
+  vendor: aws
+  type: triage 
+
+args:
+  - name: command
+    description: "AWS specific command."
+    type: "string"
+    required: true
+    default: "ec2"
+  - name: subcommand
+    description: "AWS subcommand."
+    type: "string"
+    required: true
+    default: "describe-instances"
+  - name: --region
+    description: "Region to query."
+    type: "string"
+    default: "us-east-2"
+
+integrations:
+  - aws
