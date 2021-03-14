@@ -8,8 +8,8 @@ jobs:
     resource_class: xlarge
     working_directory: ~/project
     steps:
-
       - checkout
+      - make lint-step-manifests
       #- run: TAG=${CIRCLE_TAG} BRANCH=${CIRCLE_BRANCH} make pushbase
       #- run: TAG=${CIRCLE_TAG} BRANCH=${CIRCLE_BRANCH} make pushall packall -j 8
       #- run: pyenv global 3.7.0
