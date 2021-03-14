@@ -1,0 +1,52 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "coralogix_archive"
+  description: "Perform a query on your Coralogix logs that are archived on a S3 bucket without needing to reindex the data."
+  vendor: coralogix
+  type: triage
+
+envs:
+  - name: AWS_REGION
+    description: "The AWS region of the S3 bucket."
+    type: "string"
+    required: true
+
+args:
+  - name: --bucket
+    description: "The name of the S3 bucket to scan."
+    type: "string"
+    required: true
+  - name: --range-start
+    description: "Scan range start time (yyyy-MM-dd[THH24:mm:ssZ])."
+    type: "string"
+    required: true
+    default: "2020-08-18T16:30:00"
+  - name: --range-end
+    description: "Scan range end time (yyyy-MM-dd[THH24:mm:ssZ])."
+    type: "string"
+    required: true
+    default: "2020-08-18T17:00:00"
+  - name: --application-name
+    description: "An application name to scan events for."
+    type: "string"
+    required: false
+  - name: --subsystem
+    description: "An subsystem name to scan events for."
+    type: "string"
+    required: false
+  - name: --severity
+    description: "The severity of the events."
+    type: "string"
+    required: false
+  - name: -c
+    description: "How many lines to read."
+    type: "string"
+    required: false
+  - name: query
+    description: "A Coralogix query to un on archived logs"
+    type: "string"
+    required: false
+
+integrations:
+  - aws

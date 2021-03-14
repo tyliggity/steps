@@ -1,0 +1,44 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "coralogix_insight"
+  description: "Perform a Coralogix insight query."
+  vendor: coralogix
+  type: triage
+
+envs:
+  - name: TOKEN
+    description: "Coralogix Alerts & Rules API Key."
+    type: "string"
+    required: true
+  - name: TYPE
+    description: "Type of insight, one of ['new', 'top', 'suspected']."
+    type: "string"
+    required: true
+  - name: APPLICATION_NAME
+    description: "An application name to get insights for."
+    type: "string"
+    required: false
+  - name: SUBSYSTEM_NAME
+    description: "A subsystem name to get insights for."
+    type: "string"
+    required: false
+  - name: TAG_NAME
+    description: "A tag name to get insights for. Either TAG_NAME or a combination of START_TIME and END_TIME are required but cannot use both."
+    type: "string"
+    required: false
+  - name: SEVERITY
+    description: "Comma separated list of the severities to show (default error, warning, critical)."
+    type: "string"
+    required: false
+    default: error, warning, critical
+  - name: START_DATE
+    description: "A UNIX time in milliseconds from which to get insights. Must be used together with END_DATE. Cannot be used with TAG_NAME."
+    type: "string"
+    required: false
+    default: 1546300800000
+  - name: END_DATE
+    description: "A UNIX time in milliseconds till which to get insights. Must be used together with START_DATE and be later than it. Cannot be used with TAG_NAME."
+    type: "string"
+    required: false
+    default: 1546300800001

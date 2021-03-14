@@ -1,0 +1,23 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "azure_cli_command"
+  imageName: "microsoft/azure-cli"
+  description: "Run commands on Azure environment using azure cli"
+  vendor: azure
+  type: advanced
+
+args:
+  - name: command
+    description: "Azure specific command."
+    type: "string"
+    required: true
+    default: "az"
+  - name: subcommand
+    description: "Azure subcommand."
+    type: "string"
+    required: true
+    default: "account list"
+
+integrations:
+  - azure
