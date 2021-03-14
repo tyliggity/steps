@@ -1,0 +1,45 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "pagerduty_analytics_get_agg_service_data"
+  description: "Get PagerDuty aggregated service data."
+  vendor: pagerduty
+  type: hydration
+
+envs:
+  - name: TIME_RANGE
+    description: "The time range of the report can be one of last_week, last_month or custom."
+    type: string
+    required: true
+    default: last_week
+  - name: SERVICE_IDS
+    description: "Filters the results, showing only incidents for the specified service IDs, separated by comma."
+    type: string
+    example: "P61XKB5,P61XKB5"
+  - name: SERVICE_NAMES
+    description: "Filters the results, showing only incidents for the specified service names, separated by comma."
+    example: "Service1,Service2"
+    type: string
+  - name: CREATED_AT_START
+    description: "Use when time range is custom. The start of the time range over which you want to search, in date-time format."
+    type: string
+    example: "2015-03-06T15:28:51-05:00"
+  - name: CREATED_AT_END
+    description: "Use when time range is custom. The end of the time range over which you want to search, in date-time format."
+    type: string
+    example: "2015-03-07T15:28:51-05:00"
+  - name: TIME_ZONE
+    description: "Time zone in which dates in the result will be rendered."
+    type: string
+    default: UTC
+    example: "UTC"
+
+outputs:
+  - name: api_object
+    description: "JSON object contains raw response information"
+    type: "json"
+    example: |
+      {"aggregate_unit":"day","data":[{"mean_assignment_count":1,"mean_engaged_seconds":0,"mean_engaged_user_count":0,"mean_seconds_to_engage":null,"mean_seconds_to_first_ack":null,"mean_seconds_to_mobilize":null,"mean_seconds_to_resolve":337,"range_start":"2021-02-14T00:00:00.000000","service_id":"PHNJ1GB","service_name":"StackPulse","team_id":null,"team_name":null,"total_business_hour_interruptions":0,"total_engaged_seconds":0,"total_escalation_count":0,"total_incident_count":5,"total_off_hour_interruptions":2,"total_sleep_hour_interruptions":2,"total_snoozed_seconds":0,"up_time_pct":100},{"mean_assignment_count":1,"mean_engaged_seconds":300,"mean_engaged_user_count":0,"mean_seconds_to_engage":null,"mean_seconds_to_first_ack":140,"mean_seconds_to_mobilize":null,"mean_seconds_to_resolve":446,"range_start":"2021-02-15T00:00:00.000000","service_id":"PHNJ1GB","service_name":"StackPulse","team_id":null,"team_name":null,"total_business_hour_interruptions":5,"total_engaged_seconds":1502,"total_escalation_count":0,"total_incident_count":5,"total_off_hour_interruptions":3,"total_sleep_hour_interruptions":0,"total_snoozed_seconds":0,"up_time_pct":100},{"mean_assignment_count":1,"mean_engaged_seconds":0,"mean_engaged_user_count":0,"mean_seconds_to_engage":null,"mean_seconds_to_first_ack":null,"mean_seconds_to_mobilize":null,"mean_seconds_to_resolve":7649,"range_start":"2021-02-10T00:00:00.000000","service_id":"PHNJ1GB","service_name":"StackPulse","team_id":null,"team_name":null,"total_business_hour_interruptions":2,"total_engaged_seconds":0,"total_escalation_count":0,"total_incident_count":2,"total_off_hour_interruptions":0,"total_sleep_hour_interruptions":0,"total_snoozed_seconds":0,"up_time_pct":100},{"mean_assignment_count":1,"mean_engaged_seconds":0,"mean_engaged_user_count":0,"mean_seconds_to_engage":null,"mean_seconds_to_first_ack":null,"mean_seconds_to_mobilize":null,"mean_seconds_to_resolve":599,"range_start":"2021-02-12T00:00:00.000000","service_id":"PHNJ1GB","service_name":"StackPulse","team_id":null,"team_name":null,"total_business_hour_interruptions":0,"total_engaged_seconds":0,"total_escalation_count":0,"total_incident_count":1,"total_off_hour_interruptions":0,"total_sleep_hour_interruptions":2,"total_snoozed_seconds":0,"up_time_pct":100}],"filters":{"created_at_end":"2021-02-16T20:15:28Z","created_at_start":"2021-02-09T20:15:28Z"},"time_zone":"UTC"}
+
+integrations:
+  - pagerduty_token

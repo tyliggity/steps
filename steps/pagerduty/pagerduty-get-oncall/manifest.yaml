@@ -1,0 +1,10 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "pagerduty_get_oncall_schedule"
+  description: "Retrieve On-call Schedule from PagerDuty Account."
+  vendor: pagerduty
+  type: notification
+
+integrations:
+  - pagerduty_token

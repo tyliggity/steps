@@ -1,0 +1,41 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "influxdb_query"
+  description: "Perform an arbitrary InfluxDB query using InfluxDB api."
+  vendor: influxdb
+  type: triage
+
+envs:
+  - name: HOST
+    description: "InfluxDB host (ip/dns)."
+    type: "string"
+    required: true
+  - name: PORT
+    description: "InfluxDB port (8086 by default)."
+    type: "string"
+    required: false
+  - name: USERNAME
+    description: "The username to use when connecting to InfluxDB."
+    type: "string"
+    required: false
+  - name: PASSWORD
+    description: "The password to use when connecting to InfluxDB."
+    type: "string"
+    required: false
+  - name: DATABASE
+    description: "InfluxDB database name."
+    type: "string"
+    required: true
+  - name: SSL
+    description: "Whatever to use ssl when connecting to InfluxDB."
+    type: "bool"
+    required: false
+  - name: UNSAFE_SSL
+    description: "Whatever to honor invalid ssl certificates when connecting to InfluxDB."
+    type: "bool"
+    required: false
+  - name: QUERY
+    description: "InfluxDB query to use."
+    type: "string"
+    required: true

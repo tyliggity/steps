@@ -1,0 +1,33 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "atlassian_jira_assign_issue"
+  description: "Assign a user to a Jira issue"
+  vendor: jira
+  type: notification
+
+envs:
+  - name: JIRA_SITE_NAME
+    description: "The Jira Cloud site name, the prefix before \".atlassian.net\", usually your organization name"
+    type: "string"
+    required: true
+    example: "<organization>"
+  - name: ISSUE_ID
+    description: "ID of the Jira issue we would like to assign a user to."
+    type: "string"
+    required: true
+    example: "ID-1234"
+  - name: ASSIGNEE_EMAIL
+    description: "Email address of the user that will be assigned to the issue."
+    type: "string"
+    required: true
+    example: "myemail@mycompany.io"
+
+integrations:
+  - jira
+
+outputs:
+  - name: assignee_id
+    description: "ID of the Jira assignee account."
+    type: "string"
+    example: "6024db61be86a0006922e5a2"

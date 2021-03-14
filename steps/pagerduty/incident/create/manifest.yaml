@@ -1,0 +1,46 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "pagerduty_incident_create"
+  description: "Create a new PagerDuty incident."
+  vendor: pagerduty
+  type: notification
+
+envs:
+  - name: PAGERDUTY_USER_EMAIL
+    description: "The email address of a valid user associated with the account making the request."
+    type: string
+    required: true
+    example: "user@example.com"
+  - name: SERVICE_NAME
+    description: "The name of the service to create incident for."
+    type: string
+    required: true
+    example: "my-service"
+  - name: URGENCY
+    description: "The new incident urgency, can only be 'low' or 'high'."
+    type: string
+    required: true
+    example: "low"
+  - name: TITLE
+    description: "The title to use for the incident."
+    type: string
+    required: true
+    example: "My new incident"
+
+outputs:
+  - name: id
+    description: "The created incident id."
+    type: string
+  - name: self
+    description: "The API show URL at which the object is accessible."
+    type: string
+  - name: api_object
+    description: "JSON object contains raw incident information"
+    type: json
+    example: |
+      {"type":"incident","summary":"[#5] my-new-incident","self":"https://api.pagerduty.com/incidents/PD6I190","html_url":"https://mbsppdtest1.pagerduty.com/incidents/PD6I190","incident_number":5,"title":"my-new-incident","description":"my-new-incident","created_at":"2021-02-17T11:25:05Z","incident_key":"cdc77f5c121247889bef35771958e3dd","service":{"id":"PJ4F1OF","type":"service_reference","summary":"backend","self":"https://api.pagerduty.com/services/PJ4F1OF","html_url":"https://mbsppdtest1.pagerduty.com/service-directory/PJ4F1OF"},"assignments":[{"at":"2021-02-17T11:25:06Z","assignee":{"id":"P0HDNP7","type":"user_reference","summary":"John Doe","self":"https://api.pagerduty.com/users/P0HDNP7","html_url":"https://mbsppdtest1.pagerduty.com/users/P0HDNP7"}}],"last_status_change_at":"2021-02-17T11:25:05Z","last_status_change_by":{"id":"PJ4F1OF","type":"service_reference","summary":"backend","self":"https://api.pagerduty.com/services/PJ4F1OF","html_url":"https://myaccount.pagerduty.com/service-directory/PJ4F1OF"},"first_trigger_log_entry":{"id":"R2EVM9T16HYZPUPF5BL9L4OD3N","type":"trigger_log_entry_reference","summary":"Triggered through the website","self":"https://api.pagerduty.com/log_entries/R2EVM9T16HYZPUPF5BL9L4OD3N","html_url":"https://.pagerduty.com/incidents/PD6I190/log_entries/R2EVM9T16HYZPUPF5BL9L4OD3N","agent":{},"channel":{"Type":"","Raw":null},"acknowledgement_timeout":0,"incident":{}},"escalation_policy":{"id":"PGWUQVF","type":"escalation_policy_reference","summary":"Default","self":"https://api.pagerduty.com/escalation_policies/PGWUQVF","html_url":"https://myaccount.pagerduty.com/escalation_policies/PGWUQVF"},"urgency":"low","status":"triggered","id":"PD6I190","resolve_reason":{"incident":{}},"alert_counts":{},"body":{},"is_mergeable":true}
+
+
+integrations:
+  - pagerduty_token

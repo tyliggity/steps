@@ -1,0 +1,21 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "replace_string"
+  description: "This step replaces sub-string by another sub-string for give base64 string."
+  vendor: custom
+  type: custom
+
+envs:
+  - name: ORIGINAL_BASE64_STRING
+    description: "The encoded base64 string to handle."
+    type: "string"
+    required: true
+  - name: SUB_STR_SRC
+    description: "The sub-string to replace."
+    type: "string"
+    required: true
+  - name: SUB_STR_DEST
+    description: "The sub-string to replace with."
+    type: "string"
+    required: true

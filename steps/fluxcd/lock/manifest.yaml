@@ -1,0 +1,46 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "fluxcd_lock"
+  description: "Use Flux client to lock or unlock to Kubernetes workload."
+  vendor: fluxcd
+  type: remediation
+
+envs:
+  - name: NAME
+    description: "Kubernetes deployment name."
+    type: "string"
+    required: true
+    example: "nginx-proxy"
+  - name: NAMESPACE
+    description: "Kubernetes namespace."
+    type: "string"
+    example: "default"
+  - name: FLUX_URL
+    description: "FluxCD URL."
+    type: "string"
+    required: true
+    example: "flux.flux:3030/api/flux"
+  - name: USER
+    description: "User performing the operation (either lock or unlock)."
+    type: "string"
+    required: true
+    example: "John Doe"
+  - name: KUBECONFIG_CONTENT
+    description: "base64 encoded kubeconfig."
+    type: "string"
+  - name: GCLOUD_AUTH_CODE_B64
+    description: "base64 encoded GCP service account key."
+    type: "string"
+  - name: LOCK
+    description: "Lock or Unlock deployment (false = Unlock, true = Lock)."
+    type: "bool"
+    required: true
+
+outputs:
+  - name: output
+    description: "Json output contains the operation details."
+    type: "json"
+    example: '{"User":"test-playbook","Operation":"lock","Namespace":"default","Name":"auth-service"}'
+'
+

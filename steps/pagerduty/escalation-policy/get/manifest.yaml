@@ -1,0 +1,40 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "pagerduty_escalation_policy_get"
+  description: "Get PagerDuty escalation policy."
+  vendor: pagerduty
+  type: hydration
+
+envs:
+  - name: ESCALATION_POLICY_ID
+    description: "The id of the escalation policy."
+    type: string
+    required: true
+    example: "PT4KHLK"
+
+outputs:
+  - name: id
+    description: "The escalation policy id."
+    type: "string"
+    example: "PZKYQ07"
+  - name: summary
+    description: "A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to name, though it is not intended to be an identifier."
+    type: "string"
+    example: "John Doe"
+  - name: description
+    description: "Escalation policy description."
+    type: "string"
+    example: "my policy description"
+  - name: self
+    description: "The API show URL at which the object is accessible"
+    type: "string"
+    example: "https://api.pagerduty.com/escalation_policies/PZKYQ07"
+  - name: api_object
+    description: "JSON object contains raw response information"
+    type: "json"
+    example: |
+      {"id":"PZKYQ07","type":"escalation_policy","summary":"mypolicy","self":"https://api.pagerduty.com/escalation_policies/PZKYQ07","html_url":"https://myaccount.pagerduty.com/escalation_policies/PZKYQ07","name":"mypolicy","escalation_rules":[{"id":"PUDKQ17","escalation_delay_in_minutes":30,"targets":[{"id":"P0HDNP7","type":"user_reference","summary":"Jhon Doe","self":"https://api.pagerduty.com/users/P0HDNP7","html_url":"https://myaccount.pagerduty.com/users/P0HDNP7"}]}],"num_loops":2,"teams":[],"description":"my policy description"}
+
+integrations:
+  - pagerduty_token

@@ -1,0 +1,47 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "atlassian_jira_add_attachment"
+  description: "Add an attachment on a Jira issue"
+  vendor: jira
+  type: notification
+
+envs:
+  - name: JIRA_SITE_NAME
+    description: "The Jira Cloud site name, the prefix before \".atlassian.net\", usually your organization name"
+    type: "string"
+    required: true
+    example: "<organization>"
+  - name: ISSUE_ID
+    description: "ID of the Jira issue we would like to add the attachment to."
+    type: "string"
+    required: true
+    example: "ID-1234"
+  - name: ATTACHMENT
+    description: "Multiline text representing the attachment file."
+    type: "string"
+    required: true
+    example: "|\n My file content.\nThe content can be written in multiple lines."
+  - name: ATTACHMENT_NAME
+    description: "Name of the attachment."
+    type: "string"
+    required: true
+    example: "My attachment's name"
+
+outputs:
+  - name: id
+    description: "ID of the Jira created attachment."
+    type: "string"
+    example: "10001"
+  - name: self
+    description: "Jira URL represents the created attachment."
+    type: "string"
+    example: "https://api.atlassian.com/ex/jira/c649675b-58d7-432c-90ec-aed92160348c/rest/api/2/attachment/10004"
+  - name: api_object
+    description: "JSON object contains raw comment information."
+    type: "json"
+    example: |
+      {"self":"https://api.atlassian.com/ex/jira/c649675b-58d7-432c-90ec-aed92160348c/rest/api/2/attachment/10004","id":"10004","filename":"my-attachment","author":{"self":"https://api.atlassian.com/ex/jira/c649675b-58d7-432c-90ec-aed92160348c/rest/api/2/user?accountId=6024db61be86a0006922e5a2","accountId":"6024db61be86a0006922e5a2","accountType":"atlassian","emailAddress":"me@example.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/7e20b8aedb9f907e93aa1051f4618a49?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FMB-0.png","24x24":"https://secure.gravatar.com/avatar/7e20b8aedb9f907e93aa1051f4618a49?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FMB-0.png","16x16":"https://secure.gravatar.com/avatar/7e20b8aedb9f907e93aa1051f4618a49?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FMB-0.png","32x32":"https://secure.gravatar.com/avatar/7e20b8aedb9f907e93aa1051f4618a49?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FMB-0.png"},"displayName":"My Name","active":true,"timeZone":"Asia/Jerusalem"},"created":"2021-02-14T13:41:49.468+0200","size":20,"mimeType":"text/html","content":"https://api.atlassian.com/ex/jira/c649675b-58d7-432c-90ec-aed92160348c/secure/attachment/10004/my-attachment"}
+
+integrations:
+  - jira
