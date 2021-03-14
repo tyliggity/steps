@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/kubectl/get-events
+module github.com/stackpulse/public-steps/steps/kubectl/get-events
 
 go 1.14
 

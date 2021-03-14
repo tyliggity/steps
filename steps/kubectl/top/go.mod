@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/kubectl/top
+module github.com/stackpulse/public-steps/steps/kubectl/top
 
 go 1.14
 

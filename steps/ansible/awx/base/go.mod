@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/ansible/awx/base
+module github.com/stackpulse/public-steps/steps/ansible/awx/base
 
 go 1.15
 

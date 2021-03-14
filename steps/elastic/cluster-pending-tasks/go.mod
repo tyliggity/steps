@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/elastic/cluster-pending-tasks
+module github.com/stackpulse/public-steps/steps/elastic/cluster-pending-tasks
 
 go 1.14
 

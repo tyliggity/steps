@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/kubectl/delete
+module github.com/stackpulse/public-steps/steps/kubectl/delete
 
 go 1.14
 

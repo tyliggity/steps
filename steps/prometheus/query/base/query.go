@@ -4,7 +4,7 @@ import (
 	"context"
 	promv1 "github.com/prometheus/client_golang/api/prometheus/v1"
 	"github.com/prometheus/common/model"
-	"github.com/stackpulse/steps/prometheus/base"
+	"github.com/stackpulse/public-steps/prometheus/base"
 	"time"
 )
 

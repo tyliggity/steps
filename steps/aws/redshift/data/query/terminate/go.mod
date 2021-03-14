@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/redshift/data/query/terminate
+module github.com/stackpulse/public-steps/steps/redshift/data/query/terminate
 
 go 1.16
 

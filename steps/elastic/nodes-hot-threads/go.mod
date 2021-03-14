@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/elastic/nodes-hot-threads
+module github.com/stackpulse/public-steps/steps/elastic/nodes-hot-threads
 
 go 1.14
 

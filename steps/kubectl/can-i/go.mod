@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/kubectl/can_i
+module github.com/stackpulse/public-steps/steps/kubectl/can_i
 
 go 1.14
 

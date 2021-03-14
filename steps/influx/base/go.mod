@@ -1,3 +1,3 @@
-module github.com/stackpulse/steps/influx/base
+module github.com/stackpulse/public-steps/influx/base
 
 go 1.14

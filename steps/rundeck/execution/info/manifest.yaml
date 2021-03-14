@@ -1,0 +1,101 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "rundeck_execution_info"
+  description: "Get execution info."
+  vendor: rundeck
+  type: hydration
+
+envs:
+  - name: HOST
+    description: "Rundeck host name or IP."
+    type: "string"
+    required: true
+    example: "rundeck.server"
+  - name: PORT
+    description: "Rundeck port."
+    type: "string"
+    required: true
+    example: "4040"
+  - name: AUTH_TOKEN
+    description: "Token for authentication."
+    type: "string"
+    required: true
+    example: "DRUVEuCdENoPkUpDkcDcdd6PeKkPdurc"
+  - name: EXECUTION_ID
+    description: "ID of running execution to abort."
+    type: "int"
+    required: true
+    example: 93
+  - name: HTTP_SCHEME
+    description: "HTTP Request scheme. can be either 'http' or 'https'."
+    type: "string"
+    default: "https"
+    example: "http"
+
+
+outputs:
+  - name: id
+    description: "ID of the execution."
+    type: "int"
+    example: 93
+  - name: status
+    description: "Status of the execution. can be 'succeeded', 'failed', 'aborted', 'timedout', 'retried' or 'other'."
+    type: "string"
+    example: "succeeded"
+  - name: description
+    description: "Execution description, the raw command that was executed."
+    type: "string"
+    example: "#!/bin/bash set ..."
+  - name: job
+    description: "Info about the executed job. see details at StackPulse's List jobs' step outputs."
+    type: "json"
+    example: '{"id"\:"846a2025-7895-4af2-a594-a0a9174339ec","name"\:"Promote","group"\:"release","project"\:"anvils","description"\:"promote software packages to the ops repository -- shows dynamic cascading options","options"\:{"packages"\:"app-SNAPSHOT.tgz,db-SNAPSHOT.tgz,web-SNAPSHOT.tgz","release"\:"SNAPSHOT","repository"\:"ci"},"href"\:"http\://192.168.50.2\:4440/api/38/job/846a2025-7895-4af2-a594-a0a9174339ec","permalink"\:"http\://192.168.50.2\:4440/project/anvils/job/show/846a2025-7895-4af2-a594-a0a9174339ec","averageDuration"\:527}'
+  - name: argstring
+    description: "String of raw execution command arguments."
+    type: "string"
+    example: "-packages app-SNAPSHOT.tgz,db-SNAPSHOT.tgz,web-SNAPSHOT.tgz"
+   - name: href
+    description: "Execution HREF url"
+    type: "string"
+    example: "http\://rundeck.server\:4440/api/38/execution/93"
+  - name: permalink
+    description: "Permanent link to Execution"
+    type: "string"
+    example: "http\://rundeck.server\:4440/project/anvils/execution/show/93"
+  - name: project
+    description: "Execution project"
+    type: "string"
+    example: "anvils"
+  - name: execution_type
+    description: "Can be one of \: scheduled (schedule trigger), user (user trigger), user-scheduled (user scheduled trigger)."
+    type: "string"
+    example: "user"
+  - name: user
+    description: "The user which initiated the execution."
+    type: "string"
+    example: "user123"
+  - name: date_started
+    description: "An object that contains the start time of the execution, in both unix time and UTC."
+    type: "json"
+    example: '{"unixtime"\:1613834976713,"date"\:"2021-02-20T15\:29\:36Z"}'
+  - name: date_ended
+    description: "An object that contains the end time of the execution, in both unix time and UTC."
+    type: "json"
+    example: '{"unixtime"\:1613834976713,"date"\:"2021-02-20T15\:29\:36Z"}'
+  - name: successful_nodes
+    description: "If the execution was is finished, a list of node names that succeeded."
+    type: "json"
+    example: '["nodeA", "nodeB"]'
+  - name: unsuccessful_nodes
+    description: "If the execution was is finished, a list of node names that didn't succeed."
+    type: "json"
+    example: '["nodeA", "nodeB"]'
+  - name: custom_status
+    description: "Exit status if the execution status is 'other'."
+    type: "string"
+    example: "custom"
+  - name: server_uuid
+    description: "Server UUID if rundeck is in cluster mode."
+    type: "string"
+    example: "03dcf525-051b-422a-af28-66e51683bbd2"

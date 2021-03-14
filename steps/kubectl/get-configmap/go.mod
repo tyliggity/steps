@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/kubectl/get-configmap
+module github.com/stackpulse/public-steps/steps/kubectl/get-configmap
 
 go 1.14
 

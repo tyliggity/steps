@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/redshift/data/query/raw
+module github.com/stackpulse/public-steps/steps/redshift/data/query/raw
 
 go 1.16
 

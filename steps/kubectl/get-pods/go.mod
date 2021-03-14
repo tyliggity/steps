@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/kubectl/get-pods
+module github.com/stackpulse/public-steps/steps/kubectl/get-pods
 
 go 1.14
 

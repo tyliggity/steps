@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/stackpulse/public-steps/common/step"
-	"github.com/stackpulse/public-steps/public-steps/ansible/awx/base"
+	"github.com/stackpulse/public-steps/steps/ansible/awx/base"
 	"strconv"
 )
 

@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/elastic/cluster-stats
+module github.com/stackpulse/public-steps/steps/elastic/cluster-stats
 
 go 1.14
 

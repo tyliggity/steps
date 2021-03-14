@@ -1,0 +1,105 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "postgresql_query_cancel"
+  description: "Cancel a running Postgres query. It will shutdown the query gracefully."
+  vendor: postgres 
+  type: remediation
+
+envs:
+  - name: HOST
+    required: true
+    description: "PostgreSQL Server Address."
+    type: "string"
+  - name: PASSWORD 
+    description: "PostgreSQL Password."
+    required: true
+    type: "string"
+  - name: PORT
+    description: "PostgreSQL Port."
+    required: true
+    type: "int"
+    default: "5432"
+  - name: USER
+    description: "PostgreSQL User."
+    required: true
+    type: "string"
+  - name: DB
+    description: "PosgreSQL Database Name."
+    required: true
+    type: "string"
+  - name: FIELD_SEPERATOR
+    description: "Field separator for psql command (`-F` in psql docs). Relevant for output parsing, override only if output contains the default separator\: ';;-;;'"
+    type: "string"
+    required: false
+  - name: RECORD_SEPERATOR
+    description: "Record separator for psql command (`-R` in psql docs). Relevant for output parsing, override only if output contains the default separator\: ';;=;;'"
+    type: "string"
+    required: false
+  - name: USE_SSH
+    description: "If true, using SSH to access the postgres server"
+    type: "bool"
+    required: false
+  - name: SSH_HOST
+    description: "Required in SSH mode. The SSH host to connect to"
+    type: "string"
+    required: false
+  - name: SSH_KEY
+    description: "Required in SSH mode. The SSH key using to connect to the SSH host"
+    type: "string"
+    required: false
+  - name: SSH_USER
+    description: "Required in SSH mode. The SSH user to connect with"
+    type: "string"
+    required: false
+  - name: SSH_PORT
+    description: "The SSH port to connect to (default\: 22). Ignored when not in SSH mode."
+    type: "string"
+    required: false
+  - name: SSH_REMOTE_POSTGRES_SERVER
+    description: "The postgres remote host to connect from the SSH host (default\: 127.0.0.1). Ignored when not in SSH mode."
+    type: "string"
+    required: false
+  - name: SSH_REMOTE_POSTGRES_PORT
+    description: "The postgres remote port to connect from the SSH host (default\: 5432). Ignored when not in SSH mode."
+    type: "string"
+    required: false
+  - name: SSH_WAIT_FOR_TUNNEL_TIMEOUT
+    description: "Timeout waiting for the tunnel to start listening (default\: 30s). Ignored when not in SSH mode."
+    type: "string"
+    required: false
+    example: "30s"
+  - name: SSH_TUNNEL_MODE
+    description: "If true, using SSH tunnel mode (tunneling the connection to a remote postgres host over SSH and connecting psql locally over the tunnel). Ignored when not in SSH mode."
+    type: "string"
+    required: false
+  - name: USE_DOCKER_EXEC
+    description: "If true, using running PSQL over docker exec command (can be combined with USE_SSH)"
+    type: "bool"
+    required: false
+  - name: DOCKER_CONTAINER_NAME
+    description: "Required in DOCKER_EXEC mode. The container name which the psql will run inside"
+    type: "string"
+    required: false
+  - name: DOCKER_USE_SUDO
+    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode"
+    type: "bool"
+    required: false
+  - name: DOCKER_USE_SUDO
+    description: "Use sudo for running docker. Ignored when not in DOCKER_EXEC mode"
+    type: "bool"
+    required: false
+  - name: DOCKER_CONTAINER_POSTGRES_SERVER
+    description: "The postgres server host inside the docker container (default\: 127.0.0.1). Ignored when not in DOCKER_EXEC mode"
+    type: "string"
+    required: false
+  - name: PIDS
+    description: "PIDS of Postgres queries to cancel separated by ','"
+    type: "int"
+    required: true
+
+outputs:
+  - name: canceled
+    description: "Number of PIDs which cancel signal was sent to"
+    type: "int"
+    example: '3'

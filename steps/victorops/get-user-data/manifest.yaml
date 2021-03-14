@@ -1,0 +1,21 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "victorops_get_user_data"
+  description: "Retrieve Data for a specified VictorOps User ID."
+  vendor: victorops
+  type: notification 
+
+envs:
+  - name: VICTOROPS_API_ID
+    description: "API ID to access VictorOps API."
+    type: "string"
+    required: true
+  - name: VICTOROPS_API_KEY
+    description: "API key to access VictorOps API."
+    type: "string"
+    required: true
+  - name: USER_NAME
+    description: "The VictorOps username to retrieve his data."
+    type: "string"
+    required: true

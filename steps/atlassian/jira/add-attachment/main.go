@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/stackpulse/steps/atlassian/jira/base"
-	"github.com/stackpulse/steps/common/env"
-	"github.com/stackpulse/steps/common/step"
+	"github.com/stackpulse/public-steps/atlassian/jira/base"
+	"github.com/stackpulse/public-steps/common/env"
+	"github.com/stackpulse/public-steps/common/step"
 	"golang.org/x/oauth2"
 )
 

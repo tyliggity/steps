@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/kubectl/apply-file
+module github.com/stackpulse/public-steps/steps/kubectl/apply-file
 
 go 1.14
 

@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/elastic/nodes-stats
+module github.com/stackpulse/public-steps/steps/elastic/nodes-stats
 
 go 1.14
 

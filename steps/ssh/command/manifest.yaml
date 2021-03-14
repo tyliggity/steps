@@ -1,0 +1,76 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "ssh_command"
+  description: "Run command over ssh protocol."
+  vendor: ssh
+  type: triage
+
+envs:
+  - name: USERNAME
+    description: "Host username to access."
+    type: "string"
+    required: true
+    example: "ubuntu"
+  - name: HOSTNAME
+    description: "Host name for the ssh connection."
+    type: "bool"
+    required: true
+    example: "192.168.17.43"
+  - name: COMMAND
+    description: "The command to run over ssh."
+    type: "string"
+    required: true
+    example: "df -h"
+  - name: PRIVATE_KEY
+    description: "SSH private key."
+    type: "string"
+    required: true
+    example: "-----BEGIN OPENSSH PRIVATE KEY-----
+              b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+              QyNTUxWQAAACDkhQbn17U4OmaFDQSNu12345a284YG/gMEdwKcmd8d9wAAAKAu1CIzLtQi
+              MwAAAAtzc2gtZWQyNTUxOQAAACDWhQbn17U4OmaFDQSNu92317a284YG/gMEdwKcmd8d9w
+              AAAEAKXi8poF5fWye1AAAA+9eHCuoMpuprAGJrICJY70AUkuSFBufXtTg6ZoUNBI273bfX
+              trbzhgb+AwR3ApyZ3x33AAAAFnlvdXJfZW1haWxAZXhAAAAAAAAAAAAAAAAAAAAA
+              -----END OPENSSH PRIVATE KEY-----"
+  - name: STRICT_HOST_KEY_CHECKING
+    description: "whether use strict host key checking."
+    type: "string"
+    required: false
+    default: no
+    example: "yes"
+  - name: LOG_LEVEL
+    description: "ssh log level verbosity."
+    type: "string"
+    required: false
+    default: error
+    example: "info"
+  - name: PORT
+    description: "SSH port (default 22)."
+    type: "string"
+    required: false
+    example: "2222"
+  - name: CONNECTION_TIMEOUT
+    description: "Timeout waiting for SSH connection (default 30s)."
+    type: "string"
+    required: false
+    example: "1m"
+
+outputs:
+  - name: output
+    description: "Raw output for the given ssh command"
+    type: "string"
+    example: "{\"output\": \"
+        PID    PPID CMD                         %MEM %CPU
+        1187       1 /home/kubernetes/bin/kubele  1.6  5.0
+        1117       1 /usr/bin/dockerd --registry  1.5  3.7
+        3854    3835 /spd                         1.0  0.3
+        239293  239276 /microservice                0.8  0.7
+        2454    2437 /otelsvc --config=/conf/gke  0.8  0.2
+        2063    2045 /usr/bi
+        n/watcher --backend_  0.8  0.1
+        3558    3540 /gke-metadata-server --logt  0.7  0.1
+        5584    5566 /opt/stackpulse/microservic  0.7  0.4
+        1211       1 /home/kubernetes/bin/node-p  0.6  0.0
+        2385    2365 /fluent-bit/bin/fluent-bit   0.5  0.3
+      \"} "

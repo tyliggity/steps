@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/kubectl/get-nodes
+module github.com/stackpulse/public-steps/steps/kubectl/get-nodes
 
 go 1.14
 

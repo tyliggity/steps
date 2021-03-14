@@ -8,7 +8,7 @@ import (
 
 	"github.com/stackpulse/public-steps/common/log"
 	"github.com/stackpulse/public-steps/common/step"
-	"github.com/stackpulse/public-steps/public-steps/jenkins/base"
+	"github.com/stackpulse/public-steps/steps/jenkins/base"
 )
 
 const MaxJobWait = 185 * time.Second // Max timeout for step is 200 seconds, so I want to return earlier

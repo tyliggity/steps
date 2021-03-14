@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/redshift/data/query/slow-queries
+module github.com/stackpulse/public-steps/steps/redshift/data/query/slow-queries
 
 go 1.16
 

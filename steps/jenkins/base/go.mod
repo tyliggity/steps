@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/jenkins/base
+module github.com/stackpulse/public-steps/steps/jenkins/base
 
 go 1.15
 

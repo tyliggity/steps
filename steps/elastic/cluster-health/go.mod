@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/public-steps/elastic/cluster-health
+module github.com/stackpulse/public-steps/steps/elastic/cluster-health
 
 go 1.14
 
