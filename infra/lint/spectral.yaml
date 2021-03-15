@@ -27,8 +27,12 @@ rules:
       functionOptions:
         type: macro
 
+
+
   step-output-name-must-be-snake-case:
     description: Step output varialbe name must be snake case.
+
+    message: "The output variable '{{value}}' isn't a valid snake case string"
     type: style
     severity: error
     given: "$.outputs[*].name"

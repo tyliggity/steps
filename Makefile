@@ -43,15 +43,15 @@ define declare-build-rule
 endef
 
 # declare-docker-rule(name, tag)
-define declare-push-rule
-	$(eval $(1)_pushname := $(call rulename, $(1)))                                                                            \
-	$(eval $(1)_tagname := $(CONTAINER_REGISTRY)/$(call remove-step-prefix,$(call directory-name, $(1))))                      \
-	$(eval .PHONY: push-$($(1)_pushname)-$(2))                                                                                 \
-	$(eval                                                                                                                     \
-		push-$($(1)_pushname)-$(2): build-$($(1)_pushname)-$(2) ; $$(info === pushing $($(1)_tagname):$(2)...)
-			docker push $($(1)_tagname):$(2)
-	)
-endef
+#define declare-push-rule
+#	$(eval $(1)_pushname := $(call rulename, $(1)))                                                                            \
+#	$(eval $(1)_tagname := $(CONTAINER_REGISTRY)/$(call remove-step-prefix,$(call directory-name, $(1))))                      \
+#	$(eval .PHONY: push-$($(1)_pushname)-$(2))                                                                                 \
+#	$(eval                                                                                                                     \
+#		push-$($(1)_pushname)-$(2): build-$($(1)_pushname)-$(2) ; $$(info === pushing $($(1)_tagname):$(2)...)
+#			docker push $($(1)_tagname):$(2)
+#	)
+#endef
 
 # manifest-build-rule(path)
 define declare-manifest-build-rule
@@ -70,6 +70,8 @@ all: buildall
 
 buildall: $(foreach target,$(TARGETS),build-$(call rulename, $(target)))
 pushall: $(foreach target,$(TARGETS),push-$(call rulename, $(target)))
+BUILD_BASES := $(filter %base, $(foreach target,$(TARGETS),build-$(call rulename, $(target))))
+buildallbases: $(shell echo $(BUILD_BASES) | sort)
 
 BASES := $(filter %base, $(foreach target,$(TARGETS),push-$(call rulename, $(target))))
 pushbase: $(shell echo $(BASES) | sort)

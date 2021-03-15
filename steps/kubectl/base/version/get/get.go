@@ -60,9 +60,11 @@ func (v *GetVersion) Parse(output []byte) (string, error) {
 			return "", fmt.Errorf("can't find clientVersion key in output")
 		}
 		retGc.Set(gc.S("clientVersion", "gitVersion").Data(), "clientVersion", "version")
+		retGc.Set(gc.S("clientVersion", "gitVersion").Data(), "client_version", "version")
 
 		if gc.Exists("serverVersion") {
 			retGc.Set(gc.S("serverVersion", "gitVersion").Data(), "serverVersion", "version")
+			retGc.Set(gc.S("serverVersion", "gitVersion").Data(), "server_version", "version")
 		}
 	}
 

@@ -30,11 +30,11 @@ integrations:
   - k8s
 
 outputs:
-  - name: clientVersion
+  - name: client_version
     description: "Kubectl client version."
     type: "json"
     example: '{"buildDate":"2020-07-15T16:58:53Z","compiler":"gc","gitCommit":"dff82dc0de47299ab66c83c626e08b245ab19037","gitTreeState":"clean","gitVersion":"v1.18.6","goVersion":"go1.13.9","major":"1","minor":"18","platform":"linux/amd64"}'
-  - name: serverVersion
+  - name: server_version
     description: "Kubernetes server version."
     type: "json"
     example: '{"buildDate":"2020-10-28T09:23:22Z","compiler":"gc","gitCommit":"7ed5ddc0e67cb68296994f0b754cec45450d6a64","gitTreeState":"clean","gitVersion":"v1.16.15.4300","goVersion":"go1.13.15b4","major":"1","minor":"16+","platform":"linux/amd64"}'
