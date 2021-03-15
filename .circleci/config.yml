@@ -17,6 +17,7 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
+      - run: TAG=${CIRCLE_TAG} BRANCH=${CIRCLE_BRANCH} make buildall
       #- run: TAG=${CIRCLE_TAG} BRANCH=${CIRCLE_BRANCH} make pushbase
       #- run: TAG=${CIRCLE_TAG} BRANCH=${CIRCLE_BRANCH} make pushall packall -j 8
       #- run: pyenv global 3.7.0
