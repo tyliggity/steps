@@ -3,7 +3,7 @@ package log
 import (
 	"log"
 
-	"github.com/stackpulse/public-steps/common/env"
+	"github.com/stackpulse/steps-sdk-go/env"
 )
 
 func Log(msg string, args ...interface{}) {

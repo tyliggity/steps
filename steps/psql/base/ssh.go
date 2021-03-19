@@ -3,14 +3,15 @@ package base
 import (
 	"bytes"
 	"fmt"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/log"
 	"io/ioutil"
 	"net"
 	"os"
 	"os/exec"
 	"strconv"
 	"time"
+
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/log"
 )
 
 // For overriding those env in SSH tunnel mode, pay attention to change those as well if you change the env struct tags

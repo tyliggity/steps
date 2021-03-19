@@ -1,9 +1,10 @@
 package raw
 
 import (
-	"github.com/Jeffail/gabs"
-	"github.com/stackpulse/public-steps/common/env"
 	"strings"
+
+	"github.com/Jeffail/gabs"
+	"github.com/stackpulse/steps-sdk-go/env"
 )
 
 func Format(dataB []byte) (string, error) {

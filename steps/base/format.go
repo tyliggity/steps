@@ -3,13 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/formats/json"
-	"github.com/stackpulse/public-steps/common/formats/raw"
-	"github.com/stackpulse/public-steps/common/gcs"
 	"io/ioutil"
 	"os"
 	"strings"
+
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/formats/json"
+	"github.com/stackpulse/steps-sdk-go/formats/raw"
+	"github.com/stackpulse/steps-sdk-go/gcs"
 )
 
 type formatArgs struct {

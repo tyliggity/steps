@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/stackpulse/public-steps/kubectl/base"
 	"github.com/stackpulse/public-steps/kubectl/base/configmaps/get"
-	"os"
 )
 
 func run() (int, error) {

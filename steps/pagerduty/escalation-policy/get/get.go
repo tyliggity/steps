@@ -6,9 +6,9 @@ import (
 
 	pd "github.com/PagerDuty/go-pagerduty"
 
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/step"
 	"github.com/stackpulse/public-steps/pagerduty/base"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type pagerDutyEscalationPolicyGet struct {

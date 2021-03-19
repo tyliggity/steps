@@ -2,9 +2,10 @@ package sort
 
 import (
 	"fmt"
+	"sort"
+
 	"github.com/Jeffail/gabs/v2"
 	"maze.io/x/duration.v1"
-	"sort"
 )
 
 func tryCompareDurations(valA, valB string) (res bool, ok bool) {

@@ -9,8 +9,8 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/step"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 const (

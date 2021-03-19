@@ -3,12 +3,13 @@ package base
 import (
 	"crypto/tls"
 	"fmt"
-	"github.com/Jeffail/gabs"
-	envconf "github.com/caarlos0/env/v6"
 	"io/ioutil"
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/Jeffail/gabs"
+	envconf "github.com/caarlos0/env/v6"
 )
 
 type Args struct {

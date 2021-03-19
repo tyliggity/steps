@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 	envconf "github.com/caarlos0/env/v6"
-	jsonFormatter "github.com/stackpulse/public-steps/common/formats/json"
-	"github.com/stackpulse/public-steps/common/step"
 	"github.com/stackpulse/public-steps/istio/base"
+	jsonFormatter "github.com/stackpulse/steps-sdk-go/formats/json"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 const proxyConfigArgument = "proxy-config"

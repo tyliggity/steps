@@ -3,9 +3,10 @@ package get
 import (
 	"encoding/base64"
 	"fmt"
-	base2 "github.com/stackpulse/public-steps/kubectl/base"
 	"io/ioutil"
 	"os"
+
+	base2 "github.com/stackpulse/public-steps/kubectl/base"
 )
 
 type Args struct {

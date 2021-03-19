@@ -2,10 +2,10 @@ package main
 
 import (
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/common/exec"
-	"github.com/stackpulse/public-steps/common/log"
-	"github.com/stackpulse/public-steps/common/step"
 	"github.com/stackpulse/public-steps/influx/base"
+	"github.com/stackpulse/steps-sdk-go/exec"
+	"github.com/stackpulse/steps-sdk-go/log"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type Args struct {

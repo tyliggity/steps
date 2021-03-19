@@ -2,10 +2,11 @@ package query
 
 import (
 	"fmt"
+	"time"
+
 	envconf "github.com/caarlos0/env/v6"
 	"github.com/prometheus/common/model"
 	queryBase "github.com/stackpulse/public-steps/prometheus/query/base"
-	"time"
 )
 
 type BaseArgs struct {

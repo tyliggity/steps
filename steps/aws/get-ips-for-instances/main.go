@@ -4,12 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
+
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/step"
-	"reflect"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 const (

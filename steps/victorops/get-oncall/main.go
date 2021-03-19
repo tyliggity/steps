@@ -1,11 +1,12 @@
 package main
 
 import (
-	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/common/step"
-	"github.com/stackpulse/public-steps/victorops/base"
 	"io/ioutil"
 	"net/http"
+
+	envconf "github.com/caarlos0/env/v6"
+	"github.com/stackpulse/public-steps/victorops/base"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type Args struct {

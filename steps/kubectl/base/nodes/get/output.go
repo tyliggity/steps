@@ -1,10 +1,11 @@
 package get
 
 import (
-	"github.com/Jeffail/gabs/v2"
-	base2 "github.com/stackpulse/public-steps/kubectl/base"
 	"strings"
 	"time"
+
+	"github.com/Jeffail/gabs/v2"
+	base2 "github.com/stackpulse/public-steps/kubectl/base"
 )
 
 const (

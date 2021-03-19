@@ -2,9 +2,10 @@ package get
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/Jeffail/gabs/v2"
 	base2 "github.com/stackpulse/public-steps/kubectl/base"
-	"time"
 )
 
 const ContainerStatusesPath = "status.containerStatuses"

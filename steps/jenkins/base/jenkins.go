@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/bndr/gojenkins"
-	"github.com/stackpulse/public-steps/common/env"
+	"github.com/stackpulse/steps-sdk-go/env"
 )
 
 type Args struct {

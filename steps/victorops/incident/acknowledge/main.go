@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/step"
 	"github.com/stackpulse/public-steps/victorops/base"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type IncidentAcknowledge struct {

@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	"github.com/stackpulse/public-steps/atlassian/jira/base"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/step"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/step"
 	"golang.org/x/oauth2"
 )
 

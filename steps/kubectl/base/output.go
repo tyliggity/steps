@@ -2,14 +2,15 @@ package base
 
 import (
 	"fmt"
-	"github.com/Jeffail/gabs/v2"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/filter"
-	"github.com/stackpulse/public-steps/common/log"
-	"github.com/stackpulse/public-steps/common/sort"
-	"maze.io/x/duration.v1"
 	"strings"
 	"time"
+
+	"github.com/Jeffail/gabs/v2"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/filter"
+	"github.com/stackpulse/steps-sdk-go/log"
+	"github.com/stackpulse/steps-sdk-go/sort"
+	"maze.io/x/duration.v1"
 )
 
 const ItemsArrayName = "items"

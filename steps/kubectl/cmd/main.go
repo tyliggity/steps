@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/step"
-	"github.com/stackpulse/public-steps/kubectl/base"
 	"os"
+
+	"github.com/stackpulse/public-steps/kubectl/base"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type KubectlCmd struct {

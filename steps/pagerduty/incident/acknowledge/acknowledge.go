@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/Jeffail/gabs/v2"
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/common/step"
 	"github.com/stackpulse/public-steps/pagerduty/incident/base"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type Args struct {

@@ -3,8 +3,8 @@ module github.com/stackpulse/public-steps/steps/elastic/cluster-health
 go 1.14
 
 replace (
-	github.com/stackpulse/public-steps/common v0.0.0 => ../../common
 	github.com/stackpulse/public-steps/elastic/base v0.0.0 => ../base
+	github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f => ../../common
 )
 
 require (

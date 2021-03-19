@@ -1,10 +1,11 @@
 package filter
 
 import (
-	"github.com/Jeffail/gabs/v2"
-	"github.com/stackpulse/public-steps/common/log"
-	"maze.io/x/duration.v1"
 	"strings"
+
+	"github.com/Jeffail/gabs/v2"
+	"github.com/stackpulse/steps-sdk-go/log"
+	"maze.io/x/duration.v1"
 )
 
 type JSONFilter struct {

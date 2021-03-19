@@ -1,8 +1,9 @@
 package exec
 
 import (
-	"github.com/stackpulse/public-steps/common/step"
 	"os/exec"
+
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 func Execute(command string, args []string) (output []byte, exitCode int, err error) {

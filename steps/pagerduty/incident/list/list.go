@@ -6,11 +6,11 @@ import (
 
 	pd "github.com/PagerDuty/go-pagerduty"
 
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/log"
-	"github.com/stackpulse/public-steps/common/step"
 	pgBase "github.com/stackpulse/public-steps/pagerduty/base"
 	"github.com/stackpulse/public-steps/pagerduty/incident/base"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/log"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type pagerDutyIncidentList struct {

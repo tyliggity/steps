@@ -3,12 +3,13 @@ package env
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/caarlos0/env/v6"
 	"net/url"
 	"reflect"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/caarlos0/env/v6"
 )
 
 // Those parsers are from the 'env' source code

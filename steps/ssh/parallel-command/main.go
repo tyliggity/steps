@@ -3,15 +3,17 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/secretsmanager"
 
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/exec"
-	"github.com/stackpulse/public-steps/common/step"
 	"io/ioutil"
 	"sync"
+
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/exec"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type Args struct {

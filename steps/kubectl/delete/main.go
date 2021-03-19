@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/Jeffail/gabs/v2"
-	"github.com/stackpulse/public-steps/common/env"
 	"github.com/stackpulse/public-steps/kubectl/base"
 	kctDelete "github.com/stackpulse/public-steps/kubectl/base/delete"
-	"os"
+	"github.com/stackpulse/steps-sdk-go/env"
 )
 
 func run() (int, error) {

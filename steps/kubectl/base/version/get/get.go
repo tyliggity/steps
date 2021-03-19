@@ -2,9 +2,10 @@ package get
 
 import (
 	"fmt"
+
 	"github.com/Jeffail/gabs/v2"
-	"github.com/stackpulse/public-steps/common/env"
 	base2 "github.com/stackpulse/public-steps/kubectl/base"
+	"github.com/stackpulse/steps-sdk-go/env"
 )
 
 type Args struct {

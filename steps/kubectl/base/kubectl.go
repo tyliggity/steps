@@ -1,9 +1,10 @@
 package base
 
 import (
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/log"
 	"os/exec"
+
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/log"
 )
 
 type KubectlStep struct {

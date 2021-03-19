@@ -6,8 +6,8 @@ import (
 
 	"cloud.google.com/go/bigquery"
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/common/log"
-	"github.com/stackpulse/public-steps/common/step"
+	"github.com/stackpulse/steps-sdk-go/log"
+	"github.com/stackpulse/steps-sdk-go/step"
 	"google.golang.org/api/iterator"
 )
 

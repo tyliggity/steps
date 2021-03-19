@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/stackpulse/public-steps/prometheus/base"
 	rangeBase "github.com/stackpulse/public-steps/prometheus/query/range/base"
 )

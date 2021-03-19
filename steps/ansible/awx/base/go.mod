@@ -2,8 +2,4 @@ module github.com/stackpulse/public-steps/steps/ansible/awx/base
 
 go 1.15
 
-require (
-	github.com/stackpulse/public-steps/common v0.0.0
-)
-
-replace github.com/stackpulse/public-steps/common v0.0.0 => ../../../common
+require github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f

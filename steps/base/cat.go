@@ -3,8 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/stackpulse/public-steps/common/gcs"
 	"os"
+
+	"github.com/stackpulse/steps-sdk-go/gcs"
 )
 
 type catArgs struct {

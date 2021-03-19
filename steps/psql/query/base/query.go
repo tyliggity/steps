@@ -2,11 +2,12 @@ package query
 
 import (
 	"fmt"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/psql/base"
 	"io/ioutil"
 	"os"
 	"strings"
+
+	"github.com/stackpulse/public-steps/psql/base"
+	"github.com/stackpulse/steps-sdk-go/env"
 )
 
 const QueryFile = "/tmp/query.txt"

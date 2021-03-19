@@ -7,8 +7,8 @@ import (
 	envconf "github.com/caarlos0/env/v6"
 	"github.com/opsgenie/opsgenie-go-sdk-v2/incident"
 	"github.com/opsgenie/opsgenie-go-sdk-v2/service"
-	"github.com/stackpulse/public-steps/common/step"
 	"github.com/stackpulse/public-steps/opsgenie/base"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type Args struct {

@@ -3,9 +3,10 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"os"
+
 	envconf "github.com/caarlos0/env/v6"
 	elastic "github.com/stackpulse/public-steps/elastic/base"
-	"os"
 )
 
 func main() {

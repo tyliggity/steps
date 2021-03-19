@@ -5,13 +5,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	envconf "github.com/caarlos0/env/v6"
-	"github.com/himalayan-institute/zoom-lib-golang"
-	"github.com/stackpulse/public-steps/common/step"
-	"github.com/stackpulse/public-steps/zoom/base"
-	"golang.org/x/oauth2"
 	"io/ioutil"
 	"net/http"
+
+	envconf "github.com/caarlos0/env/v6"
+	"github.com/himalayan-institute/zoom-lib-golang"
+	"github.com/stackpulse/public-steps/zoom/base"
+	"github.com/stackpulse/steps-sdk-go/step"
+	"golang.org/x/oauth2"
 )
 
 type Args struct {

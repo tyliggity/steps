@@ -2,12 +2,13 @@ package can_i
 
 import (
 	"fmt"
-	"github.com/Jeffail/gabs"
-	"github.com/google/shlex"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/kubectl/base"
 	"regexp"
 	"strings"
+
+	"github.com/Jeffail/gabs"
+	"github.com/google/shlex"
+	"github.com/stackpulse/public-steps/kubectl/base"
+	"github.com/stackpulse/steps-sdk-go/env"
 )
 
 type Args struct {

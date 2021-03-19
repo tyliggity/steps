@@ -15,7 +15,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/redshiftdata"
 	"github.com/aws/aws-sdk-go-v2/service/redshiftdata/types"
 	"github.com/olekukonko/tablewriter"
-	"github.com/stackpulse/public-steps/common/log"
+	"github.com/stackpulse/steps-sdk-go/log"
 )
 
 var ErrTimeout = fmt.Errorf("timeout")

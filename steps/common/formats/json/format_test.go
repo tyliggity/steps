@@ -3,7 +3,7 @@ package json
 import (
 	"fmt"
 
-	"github.com/stackpulse/public-steps/common/env"
+	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stretchr/testify/assert"
 
 	"os"

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/stackpulse/public-steps/common/step"
 	"github.com/stackpulse/public-steps/rabbitmq/queues/base"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type RMQQueues struct {

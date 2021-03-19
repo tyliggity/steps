@@ -6,9 +6,9 @@ import (
 
 	"github.com/stackpulse/public-steps/redshift/base"
 
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/log"
-	"github.com/stackpulse/public-steps/common/step"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/log"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type redshiftTerminateSession struct {

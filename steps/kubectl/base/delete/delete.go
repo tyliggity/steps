@@ -2,9 +2,10 @@ package delete
 
 import (
 	"fmt"
-	base2 "github.com/stackpulse/public-steps/kubectl/base"
 	"strconv"
 	"time"
+
+	base2 "github.com/stackpulse/public-steps/kubectl/base"
 )
 
 type Args struct {

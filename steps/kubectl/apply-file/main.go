@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/stackpulse/public-steps/kubectl/base"
 	kctApply "github.com/stackpulse/public-steps/kubectl/base/apply"
-	"os"
 )
 
 func run() (int, error) {

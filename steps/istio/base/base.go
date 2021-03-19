@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/stackpulse/public-steps/common/exec"
-	"github.com/stackpulse/public-steps/common/log"
+	"github.com/stackpulse/steps-sdk-go/exec"
+	"github.com/stackpulse/steps-sdk-go/log"
 )
 
 type Args struct {

@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/lib/pq"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/step"
-	queryBase "github.com/stackpulse/public-steps/psql/query/base"
 	"strings"
+
+	"github.com/lib/pq"
+	queryBase "github.com/stackpulse/public-steps/psql/query/base"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 // This const should be processed by fmt.Sprintf

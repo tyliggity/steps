@@ -7,9 +7,9 @@ import (
 	"github.com/Jeffail/gabs/v2"
 	envconf "github.com/caarlos0/env/v6"
 	"github.com/opsgenie/opsgenie-go-sdk-v2/alert"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/step"
 	"github.com/stackpulse/public-steps/opsgenie/base"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 type Args struct {

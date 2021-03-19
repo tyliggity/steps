@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"time"
+
 	envconf "github.com/caarlos0/env/v6"
 	"github.com/stackpulse/public-steps/prometheus/base"
 	queryBase "github.com/stackpulse/public-steps/prometheus/query/base"
-	"time"
 )
 
 type Args struct {

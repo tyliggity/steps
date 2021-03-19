@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/stackpulse/public-steps/common/step"
-	queryBase "github.com/stackpulse/public-steps/psql/query/base"
 	"os"
+
+	queryBase "github.com/stackpulse/public-steps/psql/query/base"
+	"github.com/stackpulse/steps-sdk-go/step"
 )
 
 const QueryEnv = "QUERY"

@@ -1,12 +1,13 @@
 package gcs
 
 import (
-	"cloud.google.com/go/storage"
 	"context"
 	"fmt"
-	"github.com/stackpulse/public-steps/common/env"
 	"io/ioutil"
 	"time"
+
+	"cloud.google.com/go/storage"
+	"github.com/stackpulse/steps-sdk-go/env"
 )
 
 var defaultReadTimeout = 30 * time.Second

@@ -2,9 +2,10 @@ package base
 
 import (
 	"fmt"
+	"os"
+
 	prometheus "github.com/prometheus/client_golang/api"
 	promv1 "github.com/prometheus/client_golang/api/prometheus/v1"
-	"os"
 )
 
 type Args struct {

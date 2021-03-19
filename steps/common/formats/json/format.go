@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"github.com/Jeffail/gabs/v2"
-	"github.com/stackpulse/public-steps/common/env"
-	"github.com/stackpulse/public-steps/common/log"
+	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps-sdk-go/log"
 )
 
 const outputKey = "output"

@@ -2,8 +2,9 @@ package get
 
 import (
 	"fmt"
-	"github.com/stackpulse/public-steps/common/filter"
+
 	"github.com/stackpulse/public-steps/kubectl/base"
+	"github.com/stackpulse/steps-sdk-go/filter"
 	"maze.io/x/duration.v1"
 )
 

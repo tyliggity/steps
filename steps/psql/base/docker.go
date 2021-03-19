@@ -2,9 +2,10 @@ package base
 
 import (
 	"fmt"
-	"github.com/stackpulse/public-steps/common/env"
 	"os"
 	"strconv"
+
+	"github.com/stackpulse/steps-sdk-go/env"
 )
 
 const DockerExecEnvKey = "USE_DOCKER_EXEC"
