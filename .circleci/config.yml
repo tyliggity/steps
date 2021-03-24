@@ -87,6 +87,7 @@ workflows:
           context: development
           requires:
             - build-manifests
+            - build
           filters:
             branches:
               only:

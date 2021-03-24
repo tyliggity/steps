@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "victorops-incident-create-note"
+  name: "victorops_incident_create_note"
   description: "Create a note for incident."
   vendor: victorops
   type: remediation

@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "victorops-get-incident"
+  name: "victorops_get_incident"
   description: "Retrieve information about a specific incident"
   vendor: victorops
   type: triage 

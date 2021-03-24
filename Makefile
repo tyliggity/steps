@@ -53,7 +53,7 @@ else
 	@baur run --skip-upload
 endif
 
-.PHONY: local clean apps gomod all pg
+.PHONY: local clean apps gomod all pg publish-manifests-no-deps
 
 # --- Manifest stuff
 # manifest-build-rule(path)

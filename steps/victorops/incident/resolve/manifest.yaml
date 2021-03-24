@@ -1,7 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "victorops-incident-resolve"
+  name: "victorops_incident_resolve"
   description: "Resolve an incident."
   vendor: victorops
   type: remediation 
