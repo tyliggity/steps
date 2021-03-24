@@ -1,0 +1,108 @@
+# This task builds step that that resides in the following directory structure (1st degree)
+#
+# | ./steps/family:
+#  -- base/
+#  -- step/
+#
+[[Task]]
+    # Task name
+    name = "build-step"
+    include_id = "build-step"
+
+    # Command to execute.
+    command = ["python", "{{ .root }}/scripts/builder/build_step.py"]
+
+    # Inputs that are tracked to detect if a task needs to be run.
+    [Task.Input]
+
+        [[Task.Input.Files]]
+        paths = ["../base/**", "**"]
+
+        # Do not fail if a Path resolves to 0 files.
+        optional = true
+
+        # Only resolve to files that are part of the Git repository.
+        git_tracked_only = true
+
+    # Artifacts produced by the Task.command and their upload destinations.
+    [Task.Output]
+
+        [[Task.Output.DockerImage]]
+
+        # File containing the image ID of the produced image (docker build --iidfile).
+        idfile = ".container.id"
+
+# This task builds 2nd degree step that that resides in the following directory structure
+# The difference is in the dependency paths
+#
+# | ./steps/family:
+#  -- base/
+#  -- subfamily/
+#  --- step/
+#
+[[Task]]
+    # Task name
+    name = "build-step"
+    include_id = "build-step-level-2"
+
+    # Command to execute.
+    command = ["python", "{{ .root }}/scripts/builder/build_step.py"]
+
+    # Inputs that are tracked to detect if a task needs to be run.
+    [Task.Input]
+
+        [[Task.Input.Files]]
+        paths = ["../../base/**", "../base/**", "**"]
+
+        # Do not fail if a Path resolves to 0 files.
+        optional = true
+
+        # Only resolve to files that are part of the Git repository.
+        git_tracked_only = true
+
+    # Artifacts produced by the Task.command and their upload destinations.
+    [Task.Output]
+
+        [[Task.Output.DockerImage]]
+
+        # File containing the image ID of the produced image (docker build --iidfile).
+        idfile = ".container.id"
+
+# This task builds 2nd degree step that that resides in the following directory structure
+# The difference is in the dependency paths
+#
+# | ./steps/family:
+#  -- base/
+#  -- subfamily/
+#  --- base
+#  --- sub-subfamily/
+#  ---- base
+#  ---- step/
+#
+[[Task]]
+    # Task name
+    name = "build-step"
+    include_id = "build-step-level-3"
+
+    # Command to execute.
+    command = ["python", "{{ .root }}/scripts/builder/build_step.py"]
+
+    # Inputs that are tracked to detect if a task needs to be run.
+    [Task.Input]
+
+        [[Task.Input.Files]]
+        paths = ["../../../base/**", "../../base/**", "../base/**", "**"]
+
+        # Do not fail if a Path resolves to 0 files.
+        optional = true
+
+        # Only resolve to files that are part of the Git repository.
+        git_tracked_only = true
+
+    # Artifacts produced by the Task.command and their upload destinations.
+    [Task.Output]
+
+        [[Task.Output.DockerImage]]
+
+        # File containing the image ID of the produced image (docker build --iidfile).
+        idfile = ".container.id"

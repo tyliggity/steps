@@ -1,0 +1,74 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "googlechat_send_message"
+  description: "Send a message to Google Chat via webhook"
+  vendor: googlechat
+  type: notification
+
+envs:
+  - name: WEBHOOK
+    description: "Google Chat room webhook URL."
+    type: "string"
+    required: true
+    example: "https://chat.googleapis.com/v1/spaces/XXXXXXXX/messages?key=XXXX&token=XXXX"
+  - name: MESSAGE
+    description: "Message content to be sent."
+    type: "string"
+    required: true
+    example: "my message"
+  - name: THREAD_KEY
+    description: "Opaque thread identifier string that can be specified to group messages into a single thread. If this is the first message with a given thread identifier, a new thread is created. Subsequent messages with the same thread identifier will be posted into the same thread."
+    type: "string"
+    required: false
+    example: "J74DKGV"
+
+outputs:
+  - name: thread_name
+    description: "The name of the thread the message was sent to."
+    type: string
+    example: "spaces/XXXXXXXXX/threads/XXXXXXXXX"
+  - name: space_name
+    description: "The display name of the space the message was sent to."
+    type: string
+    example: "alerts"
+  - name: api_object
+    description: "Object containing an message response from the Google Chat API."
+    type: "json"
+    exmaple: |
+      {
+        "name":"spaces/AAAAQ13GCRU/messages/p_2OJ_6Juvw.p_2OJ_6Juvw",
+        "sender":{
+          "name":"users/114022495153014004089",
+          "displayName":"aaa",
+          "avatarUrl":"",
+          "email":"",
+          "domainId":"",
+          "type":"BOT",
+          "isAnonymous":false
+        },
+        "text":"aa",
+        "cards":[
+
+        ],
+        "previewText":"",
+        "annotations":[
+
+        ],
+        "thread":{
+          "name":"spaces/XXXXXXX/threads/XXXXXX"
+        },
+        "space":{
+          "name":"spaces/XXXXXXXXX",
+          "type":"ROOM",
+          "singleUserBotDm":false,
+          "threaded":false,
+          "displayName":"alerts"
+        },
+        "fallbackText":"",
+        "argumentText":"aa",
+        "attachment":[
+
+        ],
+        "createTime":"2021-03-08T20:34:33.353887Z"
+      }

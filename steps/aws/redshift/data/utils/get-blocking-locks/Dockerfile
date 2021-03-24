@@ -1,15 +1,15 @@
 # Globals
 ARG BASEDIR=/go/src/github.com/stackpulse
 ARG BINARY_NAME=redshift-data-amazon-rs-utils-get-blocking-locks
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 
 # 1. Base
-FROM us-docker.pkg.dev/stackpulse/public/base:$BUILD_BRANCH AS base
+FROM us-docker.pkg.dev/stackpulse/public/base:$BASE_BRANCH AS base
 
 # 2. Builder
 FROM golang:1.16-alpine as builder
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BINARY_NAME
 ARG BASEDIR

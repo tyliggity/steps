@@ -1,16 +1,16 @@
 # Globals
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BASEDIR=/go/src/github.com/stackpulse
 ARG BINARY_NAME=envoyapi
 
 # 1. Base
-FROM us-docker.pkg.dev/stackpulse/public/base:$BUILD_BRANCH AS base
+FROM us-docker.pkg.dev/stackpulse/public/base:$BASE_BRANCH AS base
 
 # 2. Builder
 FROM golang:1.14-alpine as builder
 ARG BINARY_NAME
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BASEDIR=/go/src/github.com/stackpulse
 

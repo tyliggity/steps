@@ -1,0 +1,3 @@
+
+name = "kubectl/get-events"
+includes = ["{{ .root }}/baur-includes/step.toml#build-step"]

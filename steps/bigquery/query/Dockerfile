@@ -1,10 +1,10 @@
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BASEDIR=/src/stackpulse
-FROM us-docker.pkg.dev/stackpulse/public/base:$BUILD_BRANCH AS base
+FROM us-docker.pkg.dev/stackpulse/public/base:$BASE_BRANCH AS base
 
 FROM golang:1.15-alpine as builder
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BASEDIR=/src/stackpulse
 WORKDIR $BASEDIR
@@ -13,7 +13,7 @@ WORKDIR $BASEDIR/$STEP_BASEPATH
 RUN GOOS=linux GOARCH=amd64 go build -o /bigquery-query
 
 FROM alpine
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BASEDIR=/src/stackpulse
 COPY --from=builder /bigquery-query .

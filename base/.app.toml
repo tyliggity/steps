@@ -1,0 +1,35 @@
+name = "base"
+
+[[Task]]
+    # Task name
+    name = "build-base"
+    include_id = "build-base"
+
+    # Command to execute.
+    # The first element is the command, the following it's arguments.
+    command = ["python", "{{ .root }}/scripts/builder/build_base.py"]
+
+    # Input or Output includes that the task inherits.
+    # Includes are specified in the format <filepath>#<ID>.
+    # Paths are relative to the application directory.
+    includes = []
+
+    # Inputs that are tracked to detect if a task needs to be run.
+    [Task.Input]
+
+        [[Task.Input.Files]]
+        paths = ["**"]
+
+        # Do not fail if a Path resolves to 0 files.
+        optional = false
+
+        # Only resolve to files that are part of the Git repository.
+        git_tracked_only = true
+
+    # Artifacts produced by the Task.command and their upload destinations.
+    [Task.Output]
+
+        [[Task.Output.DockerImage]]
+
+        # File containing the image ID of the produced image (docker build --iidfile).
+        idfile = ".container.id"

@@ -1,5 +1,4 @@
-ARG BUILD_BRANCH
 ARG STEP_BASEPATH
 
-FROM us-docker.pkg.dev/stackpulse/public/envoy/base:$BUILD_BRANCH
+FROM us-docker.pkg.dev/stackpulse/public/envoy/base
 ENV ENDPOINT="/clusters?format=json"

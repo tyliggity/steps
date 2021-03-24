@@ -1,15 +1,15 @@
 # Globals
 ARG BASEDIR=/go/src/github.com/stackpulse
 ARG BINARY_NAME=get-nodes
-ARG BUILD_BRANCH
+ARG CURRENT_BRANCH
 ARG STEP_BASEPATH
 
 # 1. Base
-FROM us-docker.pkg.dev/stackpulse/public/kubectl/base:$BUILD_BRANCH AS base
+FROM us-docker.pkg.dev/stackpulse/public/kubectl/base:$CURRENT_BRANCH AS base
 
 # 2. Builder
 FROM golang:1.14-alpine as builder
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BINARY_NAME
 ARG BASEDIR

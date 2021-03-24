@@ -1,10 +1,10 @@
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BASEDIR=/go/src/github.com/stackpulse
 
-FROM us-docker.pkg.dev/stackpulse/public/base:$BUILD_BRANCH AS base
+FROM us-docker.pkg.dev/stackpulse/public/base:$BASE_BRANCH AS base
 FROM golang:1.15-alpine as builder
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BASEDIR=/go/src/github.com/stackpulse
 

@@ -8,5 +8,3 @@ require (
 	github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f
 	google.golang.org/api v0.32.0
 )
-
-replace github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f => ../../common

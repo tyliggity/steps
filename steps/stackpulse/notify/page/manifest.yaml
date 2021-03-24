@@ -6,11 +6,11 @@ metadata:
   vendor: stackpulse
   type: notification
 envs:
-  - name: PHONE_NUMBER
-    description: "Phone number used for paging."
+  - name: USER
+    description: "The email of the user you want to notify. The user must set a phone number in his StackPulse account, otherwise the step will fail."
     type: "string"
-    required: true
-    example: "+15555555555"
+    reqired: true
+    example: "johndoe@stackpulse.io"
   - name: MESSAGE
     description: "Text will be sent to destination."
     type: "string"
@@ -22,7 +22,10 @@ envs:
     default: "PHONE_CALL"
     example: "PHONE_CALL"
     example: "SMS"
-
+  - name: PHONE_NUMBER
+    description: "Phone number to be directly paged. Can be used when a user has not set up a number in StackPulse. If used then the USER environment variable must not be used."
+    type: "string"
+    example: "+15555555555"
 outputs:
   - name: acknowledged
     description: "Whether the person acknowledged the page. If the person did not acknowledge or any error occurred during the page, this will be false."

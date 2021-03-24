@@ -2,10 +2,7 @@ module github.com/stackpulse/public-steps/steps/elastic/nodes-hot-threads
 
 go 1.14
 
-replace (
-	github.com/stackpulse/public-steps/elastic/base v0.0.0 => ../base
-	github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f => ../../common
-)
+replace github.com/stackpulse/public-steps/elastic/base v0.0.0 => ../base
 
 require (
 	github.com/caarlos0/env/v6 v6.3.0

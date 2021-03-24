@@ -5,3 +5,4 @@ out/
 .idea/
 venv
 **/.env
+*.container.id

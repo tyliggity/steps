@@ -8,5 +8,3 @@ require (
 	github.com/kr/pretty v0.1.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 )
-
-replace github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f => ../../common

@@ -11,5 +11,3 @@ require (
 	github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f
 	maze.io/x/duration.v1 v0.0.0-20161004121933-0bd39bea6019
 )
-
-replace github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f => ../../common

@@ -1,0 +1,3 @@
+
+name = "github/get-tags"
+includes = ["{{ .root }}/baur-includes/step.toml#build-step"]

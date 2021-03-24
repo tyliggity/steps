@@ -5,8 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	envconf "github.com/caarlos0/env/v6"
+
 	"github.com/go-redis/redis/v8"
+	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/public-steps/redis/base"
 	"github.com/stackpulse/steps-sdk-go/step"
 )
@@ -22,7 +23,7 @@ type RedisSlowLog struct {
 }
 
 func (l *RedisSlowLog) Init() error {
-	err := envconf.Parse(&l.args)
+	err := env.Parse(&l.args)
 	if err != nil {
 		return err
 	}
@@ -37,13 +38,17 @@ func (l *RedisSlowLog) Run() (exitCode int, output []byte, err error) {
 	if cmd == nil {
 		return step.ExitCodeFailure, nil, fmt.Errorf("invalid result returned from slowlog operation")
 	}
-
-	val, err := json.Marshal(cmd.Val())
-	if err != nil {
-		return step.ExitCodeFailure, val, err
+	result := cmd.Val()
+	if result == nil {
+		return step.ExitCodeFailure, nil, fmt.Errorf("run command")
 	}
 
-	return step.ExitCodeOK, val, nil
+	jsonOutput, err := json.Marshal(result)
+	if err != nil {
+		return step.ExitCodeFailure, nil, fmt.Errorf("marshal output: %w", err)
+	}
+
+	return step.ExitCodeOK, jsonOutput, nil
 }
 
 func main() {

@@ -1,4 +1,3 @@
-
 OUTPUTDIR  :=  out
 MANIFESTDIR := $(OUTPUTDIR)/manifests
 TARGETS := $(shell find steps -name "Dockerfile" | sort)
@@ -16,7 +15,6 @@ BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD)
 LATEST ?= $(subst master,latest,$(filter master,$(BRANCH)))
 DOCKER_TAGS = $(TAG) $(BRANCH) $(LATEST)
 
-
 directory-name=$(patsubst ./%,%,$(patsubst %/,%,$(dir $(1))))
 remove-step-prefix=$(subst steps/,,$(1))
 rulename=$(subst /,-,$(call remove-step-prefix,$(call directory-name, $(1))))
@@ -27,62 +25,48 @@ define declare-shortcut
 	$(eval .PHONY: $(1))                                                                                                       \
 	$(eval                                                                                                                     \
 		$(1): $(2)                                                                                                             \
-	 )                                    
-endef
-
-# declare-docker-rule(directory, tag)
-define declare-build-rule
-	$(eval $(1)_buildname := $(call rulename, $(1)))                                                                           \
-	$(eval $(1)_builddir  := $(call directory-name, $(1)))                                                                     \
-	$(eval $(1)_tagname   := $(CONTAINER_REGISTRY)/$(call remove-step-prefix,$(call directory-name, $(1))))                    \
-	$(eval .PHONY: build-$($(1)_buildname)-$(2))                                                                               \
-	$(eval                                                                                                                     \
-		build-$($(1)_buildname)-$(2): ; $$(info === docker building $($(1)_builddir):$(2))
-	docker build --build-arg STEP_BASEPATH=$($(1)_builddir) --build-arg BUILD_BRANCH=$(BRANCH) -t $($(1)_tagname):$(2) -f $($(1)_builddir)/Dockerfile .
 	 )
 endef
 
-# declare-docker-rule(name, tag)
-define declare-push-rule
-	$(eval $(1)_pushname := $(call rulename, $(1)))                                                                            \
-	$(eval $(1)_tagname := $(CONTAINER_REGISTRY)/$(call remove-step-prefix,$(call directory-name, $(1))))                      \
-	$(eval .PHONY: push-$($(1)_pushname)-$(2))                                                                                 \
-	$(eval                                                                                                                     \
-		push-$($(1)_pushname)-$(2): build-$($(1)_pushname)-$(2) ; $$(info === pushing $($(1)_tagname):$(2)...)
-			docker push $($(1)_tagname):$(2)
-	)
-endef
+apps:
+	@./scripts/baur_apps.py
 
+gomod:
+	@./scripts/go_mod.py
+
+pg:
+	@./scripts/local_postgres.sh up
+
+local: pg
+	@baur run
+
+clean:
+	@./scripts/local_postgres.sh down
+	rm -rf $(OUTPUTDIR)
+
+all:
+ifeq ("$(CIRCLE_BRANCH)","master")
+	@echo "Building master branch"
+	@baur run
+else
+	@echo "Building side branch"
+	@baur run --skip-upload
+endif
+
+.PHONY: local clean apps gomod all pg
+
+# --- Manifest stuff
 # manifest-build-rule(path)
 define declare-manifest-build-rule
 	$(eval $(1)_packname := $(call rulename, $(1)))                                                                            \
 	$(call declare-shortcut,pack-$($(1)_packname),$(MANIFESTDIR)/$($(1)_packname).yml)                                         \
 	$(eval                                                                                                                     \
-		$(MANIFESTDIR)/$($(1)_packname).yml: $(1) ; $$(info === packing $(1))                 
+		$(MANIFESTDIR)/$($(1)_packname).yml: $(1) ; $$(info === packing $(1))
 			mkdir -p $$(dir $$@);
 			grep -q 'imageName:' $(1) && cp $(1) $$@ || docker run -w /root -v $(CURDIR):/root $(MANIFEST_PARSER) image set $(1) $$@ $(CONTAINER_REGISTRY)/$(call remove-step-prefix,$(call directory-name, $(1)))
 			docker run -w /root -v $(CURDIR):/root $(MANIFEST_PARSER) validate $$@
 	 )
 endef
-
-all: buildall
-
-
-buildall: $(foreach target,$(TARGETS),build-$(call rulename, $(target)))
-pushall: $(foreach target,$(TARGETS),push-$(call rulename, $(target)))
-
-BASES := $(filter %base, $(foreach target,$(TARGETS),push-$(call rulename, $(target))))
-pushbase: $(shell echo $(BASES) | sort)
-
-# create the following rules: build-$target, build-$target-$tag, push-$target, push-$target-$tag
-$(foreach target, $(TARGETS),                                                                                                                  \
-	$(call declare-shortcut,build-$(call rulename, $(target)),$(foreach tag,$(DOCKER_TAGS),build-$(call rulename, $(target))-$(tag)))          \
-	$(call declare-shortcut,push-$(call rulename, $(target)),$(foreach tag,$(DOCKER_TAGS),push-$(call rulename, $(target))-$(tag)))            \
-	$(foreach tag,$(DOCKER_TAGS),                                                                                                              \
-		$(call declare-build-rule,$(target),$(tag))                                                                                            \
-		$(call declare-push-rule,$(target),$(tag))                                                                                             \
-	)                                                                                                                                          \
-)
 
 # create pack-$target, packall
 $(foreach manifest, $(MANIFESTS), $(call declare-manifest-build-rule,$(manifest)))
@@ -90,14 +74,14 @@ packall: $(foreach manifest, $(MANIFESTS),pack-$(call rulename, $(manifest)))
 
 
 $(call declare-shortcut,indexfile,$(MANIFESTDIR)/indexfile.yml)
-$(MANIFESTDIR)/indexfile.yml: packall 
+$(MANIFESTDIR)/indexfile.yml: packall
 	./generate-index-file.py $(MANIFESTDIR) $@
 
-.PHONY: publish-manifests  
+.PHONY: publish-manifests
 publish-manifests: packall $(MANIFESTDIR)/indexfile.yml
 	gsutil -m cp -r $(MANIFESTDIR)/*.yml $(MANIFEST_PATH)
 
-.PHONY: publish-manifests  
+.PHONY: publish-manifests
 publish-manifests-no-deps:
 	gsutil -m cp -r $(MANIFESTDIR)/*.yml $(MANIFEST_PATH)
 
@@ -108,15 +92,3 @@ validate-vendors:
 .PHONY: publish-vendors
 publish-vendors:
 	gsutil -m cp -r vendors $(VENDORS_PATH)
-
-.PHONY: clean
-clean:
-	rm -rf $(OUTPUTDIR)
-
-.PHONY: fmt
-fmt:
-	goimports -w steps/
-
-.PHONY: gomodall
-gomodall:
-	python ./scripts/go_mod.py

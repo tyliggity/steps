@@ -1,13 +1,13 @@
 # 1. Globals
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BASEDIR=/go/src/github.com/stackpulse
 ARG BINARY_NAME=pc-wrapper
 
 # 2. Builder
-FROM us-docker.pkg.dev/stackpulse/public/base:$BUILD_BRANCH AS base
+FROM us-docker.pkg.dev/stackpulse/public/base:$BASE_BRANCH AS base
 FROM golang:1.14-buster as builder
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 ARG STEP_BASEPATH
 ARG BINARY_NAME
 ARG BASEDIR=/go/src/github.com/stackpulse

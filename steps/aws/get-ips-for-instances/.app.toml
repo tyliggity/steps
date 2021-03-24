@@ -1,0 +1,3 @@
+
+name = "aws/get-ips-for-instances"
+includes = ["{{ .root }}/baur-includes/step.toml#build-step"]

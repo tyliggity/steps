@@ -1,8 +1,8 @@
 # Globals
-ARG BUILD_BRANCH
+ARG BASE_BRANCH
 
 # 1. Base
-FROM us-docker.pkg.dev/stackpulse/public/base:$BUILD_BRANCH AS base
+FROM us-docker.pkg.dev/stackpulse/public/base:$BASE_BRANCH AS base
 
 # 2. Production
 FROM curlimages/curl

@@ -1,0 +1,24 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "data_transformer"
+  description: "parse given data using various unix shell utils such as sed, grep, jq, etc."
+  vendor: data-transformer
+  type: custom 
+
+envs:
+  - name: INPUT
+    description: "Input to parse. If not provided, will use the previous step output as input."
+    type: string
+  - name: COMMAND
+    required: True
+    type: string
+    description: "The shell command to run. input is passed through stdin, stdout is is saved into output variable."
+  - name: DEBUG 
+    type: bool
+    description: "Debug mode. Print debug information to stdout."
+
+outputs:
+  - name: output
+    description: "The transformation output."
+    type: string

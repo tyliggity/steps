@@ -14,7 +14,54 @@ Just like any other container, steps can receive input in the form of run argume
 
 ## Development
 
-...
+### Build tool
+
+The build tool used by the steps repository is called baur. You must install it on your machine from [here](https://github.com/simplesurance/baur/releases).
+
+Baur requires PostgreSQL to operate. After building a step once, the step's file hashes will be stored into postgres. Subsequent attempts to build the step will not do anything unless one of the files the step depends on are changed. 
+
+### Building all steps locally
+
+In order to start postgres docker container on you must run `make pg`. This will start a docker container on your machine listening on port `15432`. Baur is configured to use postgres running on that port to store its data.
+
+You can build all steps by executing `make local` command. This process takes a while. Once all steps are built you will enjoy faster subsequent builds.
+
+### Building a specific step locally
+
+If you want to build a single step you can run `baur run step/name`, for example `baur run redis/get`. If the step or its dependencies were changed the step will be rebuilt.
+The result of a successful build is a docker image with a tag named of the current branch (i.e: `us-docker.pkg.dev/stackpulse/public/redis/keys:MyNewStep`)
+
+
+### Step directory structure
+
+Step normally belongs to a family, a family (i.e `redis`) will contain several steps that are related to it. It will normally be grouped by some common service all steps operate on.
+
+Often times, there will be shared code for all the steps. It can either be a base Docker image that all steps inherit from, some common Go code, etc. 
+```text
+./steps/redis
+|-- base
+|   |-- base.go
+|   |-- go.mod
+|   `-- go.sum
+|-- bigkeys
+|   |-- Dockerfile
+|   |-- big-keys.py
+|   `-- manifest.yaml
+|-- client-list
+|   |-- Dockerfile
+|   |-- go.mod
+|   |-- go.sum
+|   |-- main.go
+|   `-- manifest.yaml
+```
+Any change to `base` will result all sibling steps to be rebuilt. A change to a specific step (`get`) will rebuild only that particular step.
+
+### Creating a new step
+1. Decide to which family the step belongs, does such family already exist? Check the `./steps/` directory
+2. If such directory already exists, review steps currently in that family. Aknowledge the `base` directory and see what is already implemented there.
+3. Create a your step under `./steps/family/`, it should contain a `Dockerfile`.
+4. Once your step contains `Dockerfile` run `make apps` to generate baur application file for the newly created steps, the file created will be called `.app.toml`
+5. After running the command you should be able to run `baur run family/my-new-step` to build it.
 
 ## Contributing
 
