@@ -79,7 +79,7 @@ Please feel free to open an issue for any problem or you may encounter while usi
 
 Distributed under the BSD-3-Clause License. See `LICENSE` for more information.
 
-[badge_ci]:https://circleci.com/gh/stackpulse/steps.svg?style=svg
+[badge_ci]:https://circleci.com/gh/stackpulse/steps.svg?style=shield
 [contributors-shield]: https://img.shields.io/github/contributors/stackpulse/steps.svg?style=flat-square&maxAge=30
 [contributors-url]: https://github.com/stackpulse/steps/graphs/contributors
 [badge_issues]:https://img.shields.io/github/issues/stackpulse/steps.svg?style=flat-square&maxAge=30
