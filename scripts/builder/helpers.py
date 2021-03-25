@@ -24,7 +24,11 @@ def get_step_docker_image(step_path):
 
 # Get docker image tag
 def get_step_docker_image_tag(step_path):
-    return get_step_docker_image(step_path) + ":" + get_current_branch()
+    tag = get_current_branch()
+    if tag == "master":
+        tag = "latest"
+
+    return get_step_docker_image(step_path) + ":" + tag
 
 
 # Build step docker image

@@ -1,5 +1,11 @@
 version: 2.1
 
+parameters:
+  force-rebuild:
+    type: boolean
+    default: false
+    description: "Rebuild all steps regardless of cache"
+
 commands:
   setup-gcr:
     steps:
@@ -20,6 +26,8 @@ jobs:
         auth:
           username: _json_key
           password: $GCLOUD_SERVICE_KEY
+    environment:
+      FORCE_REBUILD: << pipeline.parameters.force-rebuild >>
     steps:
       - setup_remote_docker
       - checkout
