@@ -3,8 +3,8 @@ package get
 import (
 	"fmt"
 
-	"github.com/stackpulse/public-steps/kubectl/base"
 	"github.com/stackpulse/steps-sdk-go/filter"
+	"github.com/stackpulse/steps/kubectl/base"
 	"maze.io/x/duration.v1"
 )
 

@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/aws/command
+module github.com/stackpulse/steps/aws/command
 
 go 1.14
 

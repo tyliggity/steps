@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/stackpulse/public-steps/prometheus/base"
-	rangeBase "github.com/stackpulse/public-steps/prometheus/query/range/base"
+	"github.com/stackpulse/steps/prometheus/base"
+	rangeBase "github.com/stackpulse/steps/prometheus/query/range/base"
 )
 
 type Args struct {

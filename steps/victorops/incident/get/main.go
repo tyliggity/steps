@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 
-	"github.com/stackpulse/public-steps/victorops/base"
 	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/victorops/base"
 
 	"github.com/victorops/go-victorops/victorops"
 )

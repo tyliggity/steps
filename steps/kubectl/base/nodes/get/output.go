@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/Jeffail/gabs/v2"
-	base2 "github.com/stackpulse/public-steps/kubectl/base"
+	base2 "github.com/stackpulse/steps/kubectl/base"
 )
 
 const (

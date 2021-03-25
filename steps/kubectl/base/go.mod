@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/kubectl/base
+module github.com/stackpulse/steps/kubectl/base
 
 go 1.14
 

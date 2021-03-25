@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/ssh/command
+module github.com/stackpulse/steps/ssh/command
 
 go 1.14
 

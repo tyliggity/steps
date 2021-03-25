@@ -5,9 +5,9 @@ import (
 	"os"
 
 	"github.com/Jeffail/gabs/v2"
-	"github.com/stackpulse/public-steps/kubectl/base"
-	kctDelete "github.com/stackpulse/public-steps/kubectl/base/delete"
 	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps/kubectl/base"
+	kctDelete "github.com/stackpulse/steps/kubectl/base/delete"
 )
 
 func run() (int, error) {

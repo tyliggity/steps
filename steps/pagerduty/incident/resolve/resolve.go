@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/Jeffail/gabs/v2"
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/pagerduty/incident/base"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/pagerduty/incident/base"
 )
 
 type Args struct {

@@ -3,7 +3,7 @@ package get
 import (
 	"fmt"
 
-	base2 "github.com/stackpulse/public-steps/kubectl/base"
+	base2 "github.com/stackpulse/steps/kubectl/base"
 )
 
 const ObjectNameJsonKey = "objectName"

@@ -5,11 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 
-
 	"github.com/go-redis/redis/v8"
 	"github.com/stackpulse/steps-sdk-go/env"
-	"github.com/stackpulse/public-steps/redis/base"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/redis/base"
 )
 
 type Args struct {

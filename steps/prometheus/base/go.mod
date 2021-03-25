@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/prometheus/base
+module github.com/stackpulse/steps/prometheus/base
 
 go 1.14
 

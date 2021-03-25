@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/flux/lock
+module github.com/stackpulse/steps/flux/lock
 
 go 1.15
 

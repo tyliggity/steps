@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/stackpulse/public-steps/jenkins/base"
 	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/jenkins/base"
 )
 
 //JenkinsGetBuild models input args for retrieving info about a specific Jenkins build

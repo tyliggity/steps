@@ -4,10 +4,10 @@ import (
 	"fmt"
 
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/istio/base"
 	jsonFormatter "github.com/stackpulse/steps-sdk-go/formats/json"
 	"github.com/stackpulse/steps-sdk-go/parsers"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/istio/base"
 )
 
 const proxyStatusArgument = "proxy-status"

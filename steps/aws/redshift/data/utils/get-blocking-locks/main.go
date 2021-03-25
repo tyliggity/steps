@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/stackpulse/public-steps/aws/redshift/base"
 	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/steps-sdk-go/log"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/aws/redshift/base"
 )
 
 // See: https://github.com/awslabs/amazon-redshift-utils/blob/master/src/AdminViews/v_get_blocking_locks.sql

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/stackpulse/public-steps/steps/rundeck/base"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/steps/rundeck/base"
 )
 
 const (

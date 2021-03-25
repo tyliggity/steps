@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/stackpulse/public-steps/redshift/base"
 	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/steps-sdk-go/log"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/redshift/base"
 )
 
 type redshiftDataExecute struct {

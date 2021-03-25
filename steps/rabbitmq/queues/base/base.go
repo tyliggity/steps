@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/stackpulse/public-steps/rabbitmq/base"
+	"github.com/stackpulse/steps/rabbitmq/base"
 )
 
 type Args struct {

@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/stackpulse/public-steps/steps/jenkins/base"
 	"github.com/stackpulse/steps-sdk-go/log"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/steps/jenkins/base"
 )
 
 const MaxJobWait = 185 * time.Second // Max timeout for step is 200 seconds, so I want to return earlier

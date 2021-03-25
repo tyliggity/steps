@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	pd "github.com/PagerDuty/go-pagerduty"
-	"github.com/stackpulse/public-steps/pagerduty/base"
+	"github.com/stackpulse/steps/pagerduty/base"
 )
 
 type IncidentStatus string

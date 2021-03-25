@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/pagerduty/base
+module github.com/stackpulse/steps/pagerduty/base
 
 go 1.14
 

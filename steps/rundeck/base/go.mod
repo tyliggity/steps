@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/steps/rundeck/base
+module github.com/stackpulse/steps/steps/rundeck/base
 
 go 1.15
 

@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/github/get-repos
+module github.com/stackpulse/steps/github/get-repos
 
 go 1.15
 

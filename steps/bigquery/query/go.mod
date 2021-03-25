@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/bigquery/query
+module github.com/stackpulse/steps/bigquery/query
 
 go 1.14
 

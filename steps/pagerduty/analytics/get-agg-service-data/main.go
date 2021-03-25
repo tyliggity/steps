@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/stackpulse/public-steps/pagerduty/base"
 	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/steps-sdk-go/log"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/pagerduty/base"
 )
 
 const (

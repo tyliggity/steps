@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/aws/redshift/base
+module github.com/stackpulse/steps/aws/redshift/base
 
 go 1.16
 

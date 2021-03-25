@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/opsgenie/base
+module github.com/stackpulse/steps/opsgenie/base
 
 go 1.14
 

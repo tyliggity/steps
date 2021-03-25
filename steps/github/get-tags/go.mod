@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/github/get-tags
+module github.com/stackpulse/steps/github/get-tags
 
 go 1.15
 

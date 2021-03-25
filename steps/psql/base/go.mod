@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/psql/base
+module github.com/stackpulse/steps/psql/base
 
 go 1.14
 

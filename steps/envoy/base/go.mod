@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/envoy/base
+module github.com/stackpulse/steps/envoy/base
 
 go 1.14
 

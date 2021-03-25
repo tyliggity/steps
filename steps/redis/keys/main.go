@@ -7,8 +7,8 @@ import (
 	"github.com/Jeffail/gabs/v2"
 	envconf "github.com/caarlos0/env/v6"
 	"github.com/go-redis/redis/v8"
-	"github.com/stackpulse/public-steps/redis/base"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/redis/base"
 )
 
 type Args struct {

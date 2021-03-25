@@ -7,9 +7,9 @@ import (
 
 	"github.com/Jeffail/gabs/v2"
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/rabbitmq/queues/base"
 	"github.com/stackpulse/steps-sdk-go/log"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/rabbitmq/queues/base"
 )
 
 var CheckValuesDescription = map[string]string{

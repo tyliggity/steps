@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-multierror"
-	base2 "github.com/stackpulse/public-steps/kubectl/base"
 	"github.com/stackpulse/steps-sdk-go/env"
+	base2 "github.com/stackpulse/steps/kubectl/base"
 )
 
 type Args struct {

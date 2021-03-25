@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/stackpulse/public-steps/redshift/base"
+	"github.com/stackpulse/steps/redshift/base"
 
 	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/steps-sdk-go/log"

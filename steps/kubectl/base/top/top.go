@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/Jeffail/gabs/v2"
-	base2 "github.com/stackpulse/public-steps/kubectl/base"
 	"github.com/stackpulse/steps-sdk-go/env"
+	base2 "github.com/stackpulse/steps/kubectl/base"
 )
 
 type Args struct {

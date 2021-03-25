@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/victorops/base"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/victorops/base"
 )
 
 type Args struct {

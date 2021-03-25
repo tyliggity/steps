@@ -6,8 +6,8 @@ import (
 	"time"
 
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/prometheus/base"
-	queryBase "github.com/stackpulse/public-steps/prometheus/query/base"
+	"github.com/stackpulse/steps/prometheus/base"
+	queryBase "github.com/stackpulse/steps/prometheus/query/base"
 )
 
 type Args struct {

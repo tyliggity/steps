@@ -6,7 +6,7 @@ import (
 
 	envconf "github.com/caarlos0/env/v6"
 	"github.com/prometheus/common/model"
-	queryBase "github.com/stackpulse/public-steps/prometheus/query/base"
+	queryBase "github.com/stackpulse/steps/prometheus/query/base"
 )
 
 type BaseArgs struct {

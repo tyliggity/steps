@@ -1,3 +1,3 @@
-module github.com/stackpulse/public-steps/coralogix/base
+module github.com/stackpulse/steps/coralogix/base
 
 go 1.14

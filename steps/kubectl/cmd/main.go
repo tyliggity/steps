@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
-	"github.com/stackpulse/public-steps/kubectl/base"
 	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/kubectl/base"
 )
 
 type KubectlCmd struct {

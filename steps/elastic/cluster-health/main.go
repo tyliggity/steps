@@ -6,7 +6,7 @@ import (
 	"os"
 
 	envconf "github.com/caarlos0/env/v6"
-	elastic "github.com/stackpulse/public-steps/elastic/base"
+	elastic "github.com/stackpulse/steps/elastic/base"
 )
 
 func main() {

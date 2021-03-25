@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/stackpulse/public-steps/kubectl/base"
-	can_i "github.com/stackpulse/public-steps/kubectl/base/auth/can-i"
+	"github.com/stackpulse/steps/kubectl/base"
+	can_i "github.com/stackpulse/steps/kubectl/base/auth/can-i"
 )
 
 func run() (int, error) {

@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/steps/utils/tabulate
+module github.com/stackpulse/steps/steps/utils/tabulate
 
 go 1.15
 

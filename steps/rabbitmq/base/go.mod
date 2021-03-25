@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/rabbitmq/base
+module github.com/stackpulse/steps/rabbitmq/base
 
 go 1.14
 

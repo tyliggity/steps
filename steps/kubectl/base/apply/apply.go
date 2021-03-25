@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	base2 "github.com/stackpulse/public-steps/kubectl/base"
+	base2 "github.com/stackpulse/steps/kubectl/base"
 )
 
 type Args struct {

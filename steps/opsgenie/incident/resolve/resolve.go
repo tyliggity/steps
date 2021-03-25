@@ -9,8 +9,8 @@ import (
 	"github.com/opsgenie/opsgenie-go-sdk-v2/incident"
 	"github.com/pkg/errors"
 
-	"github.com/stackpulse/public-steps/opsgenie/base"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/opsgenie/base"
 )
 
 type Args struct {

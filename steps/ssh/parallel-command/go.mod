@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/ssh/parallel-command
+module github.com/stackpulse/steps/ssh/parallel-command
 
 go 1.14
 

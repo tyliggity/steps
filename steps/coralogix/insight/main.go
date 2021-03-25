@@ -8,9 +8,9 @@ import (
 	"net/http"
 
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/coralogix/base"
 	"github.com/stackpulse/steps-sdk-go/log"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/coralogix/base"
 )
 
 type Args struct {

@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/base
+module github.com/stackpulse/steps/base
 
 go 1.14
 

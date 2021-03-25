@@ -1,11 +1,11 @@
-module github.com/stackpulse/public-steps/steps/kubectl/delete
+module github.com/stackpulse/steps/steps/kubectl/delete
 
 go 1.14
 
 require (
 	github.com/Jeffail/gabs/v2 v2.6.0
-	github.com/stackpulse/public-steps/kubectl/base v0.0.0
 	github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f
+	github.com/stackpulse/steps/kubectl/base v0.0.0
 )
 
-replace github.com/stackpulse/public-steps/kubectl/base v0.0.0 => ../base
+replace github.com/stackpulse/steps/kubectl/base v0.0.0 => ../base

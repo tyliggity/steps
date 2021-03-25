@@ -8,9 +8,9 @@ import (
 	"net/http"
 
 	envconf "github.com/caarlos0/env/v6"
-	"github.com/stackpulse/public-steps/logzio/base"
 	"github.com/stackpulse/steps-sdk-go/log"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/logzio/base"
 )
 
 type Args struct {

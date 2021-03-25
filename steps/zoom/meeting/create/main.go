@@ -10,8 +10,8 @@ import (
 
 	envconf "github.com/caarlos0/env/v6"
 	"github.com/himalayan-institute/zoom-lib-golang"
-	"github.com/stackpulse/public-steps/zoom/base"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/zoom/base"
 	"golang.org/x/oauth2"
 )
 

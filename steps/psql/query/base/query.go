@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/stackpulse/public-steps/psql/base"
 	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps/psql/base"
 )
 
 const QueryFile = "/tmp/query.txt"

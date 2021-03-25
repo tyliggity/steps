@@ -29,6 +29,9 @@ define declare-shortcut
 	 )
 endef
 
+fmt:
+	@gofmt -l -w steps
+
 apps:
 	@./scripts/baur_apps.py
 
@@ -61,7 +64,7 @@ else
 	baur run --skip-upload ${BUILD_ARGS}
 endif
 
-.PHONY: local clean apps gomod all pg publish-manifests-no-deps
+.PHONY: local clean apps gomod all pg publish-manifests-no-deps fmt
 
 # --- Manifest stuff
 # manifest-build-rule(path)

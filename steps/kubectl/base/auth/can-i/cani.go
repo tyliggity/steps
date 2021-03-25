@@ -7,8 +7,8 @@ import (
 
 	"github.com/Jeffail/gabs"
 	"github.com/google/shlex"
-	"github.com/stackpulse/public-steps/kubectl/base"
 	"github.com/stackpulse/steps-sdk-go/env"
+	"github.com/stackpulse/steps/kubectl/base"
 )
 
 type Args struct {

@@ -7,10 +7,10 @@ import (
 
 	"github.com/Jeffail/gabs"
 	"github.com/lib/pq"
-	psqlBase "github.com/stackpulse/public-steps/psql/base"
-	queryBase "github.com/stackpulse/public-steps/psql/query/base"
 	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/steps-sdk-go/step"
+	psqlBase "github.com/stackpulse/steps/psql/base"
+	queryBase "github.com/stackpulse/steps/psql/query/base"
 )
 
 const terminateQuery = `

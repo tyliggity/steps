@@ -5,9 +5,9 @@ import (
 	"strings"
 
 	"github.com/lib/pq"
-	queryBase "github.com/stackpulse/public-steps/psql/query/base"
 	"github.com/stackpulse/steps-sdk-go/env"
 	"github.com/stackpulse/steps-sdk-go/step"
+	queryBase "github.com/stackpulse/steps/psql/query/base"
 )
 
 // This const should be processed by fmt.Sprintf

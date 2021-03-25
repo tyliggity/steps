@@ -1,8 +1,9 @@
 package main
+
 // test
 import (
-	"github.com/stackpulse/public-steps/steps/ansible/awx/base"
 	"github.com/stackpulse/steps-sdk-go/step"
+	"github.com/stackpulse/steps/steps/ansible/awx/base"
 )
 
 type Args struct {

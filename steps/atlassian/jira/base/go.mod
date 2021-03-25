@@ -1,4 +1,4 @@
-module github.com/stackpulse/public-steps/atlassian/jira/base
+module github.com/stackpulse/steps/atlassian/jira/base
 
 go 1.14
 

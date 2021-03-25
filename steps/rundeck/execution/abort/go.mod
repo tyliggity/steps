@@ -1,10 +1,10 @@
-module github.com/stackpulse/public-steps/steps/rundeck/execution/abort
+module github.com/stackpulse/steps/steps/rundeck/execution/abort
 
 go 1.15
 
 require (
-	github.com/stackpulse/public-steps/steps/rundeck/base v0.0.0
 	github.com/stackpulse/steps-sdk-go v0.0.0-20210314133745-61086c27983f
+	github.com/stackpulse/steps/steps/rundeck/base v0.0.0
 )
 
-replace github.com/stackpulse/public-steps/steps/rundeck/base v0.0.0 => ../../base
+replace github.com/stackpulse/steps/steps/rundeck/base v0.0.0 => ../../base
