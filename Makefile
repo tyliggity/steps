@@ -45,19 +45,19 @@ clean:
 	rm -rf $(OUTPUTDIR)
 
 all:
-	build_args=
+	@build_args=
 
 ifeq ("$(FORCE_REBUILD)","true")
 	@echo "Forcing rebuild"
-	build_args=-f
+	@build_args=--force
 endif
 
 ifeq ("$(CIRCLE_BRANCH)","master")
 	@echo "Building master branch"
-	@baur run $(build_args)
+	baur run $(build_args)
 else
 	@echo "Building side branch"
-	@baur run --skip-upload $(build_args)
+	baur run --skip-upload $(build_args)
 endif
 
 .PHONY: local clean apps gomod all pg publish-manifests-no-deps
