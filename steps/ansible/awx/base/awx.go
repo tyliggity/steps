@@ -15,6 +15,7 @@ type Args struct {
 	Password string `env:"PASSWORD"`
 	Token    string `env:"TOWER_OAUTH_TOKEN"`
 	Insecure bool   `env:"INSECURE" envDefault:"false"`
+	Format   string `env:"FORMAT" envDefault:"json"`
 }
 
 func (a Args) BaseArgs() Args {
@@ -50,7 +51,7 @@ func NewAwxCommand(args BaseArgs) (*AwxCommand, error) {
 }
 
 func (a *AwxCommand) Execute(extraArgs []string) (int, []byte, error) {
-	args := []string{"--conf.host", a.Host, "--conf.username", a.Username}
+	args := []string{"--conf.host", a.Host, "--conf.username", a.Username, "--conf.format", a.Format}
 	if a.Password != "" {
 		args = append(args, "--conf.password", a.Password)
 	}
@@ -59,6 +60,11 @@ func (a *AwxCommand) Execute(extraArgs []string) (int, []byte, error) {
 	}
 	if env.Debug() {
 		args = append(args, "--verbose")
+	}
+
+	if a.Format != "json" && a.Format != "jq" {
+		// Not a JSON output, so parse the output as raw output
+		env.SetFormatter(env.RawFormat, true)
 	}
 
 	args = append(args, extraArgs...)
