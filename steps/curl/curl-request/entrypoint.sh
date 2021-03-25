@@ -1,1 +1,1 @@
-set -eo pipefail; /usr/bin/curl $@ 2>&1 | SP_FORMATTER=$FORMAT sp-base-step format
+set -eo pipefail; /usr/bin/curl "$@" 2>&1 | SP_FORMATTER=$FORMAT sp-base-step format
