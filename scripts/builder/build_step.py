@@ -23,7 +23,7 @@ def main():
             image_tag,
         "Dockerfile",
         step_family_path(split_step_path),
-        ["--build-arg", "BASE_BRANCH=master",
+        ["--build-arg", "BASE_BRANCH=latest",
          "--build-arg", "CURRENT_BRANCH=" + helpers.get_current_branch(),
          "--build-arg", "STEP_BASEPATH=" + "/".join(split_step_path[1:])]):
         return 1
