@@ -14,6 +14,7 @@ BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD)
 # push latest only for master branch
 LATEST ?= $(subst master,latest,$(filter master,$(BRANCH)))
 DOCKER_TAGS = $(TAG) $(BRANCH) $(LATEST)
+BUILD_ARGS =
 
 directory-name=$(patsubst ./%,%,$(patsubst %/,%,$(dir $(1))))
 remove-step-prefix=$(subst steps/,,$(1))
@@ -45,19 +46,19 @@ clean:
 	rm -rf $(OUTPUTDIR)
 
 all:
-	@build_args=
 
 ifeq ("$(FORCE_REBUILD)","true")
 	@echo "Forcing rebuild"
-	@build_args=--force
+	$(eval BUILD_ARGS=--force)
 endif
+
 
 ifeq ("$(CIRCLE_BRANCH)","master")
 	@echo "Building master branch"
-	baur run $(build_args)
+	baur run ${BUILD_ARGS}
 else
 	@echo "Building side branch"
-	baur run --skip-upload $(build_args)
+	baur run --skip-upload ${BUILD_ARGS}
 endif
 
 .PHONY: local clean apps gomod all pg publish-manifests-no-deps
