@@ -53,8 +53,8 @@ jobs:
       - run: pyenv global 3.7.0
       - run: pip install pyyaml
       - checkout
-      - run: TAG=${CIRCLE_TAG} BRANCH=${CIRCLE_BRANCH} make indexfile
-      - run: TAG=${CIRCLE_TAG} BRANCH=${CIRCLE_BRANCH} make validate-vendors
+      - run: TAG=${CIRCLE_TAG} BRANCH=${CIRCLE_BRANCH} make indexfile -j 8
+      - run: TAG=${CIRCLE_TAG} BRANCH=${CIRCLE_BRANCH} make validate-vendors -j 8
       - store_artifacts:
           path: out
       - store_artifacts:
