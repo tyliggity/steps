@@ -67,7 +67,7 @@ Any change to `base` will result all sibling steps to be rebuilt. A change to a 
 
 Pull requests adding new steps and submitting bug fixes are welcome.
 
-Please note that all new steps must use the [StackPulse steps Golang SDK](https://github.com/stackpulse/steps-sdk-go) and be submitted with a step manifest containing example input and output examples.
+Please note that all new steps must use the [StackPulse steps Golang SDK](https://github.com/stackpulse/steps-sdk-go) and be submitted with a step manifest containing input and output examples.
 
 In the case of bug fixes, where appropriate, please provide an accompanying unit test that validates and verifies the proposed fix.
 
