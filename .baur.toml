@@ -14,4 +14,4 @@ postgresql_url = "postgres://postgres:baur@localhost:15432/baur?sslmode=disable&
 application_dirs = ["."]
 
 # Descend at most search_depth levels to find application configs
-search_depth = 5
+search_depth = 6
