@@ -2,11 +2,14 @@
 
 import sys
 import github
+import json
 import os
 import random
 from subprocess import check_output
 import shlex
 
+
+END_STRING = "<--END-->"
 
 def main():
     # required params
@@ -43,7 +46,16 @@ def main():
     else:
         repo.update_file(filepath, commitmsg, new_content, orig_file.sha, branch)
 
-    print(repo.create_pull(title=title, body=body, head=branch, base=base).url)
+    pull_request = repo.create_pull(title=title, body=body, head=branch, base=base)
+    output_dict = {
+        "url": pull_request.url,
+        "html_url": pull_request.html_url,
+        "created_at": pull_request.created_at,
+        "title": pull_request.title,
+        "number": pull_request.number,
+    }
+
+    print(f"{END_STRING}{json.dumps(pull_request)}")
 
 
 if __name__ == "__main__":

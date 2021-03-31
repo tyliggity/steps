@@ -15,4 +15,4 @@ git --git-dir=/$REPOSITORY/.git merge $SRC_BRANCH;
 git --git-dir=/$REPOSITORY/.git push origin $DEST_BRANCH;
 echo ""
 echo "Merged successfully"
-echo "<--END-->{\"success\": \"true\"}"
+echo "<--END-->{\"success\": true}"
