@@ -11,6 +11,7 @@ import shlex
 
 END_STRING = "<--END-->"
 
+
 def main():
     # required params
     token = os.environ["TOKEN"]
