@@ -7,14 +7,6 @@ metadata:
   type: remediation
 
 envs:
-  - name: USERNAME
-    description: "Username for login"
-    required: true
-    type: "string"
-  - name: PASSWORD
-    required: true
-    description: "Password for login"
-    type: "string"
   - name: HOST
     description: "Jenkins host"
     required: true
@@ -47,3 +39,6 @@ outputs:
   - name: succeeded
     description: "Whether the build succeeded or not. Will be omitted if SHOULD_WAIT wasn't specified."
     type: "bool"
+
+integrations:
+  - jenkins

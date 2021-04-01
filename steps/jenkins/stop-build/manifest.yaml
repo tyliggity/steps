@@ -7,14 +7,6 @@ metadata:
   type: remediation
 
 envs:
-  - name: USERNAME
-    description: "Username for login."
-    required: true
-    type: "string"
-  - name: PASSWORD
-    required: true
-    description: "Password for login."
-    type: "string"
   - name: HOST
     description: "Jenkins host."
     required: true
@@ -34,3 +26,6 @@ outputs:
     description: "Whether the build was successfully stopped."
     type: "bool"
     example: "true"
+
+integrations:
+  - jenkins
