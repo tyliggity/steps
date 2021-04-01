@@ -9,7 +9,7 @@ from subprocess import check_output
 import shlex
 
 
-END_STRING = "<--END-->"
+END_STRING = "<-- END -->"
 
 
 def main():
@@ -51,12 +51,12 @@ def main():
     output_dict = {
         "url": pull_request.url,
         "html_url": pull_request.html_url,
-        "created_at": pull_request.created_at,
+        "created_at": str(pull_request.created_at),
         "title": pull_request.title,
         "number": pull_request.number,
     }
 
-    print(f"{END_STRING}{json.dumps(pull_request)}")
+    print(f"{END_STRING}{json.dumps(output_dict)}")
 
 
 if __name__ == "__main__":
