@@ -34,5 +34,27 @@ args:
     required: true
     default: "/dev/sdf"
 
+outputs:
+  - name: AttachTime
+    description: "The time stamp when the attachment initiated."
+    type: string
+    example: 2021-03-30T21:01:05.123Z
+  - name: InstanceId
+    description: "The ID of the instance."
+    type: string
+    example: i-01474ef662b89480
+  - name: VolumeId
+    description: "The ID of the volume."
+    type: string
+    example: vol-1234567890abcdef0
+  - name: State
+    description: "The attachment state of the volume."
+    type: string
+    example: attaching
+  - name: Device
+    description: "The device name."
+    type: string
+    example: /dev/sdf
+
 integrations:
   - aws
