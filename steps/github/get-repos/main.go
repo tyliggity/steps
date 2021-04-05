@@ -24,11 +24,11 @@ type GHCommand struct {
 
 type Repository string
 
-type Output struct {
+type output struct {
 	Repositories []Repository
 }
 
-func (output *Output) AddItem(repo Repository) []Repository {
+func (output *output) AddItem(repo Repository) []Repository {
 	output.Repositories = append(output.Repositories, repo)
 	return output.Repositories
 }
@@ -72,7 +72,7 @@ func (gh *GHCommand) Run() (int, []byte, error) {
 	httpClient := oauth2.NewClient(context.Background(), src)
 	client := githubv4.NewClient(httpClient)
 	repositories := []Repository{}
-	output := Output{repositories}
+	output := output{repositories}
 	if gh.args.Privacy != "" {
 		err = client.Query(context.Background(), &typeQuery, variables)
 		if err != nil {

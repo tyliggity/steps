@@ -27,11 +27,11 @@ type Tag struct {
 	Message string
 }
 
-type Output struct {
+type output struct {
 	Tags []Tag
 }
 
-func (output *Output) AddItem(tag Tag) []Tag {
+func (output *output) AddItem(tag Tag) []Tag {
 	output.Tags = append(output.Tags, tag)
 	return output.Tags
 }
@@ -75,7 +75,7 @@ func (gh *GHCommand) Run() (int, []byte, error) {
 		return step.ExitCodeFailure, nil, fmt.Errorf("get-steps failed with error: error: %w", err)
 	}
 	tags := []Tag{}
-	output := Output{tags}
+	output := output{tags}
 	for _, edge := range query.Repository.Refs.Edges {
 		tag := Tag{edge.Node.Target.Tag.Name, edge.Node.Target.Tag.Message}
 		output.AddItem(tag)

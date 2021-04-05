@@ -22,7 +22,7 @@ envs:
     example: "private"
 
 outputs:
-  - name: repositories
+  - name: Repositories
     description: "Array of strings containing repository names."
     type: "json"
     example: '["service-1","service-2"]'

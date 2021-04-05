@@ -27,7 +27,7 @@ envs:
     example: "new-service" 
   
 outputs:
-  - name: tags
+  - name: Tags
     description: "n last tags and their associated commit message."
     type: "json"
     example: |
