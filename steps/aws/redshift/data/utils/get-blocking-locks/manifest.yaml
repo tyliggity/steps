@@ -55,7 +55,7 @@ envs:
 
 outputs:
   - name: results
-    description: "JSON array of query results. For more information see https://github.com/awslabs/utils/blob/master/src/AdminViews/v_get_blocking_locks.sql."
+    description: "JSON array of query results. For more information see https://github.com/awslabs/utils/blob/master/src/AdminViews/v_get_blocking_locks.sql"
     type: json
     example: |
       [{"block_sec":"59.4","max_sec_blocking":"56.4","num_blocking":"1","pid":"30432","pidlist":"30433","querytxt":"ALTER TABLE items ADD COLUMN last_update timestamptz;","username":"awsuser","xid":"722986"}]

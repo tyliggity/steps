@@ -21,11 +21,5 @@ args:
     type: "string"
     required: true
 
-outputs:
-  - name: output
-    description: "The AWS CLI command result. The format depends on the specific command."
-    type: string
-    example: '2021-01-05 15:33:36 aws-cloudtrail-logs-761268670892-ba2fb432'
-
 integrations:
   - aws

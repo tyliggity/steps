@@ -27,23 +27,5 @@ args:
     type: "string"
     default: "{{ .TableName }}"
 
-outputs:
-  - name: Items
-    description: "An array of item attributes that match the query criteria. Each element in this array consists of an attribute name and the value for that attribute."
-    type: json
-    example: '[{"AlbumTitle":{"S":"Somewhat Famous"},"Artist":{"S":"No One You Know"},"SongTitle":{"S":"Call Me Today"}}]'
-  - name: Count
-    description: "The number of items in the response."
-    type: int
-    example: 1
-  - name: ScannedCount
-    description: "The number of items evaluated, before any QueryFilter is applied."
-    type: int
-    example: 2
-  - name: ConsumedCapacity
-    description: "The capacity units consumed by the Query operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation."
-    type: json
-    example: '{"TableName":"MusicCollection","CapacityUnits":0.5}'
-
 integrations:
   - aws

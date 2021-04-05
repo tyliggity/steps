@@ -25,7 +25,7 @@ type GHCommand struct {
 type Repository string
 
 type Output struct {
-	Repositories []Repository `json:"repositories"`
+	Repositories []Repository
 }
 
 func (output *Output) AddItem(repo Repository) []Repository {

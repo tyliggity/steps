@@ -28,7 +28,7 @@ type Tag struct {
 }
 
 type Output struct {
-	Tags []Tag `json:"tags"`
+	Tags []Tag
 }
 
 func (output *Output) AddItem(tag Tag) []Tag {

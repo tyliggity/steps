@@ -41,7 +41,7 @@ func (s *DescribeInstances) Init() error {
 	return nil
 }
 
-type output struct {
+type HostsIps struct {
 	Ips []string `json:"ips"`
 }
 
@@ -49,13 +49,13 @@ func (s *DescribeInstances) Run() (int, []byte, error) {
 	ctx := context.Background()
 
 	// Load the Shared AWS Configuration (~/.aws/config)
-	cfg, err := config.LoadDefaultConfig(ctx, config.WithRegion(s.args.Region))
+	config, err := config.LoadDefaultConfig(ctx, config.WithRegion(s.args.Region))
 	if err != nil {
 		return step.ExitCodeFailure, nil, fmt.Errorf("load default config: %w", err)
 	}
 
 	// Create an Amazon EC2 service client
-	client := ec2.NewFromConfig(cfg)
+	client := ec2.NewFromConfig(config)
 	input := &ec2.DescribeInstancesInput{
 		InstanceIds: s.args.InstanceIDSJson.Items,
 	}
@@ -65,7 +65,7 @@ func (s *DescribeInstances) Run() (int, []byte, error) {
 		return step.ExitCodeFailure, nil, fmt.Errorf("describe instances: %w", err)
 	}
 
-	var hostIPs output
+	var hostIPs HostsIps
 	for _, reservation := range result.Reservations {
 		for _, instance := range reservation.Instances {
 			hostIPs.Ips = append(hostIPs.Ips, *instance.PrivateIpAddress)
