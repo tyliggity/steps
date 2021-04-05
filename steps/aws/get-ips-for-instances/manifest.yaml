@@ -11,7 +11,7 @@ envs:
     description: "Instance IDs to get the ips for. Max instances allowed - 1000."
     type: "json"
     required: true
-    example: "[\"192.168.125.110\", \"192.168.125.112\"]"
+    example: '["i-04cd3e5a680ce947c", "i-0673fbea5ed878416"]'
   - name: REGION
     description: "Instances aws region."
     type: "string"
@@ -22,7 +22,7 @@ outputs:
   - name: ips
     description: "JSON array contains the ips for the given instances"
     type: "json"
-    example: "['192.168.77.111', '192.168.66.189']"
+    example: '["192.168.77.111", "192.168.66.189"]'
 
 integrations:
   - aws
