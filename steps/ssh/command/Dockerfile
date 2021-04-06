@@ -26,6 +26,7 @@ ARG BINARY_NAME
 COPY --from=builder /${BINARY_NAME} .
 RUN chmod +x ${BINARY_NAME}
 COPY --from=base /usr/local/bin/ /usr/local/bin/
+RUN apk add sshpass
 
 ENV STEP_NAME=${BINARY_NAME}
 ENTRYPOINT ["/bin/sh", "-c", "set -eo pipefail; /${STEP_NAME} 2>&1 | sp-base-step format"]

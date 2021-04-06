@@ -25,7 +25,7 @@ envs:
   - name: PRIVATE_KEY
     description: "SSH private key."
     type: "string"
-    required: true
+    required: false
     example: "-----BEGIN OPENSSH PRIVATE KEY-----
               b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
               QyNTUxWQAAACDkhQbn17U4OmaFDQSNu12345a284YG/gMEdwKcmd8d9wAAAKAu1CIzLtQi
@@ -33,6 +33,11 @@ envs:
               AAAEAKXi8poF5fWye1AAAA+9eHCuoMpuprAGJrICJY70AUkuSFBufXtTg6ZoUNBI273bfX
               trbzhgb+AwR3ApyZ3x33AAAAFnlvdXJfZW1haWxAZXhAAAAAAAAAAAAAAAAAAAAA
               -----END OPENSSH PRIVATE KEY-----"
+  - name: PASSWORD
+    description: "SSH password."
+    type: "string"
+    required: false
+    example: "secretP@ssword"
   - name: STRICT_HOST_KEY_CHECKING
     description: "whether use strict host key checking."
     type: "string"
@@ -44,7 +49,7 @@ envs:
     type: "string"
     required: false
     default: error
-    example: "info"
+    example: "debug"
   - name: PORT
     description: "SSH port (default 22)."
     type: "string"
