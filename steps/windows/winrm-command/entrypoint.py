@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import env
+import os
 import shlex
 
 END_STRING = "<-- END -->"
