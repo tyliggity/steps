@@ -1,0 +1,14 @@
+apiVersion: stackpulse.io/v1
+kind: Step
+metadata:
+  name: "winrm_command"
+  description: "Run command over ssh protocol."
+  vendor: ssh
+  type: triage
+
+envs:
+  - name: HOST
+    description: "Host to access."
+    type: "string"
+    required: true
+    example: "windows-host.example.com"
