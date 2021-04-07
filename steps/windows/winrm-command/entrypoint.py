@@ -7,7 +7,7 @@ END_STRING = "<-- END -->"
 
 HOST = os.environ["HOST"]
 USERNAME = os.environ["USERNAME"]
-PASSWORD = os.environ["PASSOWRD"]
+PASSWORD = os.environ["PASSWORD"]
 COMMAND = os.environ["COMMAND"]
 
 commands = shlex.split(COMMAND)
