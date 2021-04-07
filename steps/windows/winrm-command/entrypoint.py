@@ -2,6 +2,7 @@
 
 import os
 import shlex
+import winrm
 
 END_STRING = "<-- END -->"
 
