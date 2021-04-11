@@ -17,6 +17,10 @@ envs:
     description: "A comma separated list of user emails to invite to the channel."
     type: string
     example: "user1@example.com,user2@example.com"
+  - name: BOTS
+    description: "A comma separated list of user bots to invite to the channel. it could be bot name starting with @, or bot ID."
+    type: string
+    example: "@geekbot,U017A33VD53"
 
 outputs:
   - name: channel_id

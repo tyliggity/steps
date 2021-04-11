@@ -17,6 +17,10 @@ envs:
     description: "A comma separated list of user emails to invite to the new channel."
     type: string
     example: "luna@stackpulse.io,asher@stackpulse.io,avery@stackpulse.io"
+  - name: BOTS
+    description: "A comma separated list of user bots to invite to the channel. it could be bot name starting with @, or bot ID."
+    type: string
+    example: "@geekbot,U017A33VD53"
   - name: TOPIC
     description: "The topic to be set for the new created channel."
     type: string
