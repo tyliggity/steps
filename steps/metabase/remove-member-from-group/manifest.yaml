@@ -23,10 +23,15 @@ envs:
     description: "Metabase group name."
     type: "string"
     required: true
+  - name: REQUESTER
+    description: "DB access requester email."
+    type: "string"
+    required: true
+
 
 
 outputs:
   - name: output
     description: "Json output contains the operation details."
     type: "json"
-    example: '{"User":"recipient@email.com","Message":"Removed from group"}'
+    example: '{"User":"requester@email.com","Message":"Removed from group"}'

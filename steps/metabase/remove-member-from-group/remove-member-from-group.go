@@ -66,7 +66,7 @@ func (mb *MetabaseRemoveMemberFromGroup) Run() (int, []byte, error) {
 		return step.ExitCodeFailure, nil, fmt.Errorf("Remove member from group error: %w", err)
 	}
 	defer response.Body.Close()
-	output := base.Output{User: mb.Recipient, Message: outputMessage}
+	output := base.Output{User: mb.Requester, Message: outputMessage}
 	if ret, err = json.Marshal(output); err != nil {
 		return step.ExitCodeFailure, nil, fmt.Errorf("json marshal: %w", err)
 	}

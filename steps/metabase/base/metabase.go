@@ -22,7 +22,7 @@ type MetabaseCommandArgs struct {
 	Username     string `env:"USERNAME,required"`
 	Password     string `env:"PASSWORD,required"`
 	Host         string `env:"HOST,required" envDefault:"metabase.data.svc.cluster.local"`
-	Recipient    string `env:"RECIPIENT"`
+	Requester    string `env:"REQUESTER"`
 	GroupName    string `env:"GROUP_NAME,required"`
 	UserId       string
 	MembershipId int
@@ -139,7 +139,7 @@ func (mb *MetabaseCommand) GetUserId(token string) error {
 		if !ok {
 			return fmt.Errorf("email couldn't be converted to string")
 		}
-		if email == mb.Recipient {
+		if email == mb.Requester {
 			userId, ok := user.S("id").Data().(float64)
 			if !ok {
 				return fmt.Errorf("userID couldn't be converted to float64")
