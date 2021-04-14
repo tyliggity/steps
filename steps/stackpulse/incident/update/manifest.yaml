@@ -62,6 +62,3 @@ outputs:
     description: "The updated incident id."
     type: "string"
     example: "INC-00226"
-
-integrations:
-  - slack
