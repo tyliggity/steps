@@ -15,6 +15,11 @@ metadata:
   type: triage
 
 envs:
+  - name: RUNTIME
+    description: "Runtime technology to perform the heap dump on. Currently support only 'JVM'."
+    required: true
+    type: string
+    example: "JVM"
   - name: BUCKET
     description: "Object URL format for the bucket to store the outputs. If using a GCS or S3 bucket please specify a GCP or AWS integration appropriately."
     type: string

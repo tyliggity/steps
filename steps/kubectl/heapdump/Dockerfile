@@ -1,6 +1,6 @@
 # Globals
 ARG BASEDIR=/go/src/github.com/stackpulse
-ARG BINARY_NAME=jattach-heapdump
+ARG BINARY_NAME=heapdump
 ARG CURRENT_BRANCH
 ARG STEP_BASEPATH
 
