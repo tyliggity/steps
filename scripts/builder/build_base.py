@@ -16,7 +16,7 @@ def main():
     if not helpers.docker_build(dev_image_tag):
         return 1
 
-    for tag in helpers.get_step_image_tags(STEP_PATH):
+    for tag in helpers.get_step_image_tags("./"):
         image_tag = helpers.docker_image_tag(image_repo, tag)
 
         if not helpers.docker_tag(image_repo, dev_tag, tag):

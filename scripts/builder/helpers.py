@@ -13,13 +13,10 @@ def get_current_branch():
     return subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).strip().decode("utf-8")
 
 
-# Get step relative path (to /steps/)
+# Get step relative path (to /steps/ directory)
 def get_step_rel_path(path):
-    s = path.split(constants.STEPS_ROOT)
-    if len(s) != 2:
-        raise Exception("cant find delimiter in step path '%s'" % (path,))
-
-    return s[1]
+    lookup = constants.STEPS_ROOT + "/"
+    return path[path.rfind(lookup) + len(lookup):]
 
 
 # Get step docker image path
