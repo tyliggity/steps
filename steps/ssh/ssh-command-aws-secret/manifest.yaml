@@ -1,6 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
+  version: 1.0.0
   name: "ssh_with_aws_secret"
   description: "Connect to remote SSH server, authenticating with a content of AWS Secret, and execute command(s)"
   vendor: aws

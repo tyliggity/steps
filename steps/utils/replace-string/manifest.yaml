@@ -1,6 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
+  version: 1.0.0
   name: "replace_string"
   description: "This step replaces sub-string or a regular expression by another sub-string for a given base64 string."
   vendor: custom

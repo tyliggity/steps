@@ -5,6 +5,7 @@ metadata:
   description: "Troubleshooting summary for kubernetes cluster"
   vendor: kubernetes
   type: triage
+  version: 1.0.0
 
 envs:
   - name: KUBECONFIG_CONTENT

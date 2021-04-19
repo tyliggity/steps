@@ -1,6 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
+  version: 1.0.0
   name: "atlassian_jira_create_issue"
   description: "Create a new Jira issue"
   vendor: jira

@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 """
     Used to build a step
@@ -17,10 +17,13 @@ def step_family_path(split_step_path):
 def main():
     step_rel_path = helpers.get_step_rel_path(os.getcwd())
     split_step_path = [x for x in step_rel_path.split("/") if x != ""]
-    image_tag = helpers.get_step_docker_image_tag(step_rel_path)
+
+    image_repo = helpers.get_step_docker_repository(step_rel_path)
+    dev_tag = helpers.get_current_branch()
+    dev_image_tag = helpers.docker_image_tag(image_repo, dev_tag)
 
     if not helpers.docker_build(
-            image_tag,
+            dev_image_tag,
         "Dockerfile",
         step_family_path(split_step_path),
         ["--build-arg", "BASE_BRANCH=latest",
@@ -28,8 +31,14 @@ def main():
          "--build-arg", "STEP_BASEPATH=" + "/".join(split_step_path[1:])]):
         return 1
 
-    if not helpers.docker_push(image_tag):
-        return 1
+    for tag in helpers.get_step_image_tags(split_step_path):
+        image_tag = helpers.docker_image_tag(image_repo, tag)
+
+        if not helpers.docker_tag(image_repo, dev_tag, tag):
+            return 1
+
+        if not helpers.docker_push(image_tag):
+            return 1
 
 
 if __name__ == "__main__":

@@ -13,6 +13,7 @@ metadata:
       - create
   vendor: kubernetes
   type: triage
+  version: "1.0.0"
 
 envs:
   - name: RUNTIME

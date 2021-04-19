@@ -1,6 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
+  version: 1.0.0
   name: "ssh_command_with_gcloud_secret"
   description: "Connect to remote SSH server, authenticating with a content of Google Cloud Secret, and execute command(s)"
   vendor: gcp

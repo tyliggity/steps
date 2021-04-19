@@ -5,6 +5,7 @@ metadata:
   description: "Add existing user to a group."
   vendor: metabase
   type: remediation
+  version: "1.0.0"
 envs:
   - name: USERNAME
     description: "Service account username."

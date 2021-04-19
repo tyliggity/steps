@@ -1,8 +1,8 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
+  version: 333.0.0
   name: "gcp_cli_command"
-  imageName: "us-docker.pkg.dev/stackpulse/public/gcloud/gcloud-cli"
   description: "Perform actions on Google Cloud Platform with StackPulse GCP Integration"
   vendor: gcp 
   type: advanced

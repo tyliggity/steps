@@ -1,6 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
+  version: 1.0.0
   name: "tabulate"
   description: "Generate ASCII table from given input"
   vendor: custom
@@ -8,9 +9,11 @@ metadata:
 
 envs:
   - name: INPUT
-    description: "Input data to tabulate. Should be a valid JSON of map array [{...},{...}] or array of arrays [[...],[...]] or map of map arrays {\"x\":[{...},{...}], ...} with all values being strings."
+    description: |
+      Input data to tabulate. Should be a valid JSON of map array [{...},{...}] or array of arrays [[...],[...]] or map of map arrays {"x":[{...},{...}], ...} with all values being strings.
     type: string
-    example: '[{"name":"foo", "age":"32"},{"name":"bar", "age":"53"}]'
+    example: |
+      [{"name":"foo", "age":"32"},{"name":"bar", "age":"53"}]
     required: true
   - name: HEADERS
     description: "List of headers for the table, or 'by_keys' string to extract headers from map keys (only available on array of maps input). Default is `by_keys`."
@@ -18,12 +21,14 @@ envs:
     required: false
     example: '["name", "age"]'
   - name: MAP_GROUP
-    description: "When given grouped map input ({\"x\":[{...},{...}], ...}), specifying the groups to include. Can specify multiple values separated by `,` or JSON array."
+    description: |
+      When given grouped map input ({"x":[{...},{...}], ...}), specifying the groups to include. Can specify multiple values separated by `,` or JSON array.
     type: string
     required: false
     example: '["group1", "group2"]'
   - name: GROUP_HEADER_NAME
-    description: "When given grouped map input ({\"x\":[{...},{...}], ...}), specifying the header of the group column. Default is `group`."
+    description: |
+      When given grouped map input ({"x":[{...},{...}], ...}), specifying the header of the group column. Default is `group`.
     type: string
     required: false
   - name: COLUMN_WIDTH

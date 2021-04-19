@@ -1,6 +1,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
+  version: 2.1.32
   name: "aws_describe_instances"
   imageName: "amazon/aws-cli"
   description: "Describe AWS instances."

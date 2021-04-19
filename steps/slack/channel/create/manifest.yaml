@@ -2,6 +2,7 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
+  version: 1.0.0
   name: "slack_create_channel"
   description: "Create a new channel, set its topic and purpose, and invite users into it."
   vendor: slack

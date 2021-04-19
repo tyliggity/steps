@@ -6,6 +6,7 @@ metadata:
   description: "Fetch user details by user id from Pagerduty User API."
   vendor: pagerduty
   type: hydration
+  version: "1.0.0"
 
 envs:
   - name: USER_ID
