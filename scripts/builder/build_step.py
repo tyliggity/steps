@@ -31,7 +31,7 @@ def main():
          "--build-arg", "STEP_BASEPATH=" + "/".join(split_step_path[1:])]):
         return 1
 
-    for tag in helpers.get_step_image_tags(split_step_path):
+    for tag in helpers.get_step_image_tags("./"):
         image_tag = helpers.docker_image_tag(image_repo, tag)
 
         if not helpers.docker_tag(image_repo, dev_tag, tag):

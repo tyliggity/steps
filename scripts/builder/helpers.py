@@ -29,12 +29,13 @@ def get_step_docker_repository(step_path):
 
 # Get manifest version
 def get_manifest_version(step_path):
+    print(step_path)
     manifest_path = os.path.join(step_path, constants.MANIFEST_FILENAME)
     try:
-        f = open()
+        f = open(manifest_path)
         y = yaml.safe_load(f)
         f.close()
-        version = y['metadata']['version']
+        return y['metadata']['version']
     except:
         print("[X] Failed parsing version from %s" % (manifest_path,))
         raise Exception("failed parsing manifest")
