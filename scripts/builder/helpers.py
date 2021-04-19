@@ -27,12 +27,22 @@ def get_step_docker_repository(step_path):
     return os.path.join(constants.CONTAINER_REGISTRY, step_path)
 
 
+# Try to read versions.step / versions file
+def get_version_from_file(step_path):
+    for fn in constants.VERSION_FILENAMES:
+        fn = os.path.join(step_path, fn)
+        if os.path.isfile(fn):
+            return open(fn).read().strip()
+
+    return None
+
+
 # Get manifest version
 def get_manifest_version(step_path):
     # Check for version file
-    version_file_path = os.path.join(step_path, constants.VERSION_FILENAME)
-    if os.path.exists(version_file_path):
-        return open(version_file_path).read()
+    version = get_version_from_file(step_path)
+    if version is not None:
+        return version
 
     manifest_path = os.path.join(step_path, constants.MANIFEST_FILENAME)
 
