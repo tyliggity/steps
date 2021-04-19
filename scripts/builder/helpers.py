@@ -29,8 +29,16 @@ def get_step_docker_repository(step_path):
 
 # Get manifest version
 def get_manifest_version(step_path):
-    print(step_path)
+    # Check for version file
+    version_file_path = os.path.join(step_path, constants.VERSION_FILENAME)
+    if os.path.exists(version_file_path):
+        return open(version_file_path).read()
+
     manifest_path = os.path.join(step_path, constants.MANIFEST_FILENAME)
+
+    if not os.path.exists(manifest_path):
+        raise Exception("no manifest found")
+
     try:
         f = open(manifest_path)
         y = yaml.safe_load(f)
