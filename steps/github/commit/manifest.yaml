@@ -20,7 +20,7 @@ envs:
     required: true
     example: "myorganization/myrepository"
   - name: NAME
-    description: "Branch name for the pull request (prefixed by 'stackpulse-')."
+    description: "Branch name for the pull request (prefixed by 'SP-Playbook')."
     type: "string"
     required: true
     example: "auto-generated-branch"
