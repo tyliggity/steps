@@ -8,7 +8,9 @@ import sys
 
 STEP_PATH = "base"
 
+
 def main():
+    helpers.init_logger(STEP_PATH)
     image_repo = helpers.get_step_docker_repository(STEP_PATH)
     dev_tag = helpers.get_current_branch()
     dev_image_tag = helpers.docker_image_tag(image_repo, dev_tag)

@@ -2,15 +2,47 @@ import constants
 import os
 import subprocess
 import yaml
+import logging
+import sys
 
 
-def system(cmd):
-    print("> Running: %s" % (cmd,))
-    return os.system(cmd)
+# Will initialize logger for given step.
+# If env var LOG_OUPUT_DIR is set it will also store log files to that directory
+def init_logger(step_name=None):
+    stdout_handler = logging.StreamHandler(sys.stdout)
+    handlers = [stdout_handler]
+
+    log_output_dir = os.getenv("LOG_OUTPUT_DIR")
+    if log_output_dir is not None and step_name is not None:
+        handlers.append(logging.FileHandler(filename=os.path.join(log_output_dir, f"{step_name}.log")))
+
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="[%(asctime)s] %(levelname)s - %(message)s",
+        handlers=handlers
+    )
+
+
+def run_command(args):
+    cmdline = " ".join(args)
+    logging.info(f"> Running: {cmdline}")
+    try:
+        output = subprocess.check_output(args)
+    except:
+        logging.error(str(output, 'utf-8'))
+        logging.exception("Failed running command")
+        return False
+
+    if len(output) != 0:
+        logging.info(str(output, 'utf-8'))
+    return True
+
 
 # Get current branch using git cli tool
 def get_current_branch():
-    return subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).strip().decode("utf-8")
+    branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).strip().decode("utf-8")
+    logging.info(f"Current branch: {branch}")
+    return branch
 
 
 # Get step relative path (to /steps/ directory)
@@ -34,11 +66,12 @@ def get_version_from_file(step_path):
     return None
 
 
-# Get manifest version
+# Get manifest version, first it will try either VERSION or VERSION.txt files then manifest.yaml
 def get_manifest_version(step_path):
     # Check for version file
     version = get_version_from_file(step_path)
     if version is not None:
+        logging.info(f"Step version by version file: {version}")
         return version
 
     manifest_path = os.path.join(step_path, constants.MANIFEST_FILENAME)
@@ -50,18 +83,20 @@ def get_manifest_version(step_path):
         f = open(manifest_path)
         y = yaml.safe_load(f)
         f.close()
-        return y['metadata']['version']
+        version = y['metadata']['version']
+        logging.info(f"Step version from manifest: {version}")
+        return version
     except:
-        print("[X] Failed parsing version from %s" % (manifest_path,))
+        logging.error(f"[X] Failed parsing version from {manifest_path}")
         raise Exception("failed parsing manifest")
 
     if version == "":
-        raise Exception("no valid version set for step: %s" % (manifest_path,))
+        raise Exception(f"no valid version set for step: {manifest_path}")
 
 
 # Build full docker image path given a repo and tag
 def docker_image_tag(repo, tag):
-    return repo + ":" + tag
+    return f"{repo}:{tag}"
 
 
 # return the relevant tags for the given branch
@@ -76,35 +111,29 @@ def get_step_image_tags(step_path):
 
 # Build step docker image
 def docker_build(tag, dockerfile="Dockerfile", root_path=".", args=[]):
-    print("Building docker image %s" % (tag,))
+    logging.info(f"Building docker image {tag}")
     cmd = ["docker", "build"]
     cmd += args
     cmd += ["--iidfile", constants.CONTAINER_ID_FILE,
             "-t", tag, "-f", dockerfile, root_path]
 
-    if 0 != system(" ".join(cmd)):
-        raise Exception("build command failed")
-
-    return True
+    return run_command(cmd)
 
 
 # Tags the given docker image with the tags
 def docker_tag(docker_repo, current_tag, new_tag):
     old_tag = docker_image_tag(docker_repo, current_tag)
     new_image_with_tag = docker_image_tag(docker_repo, new_tag)
-    print("> Tagging %s -> %s" % (old_tag, new_tag))
-    if 0 != system("docker tag %s %s" % (old_tag, new_image_with_tag)):
-        raise Exception("docker tag failed")
+    logging.info(f"> Tagging {old_tag} -> {new_tag}")
 
-    return True
+    return run_command(["docker", "tag", old_tag, new_image_with_tag])
 
 
+# Will ush docker image to remote repository if running with env `CI=true`
 def docker_push(image):
     if os.getenv("CI") != "true":
-        print("Skipping push for local build")
+        logging.info("Skipping push for local build")
         return True
 
-    print("Pushing docker image %s" % (image,))
-    if 0 != system("docker push %s" % (image,)):
-        raise Exception("docker push failed")
-    return True
+    logging.info(f"Pushing docker image {image}")
+    return run_command(["docker", "push", image])

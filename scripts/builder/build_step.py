@@ -9,6 +9,8 @@ import sys
 import os
 
 
+# Step family is the top level directory containing steps of the same vendor
+# essentially its steps/<step_family>
 def step_family_path(split_step_path):
     family_dir = os.path.join(os.getcwd(), "/".join([".."] * (len(split_step_path) - 1)))
     return os.path.normpath(family_dir)
@@ -17,6 +19,7 @@ def step_family_path(split_step_path):
 def main():
     step_rel_path = helpers.get_step_rel_path(os.getcwd())
     split_step_path = [x for x in step_rel_path.split("/") if x != ""]
+    helpers.init_logger("_".join(split_step_path))
 
     image_repo = helpers.get_step_docker_repository(step_rel_path)
     dev_tag = helpers.get_current_branch()
