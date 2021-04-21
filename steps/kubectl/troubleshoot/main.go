@@ -1,8 +1,11 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/stackpulse/steps-sdk-go/log"
+	"github.com/stackpulse/steps-sdk-go/upload"
 	"sort"
 	"strings"
 	"time"
@@ -45,6 +48,10 @@ func (t *Troubleshoot) Run() (int, []byte, error) {
 	output := &Outputs{
 		Raw:      parsedTroubleshoot,
 		Markdown: produceMarkdown(parsedTroubleshoot),
+	}
+
+	if err := upload.RichOutput(context.Background(), strings.NewReader(output.Markdown), upload.ContentTypeMarkdown); err != nil {
+		log.Logln("Error uploading rich output:", err.Error())
 	}
 
 	res, err := json.Marshal(output)
