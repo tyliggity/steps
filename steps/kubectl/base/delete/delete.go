@@ -77,6 +77,10 @@ func (d *Delete) Delete() (output []byte, exitCode int, err error) {
 	cmdArgs = append(cmdArgs, "--cascade", strconv.FormatBool(d.Args.Cascade))
 	cmdArgs = append(cmdArgs, "--timeout", d.Args.Timeout.String())
 
+	if d.Args.Force {
+		cmdArgs = append(cmdArgs, "--force")
+	}
+
 	// Ignoring format because delete has not json format
 	return d.kctl.Execute(cmdArgs, base2.IgnoreFormat)
 }
