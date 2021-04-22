@@ -211,40 +211,106 @@ func (t *Tabulate) handleStringArrays(args Args, input [][]string) error {
 		return fmt.Errorf("can't build headers when arrays list provided, please specify headers explicitly")
 	}
 	t.headers = args.Headers
+	if args.ShowIndexes {
+		t.headers = append([]string{"IDX"}, t.headers...)
+		t.mergeByCells = []int{1}
+	}
+
+	resInput := make([][]string, len(input))
 	for i, currentInputArr := range input {
-		for j, currentInput := range currentInputArr {
-			input[i][j] = t.formatInput(args, currentInput)
+		currentResInput := currentInputArr
+		if args.ShowIndexes {
+			currentResInput = append([]string{fmt.Sprintf("%d", i)}, currentInputArr...)
+		}
+		resInput[i] = currentResInput
+
+		for j, currentInput := range currentResInput {
+			resInput[i][j] = t.formatInput(args, currentInput)
 		}
 	}
-	t.input = input
+	t.input = resInput
 	return nil
 }
 
-func (t *Tabulate) unmarshalMap(input string) ([]map[string]string, bool) {
-	ret := make([]map[string]string, 0)
-	if err := json.Unmarshal([]byte(input), &ret); err != nil {
-		log.Debugln("Unmarshal input as JSON array maps error: %v", err)
-		return nil, false
+func convertMap(arr []map[string]interface{}) []map[string]string {
+	ret := make([]map[string]string, len(arr))
+	for i, vals := range arr {
+		currentMap := make(map[string]string, len(vals))
+		for key, val := range vals {
+			currentMap[key] = fmt.Sprintf("%v", val)
+		}
+		ret[i] = currentMap
 	}
-	return ret, true
+	return ret
+}
+
+func (t *Tabulate) unmarshalMap(input string) ([]map[string]string, bool) {
+	var err error
+	ret := make([]map[string]string, 0)
+
+	if err = json.Unmarshal([]byte(input), &ret); err == nil {
+		return ret, true
+	}
+
+	interfaceRet := make([]map[string]interface{}, 0)
+	if err = json.Unmarshal([]byte(input), &interfaceRet); err == nil {
+		return convertMap(interfaceRet), true
+	}
+	log.Debugln("Unmarshal input as JSON array maps error: %v", err)
+
+	return nil, false
+}
+
+func convertArray(arr [][]interface{}) [][]string{
+	ret := make([][]string, len(arr))
+	for i, vals := range arr {
+		currentArr := make([]string, len(vals))
+		for j, val := range vals {
+			currentArr[j] = fmt.Sprintf("%v", val)
+		}
+		ret[i] = currentArr
+	}
+	return ret
 }
 
 func (t *Tabulate) unmarshalArray(input string) ([][]string, bool) {
+	var err error
 	ret := make([][]string, 0)
-	if err := json.Unmarshal([]byte(input), &ret); err != nil {
-		log.Debugln("Unmarshal input as JSON array of arrays error: %v", err)
-		return nil, false
+	if err = json.Unmarshal([]byte(input), &ret); err == nil {
+		return ret, true
 	}
-	return ret, true
+
+	interfaceRet := make([][]interface{}, 0)
+	if err = json.Unmarshal([]byte(input), &interfaceRet); err == nil {
+		return convertArray(interfaceRet), true
+	}
+	log.Debugln("Unmarshal input as JSON array of arrays error: %v", err)
+
+	return nil, false
+}
+
+func convertMapArray(mapArr map[string][]map[string]interface{}) map[string][]map[string]string {
+	ret := make(map[string][]map[string]string, len(mapArr))
+	for key, vals := range mapArr {
+		ret[key] = convertMap(vals)
+	}
+	return ret
 }
 
 func (t *Tabulate) unmarshalMapArrays(input string) (map[string][]map[string]string, bool) {
+	var err error
 	ret := make(map[string][]map[string]string)
-	if err := json.Unmarshal([]byte(input), &ret); err != nil {
-		log.Debugln("Unmarshal input as JSON map of arrays error: %v", err)
-		return nil, false
+	if err = json.Unmarshal([]byte(input), &ret); err == nil {
+		return ret, true
 	}
-	return ret, true
+
+	interfaceRet := make(map[string][]map[string]interface{})
+	if err = json.Unmarshal([]byte(input), &interfaceRet); err == nil {
+		return convertMapArray(interfaceRet), true
+	}
+	log.Debugln("Unmarshal input as JSON map of arrays error: %v", err)
+
+	return nil, false
 }
 
 func main() {
