@@ -45,14 +45,19 @@ envs:
     required: false
     example: "2m"
   - name: RESPONSES
-    description: "A list of possible options the user can select and will be returned in the step output as raw string."
+    description: "A list of possible options the user can select and will be returned in the step output as raw string. Can be either comma-seperated list or JSON array. Maximum number of responses is 100"
     type: string
     required: false
     example: "Yes,No"
+  - name: ALLOW_NONE
+    description: "Allow the user to choose a \"None\" option which will be added automatically to the list of responses. If enabled, it will be also the default response."
+    type: bool
+    required: false
+    default: false
   - name: DEFAULT_RESPONSE
-    description: "The response to use in case of timeout expiration when waiting for the slack user's input (must be one of RESPONSES)."
+    description: "The response to use in case of timeout expiration when waiting for the slack user's input (must be one of RESPONSES). If 'ALLOW_NONE' was enabled, this field will be overridden otherwise it is required."
     type: string
-    required: true
+    required: false
     example: "No"
   - name: SELECTOR_TYPE
     description: "The slack interactive selection element type to use when sending this message, possible options are 'MULTI_SELECT', 'BUTTONS_SELECT' or 'SINGLE_SELECT'."
