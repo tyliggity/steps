@@ -16,7 +16,7 @@ type Args struct {
 	GracePeriod    int           `env:"GRACE_PERIOD" envDefault:"-1"`
 	IgnoreNotFound bool          `env:"IGNORE_NOT_FOUND" envDefault:"false"`
 	Cascade        bool          `env:"CASCADE" envDefault:"true"`
-	Force          bool          `env:"Force" envDefault:"false"`
+	Force          bool          `env:"FORCE" envDefault:"false"`
 	Timeout        time.Duration `env:"TIMEOUT" envDefault:"0s"`
 }
 
