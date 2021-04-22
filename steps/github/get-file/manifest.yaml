@@ -5,6 +5,7 @@ metadata:
   description: "Query GitHub to retrieve a specified file."
   vendor: github
   type: triage
+  version: 1.0.0
 
 envs:
   - name: OWNER

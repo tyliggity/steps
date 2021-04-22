@@ -5,6 +5,7 @@ metadata:
   description: "Creates a Github pull request from a base branch with commits on it, to a another branch. "
   vendor: github
   type: triage
+  version: 1.0.0
 
 envs:
   - name: OWNER
