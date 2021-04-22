@@ -63,6 +63,11 @@ envs:
     description: "Amount of seconds to wait before giving up on a delete, zero means determine a timeout from the size of the object. Default 0"
     type: "int"
     example: "2"
+  - name: FORCE
+    description: "Force deletions do not wait for confirmation from the kubelet that the Pod has been terminated. default is false."
+    type: "bool"
+    example: false
+    default: false
 
 integrations:
   - k8s
