@@ -5,6 +5,7 @@ metadata:
   description: "Post events to a Datadog Stream"
   vendor: datadog
   type: notification
+  version: 1.0.0
 
 envs:
   - name: DD_API_KEY
