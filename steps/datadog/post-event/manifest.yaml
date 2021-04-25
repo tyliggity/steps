@@ -1,17 +1,13 @@
 apiVersion: stackpulse.io/v1
 kind: Step
 metadata:
-  name: "datadog-post-event"
+  name: "datadog_post_event"
   description: "Post events to a Datadog Stream"
   vendor: datadog
   type: notification
   version: 1.0.0
 
 envs:
-  - name: DD_API_KEY
-    description: "Datadog API key."
-    type: "string"
-    required: true
   - name: DD_SITE
     description: "Datadog destination site for the metrics, traces, and logs. Defaults to datadoghq.com."
     type: "string"
@@ -55,4 +51,4 @@ outputs:
       {"event":{"date_happened":1616522954,"id":5909943598815739809,"tags":["tag1","tag2"],"text":"my text","title":"test event","url":"https://app.datadoghq.com/event/event?id=5909943598815739809"},"status":"ok"}
 
 integrations:
-  - datadog
+  - datadog_token
