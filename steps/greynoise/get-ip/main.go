@@ -69,7 +69,8 @@ func (s *GreynoiseGetIp) Run() (int, []byte, error) {
 	var resp apiResponse
 	err = json.Unmarshal(respBytes, &resp)
 	if err != nil {
-		return step.ExitCodeFailure, nil, err
+		internalErr := fmt.Errorf("could not unmarshal response to JSON: %w; res: %s", err, string(respBytes))
+		return step.ExitCodeFailure, nil, internalErr
 	}
 
 	var fullResp map[string]interface{}
