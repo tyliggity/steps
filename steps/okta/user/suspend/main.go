@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -19,6 +20,10 @@ type UserSuspend struct {
 }
 
 type stepResult string
+
+type stepOutput struct {
+	Result stepResult `json:"result"`
+}
 
 const (
 	stepResultSuccess   stepResult = "success"
@@ -44,15 +49,33 @@ func (s *UserSuspend) Run() (int, []byte, error) {
 		return step.ExitCodeFailure, nil, err
 	}
 
+	//prepare output struct
+	output := stepOutput{}
+
 	//send request
 	resp, err := oktaClient.User.DeactivateUser(s.UserId, nil)
 	if err != nil {
+		//detect if result is 404
 		if resp.StatusCode == http.StatusNotFound {
-			return step.ExitCodeOK, []byte(stepResultInvalidID), nil
+			output.Result = stepResultInvalidID
+			outputBytes, err := json.Marshal(output)
+			if err != nil {
+				return step.ExitCodeFailure, nil, err
+			}
+			//ok but result is invalid ID
+			return step.ExitCodeOK, outputBytes, nil
 		}
+		//not ok, unknown error
 		return step.ExitCodeFailure, nil, err
 	}
-	return step.ExitCodeOK, []byte(stepResultSuccess), nil
+
+	//ok result, success
+	output.Result = stepResultInvalidID
+	outputBytes, err := json.Marshal(output)
+	if err != nil {
+		return step.ExitCodeFailure, nil, err
+	}
+	return step.ExitCodeOK, outputBytes, nil
 }
 
 func main() {
