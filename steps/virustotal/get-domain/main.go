@@ -12,7 +12,7 @@ import (
 
 type VirustotalGetUrl struct {
 	VtApiKey string `env:"VT_API_KEY,required"`
-	Url      string `env:"URL,required"`
+	Domain   string `env:"DOMAIN,required"`
 }
 
 type stepOutput struct {
@@ -50,7 +50,7 @@ func (s *VirustotalGetUrl) Init() error {
 
 func (s *VirustotalGetUrl) Run() (exitCode int, output []byte, err error) {
 	//prepare request
-	reqURL := fmt.Sprintf("https://www.virustotal.com/api/v3/domains/%s", s.Url)
+	reqURL := fmt.Sprintf("https://www.virustotal.com/api/v3/domains/%s", s.Domain)
 	stepReq, err := http.NewRequest(http.MethodGet, reqURL, nil)
 	if err != nil {
 		return step.ExitCodeFailure, nil, err
