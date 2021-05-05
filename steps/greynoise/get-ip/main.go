@@ -49,8 +49,14 @@ func (s *GreynoiseGetIp) Run() (int, []byte, error) {
 
 	//send request
 	rawResp, err := http.DefaultClient.Do(req)
-	if err != nil || rawResp.StatusCode != http.StatusOK {
-		return step.ExitCodeFailure, nil, err
+	if err != nil || rawResp.StatusCode/100 != 2 {
+		//parse response
+		defer rawResp.Body.Close()
+		respBytes, err := ioutil.ReadAll(rawResp.Body)
+		if err != nil {
+			return step.ExitCodeFailure, nil, err
+		}
+		return step.ExitCodeFailure, respBytes, err
 	}
 
 	//parse response
