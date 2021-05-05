@@ -40,9 +40,16 @@ func (s *GreynoiseGetIp) Init() error {
 }
 
 func (s *GreynoiseGetIp) Run() (int, []byte, error) {
-	//send request
-	rawResp, err := http.Get(fmt.Sprintf("https://api.greynoise.io/v3/community/%s", s.Ip))
+	//prepare request
+	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("https://api.greynoise.io/v3/community/%s", s.Ip), nil)
 	if err != nil {
+		return step.ExitCodeFailure, nil, err
+	}
+	req.Header.Set("key", s.GnApiKey)
+
+	//send request
+	rawResp, err := http.DefaultClient.Do(req)
+	if err != nil || rawResp.StatusCode != http.StatusOK {
 		return step.ExitCodeFailure, nil, err
 	}
 
