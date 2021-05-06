@@ -15,7 +15,8 @@ type VirustotalGetUrl struct {
 }
 
 type stepOutput struct {
-	Stats statsOutput `json:"stats"`
+	Reputation int         `json:"reputation"`
+	Stats      statsOutput `json:"stats"`
 	step.Outputs
 }
 
@@ -31,7 +32,6 @@ type apiResponse struct {
 	Attributes struct {
 		LastAnalysisStats statsOutput `json:"last_analysis_stats"`
 		AsOwner           string      `json:"as_owner"`
-		Country           string      `json:"country"`
 		Reputation        int         `json:"reputation"`
 	} `json:"attributes"`
 }
@@ -77,8 +77,9 @@ func (s *VirustotalGetUrl) Run() (exitCode int, output []byte, err error) {
 
 	//prepare output
 	out := stepOutput{
-		Stats:   resp.Attributes.LastAnalysisStats,
-		Outputs: step.Outputs{Object: fullResp},
+		Reputation: resp.Attributes.Reputation,
+		Stats:      resp.Attributes.LastAnalysisStats,
+		Outputs:    step.Outputs{Object: fullResp},
 	}
 	outputBytes, err := json.Marshal(out)
 	if err != nil {

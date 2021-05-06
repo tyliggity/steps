@@ -19,6 +19,10 @@ envs:
     example: "http://www.somedomain.com/this/is/my/domain"
 
 outputs:
+  - name: reputation
+    description: "The reputation score for the domain in question."
+    type: "int"
+    example: 13
   - name: stats
     description: "Results summary of engines tests by category."
     type: "json"
